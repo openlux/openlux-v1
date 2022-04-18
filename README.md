@@ -6,6 +6,8 @@ openlux is an open source design for an astrophotography camera designed around 
 
 ### Hardware specifications
 
+* 4-layer PCB
+
 * KAI-11002 CCD sensor
   * 4008x2672 resolution
   * 43.3mm diagonal size
