@@ -23,9 +23,9 @@ openlux is an open source design for an astrophotography camera designed around 
 
 ### Sample photo
 
-32x 5min lights (2hrs 40mins total), 16x darks, 16x flats, 16x dark flats
-AT65EDQ + HEQ5
-ST80 & ASI174MM for guiding
+* 32x 5min lights (2hrs 40mins total), 16x darks, 16x flats, 16x dark flats
+* AT65EDQ + HEQ5
+* ST80 & ASI174MM for guiding
 
 ![M31 sample photo](img/sample-m31.png)
 
