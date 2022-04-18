@@ -23,7 +23,7 @@ openlux is an open source design for an astrophotography camera designed around 
 
 ### Sample photo
 
-![M31 sample photo](img/sample-m31.jpg)
+![M31 sample photo](img/sample-m31.png)
 
 ### PCB render
 
