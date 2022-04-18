@@ -1,0 +1,3479 @@
+
+openlux.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00001950  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000018dc  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000005  00800100  00800100  00001950  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001950  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001980  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000038  00000000  00000000  000019c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001007  00000000  00000000  000019f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007f1  00000000  00000000  000029ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000007fd  00000000  00000000  000031f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000005c  00000000  00000000  000039f0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000418  00000000  00000000  00003a4c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000991  00000000  00000000  00003e64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000060  00000000  00000000  000047f5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+       4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+       8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+       c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+      64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+      74:	21 e0       	ldi	r18, 0x01	; 1
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+      7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+      7e:	a5 30       	cpi	r26, 0x05	; 5
+      80:	b2 07       	cpc	r27, r18
+      82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+      84:	0e 94 69 0b 	call	0x16d2	; 0x16d2 <main>
+      88:	0c 94 6c 0c 	jmp	0x18d8	; 0x18d8 <_exit>
+
+0000008c <__bad_interrupt>:
+      8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <adc_write>:
+	
+	PORTD |= ADC_SLOAD;
+	DDRC |= 0b00100000;
+	
+	return val;
+}
+      90:	97 b1       	in	r25, 0x07	; 7
+      92:	90 62       	ori	r25, 0x20	; 32
+      94:	97 b9       	out	0x07, r25	; 7
+      96:	95 b1       	in	r25, 0x05	; 5
+      98:	9d 7f       	andi	r25, 0xFD	; 253
+      9a:	95 b9       	out	0x05, r25	; 5
+      9c:	9b b1       	in	r25, 0x0b	; 11
+      9e:	9f 7d       	andi	r25, 0xDF	; 223
+      a0:	9b b9       	out	0x0b, r25	; 11
+      a2:	98 b1       	in	r25, 0x08	; 8
+      a4:	9f 7d       	andi	r25, 0xDF	; 223
+      a6:	98 b9       	out	0x08, r25	; 8
+      a8:	95 b1       	in	r25, 0x05	; 5
+      aa:	92 60       	ori	r25, 0x02	; 2
+      ac:	95 b9       	out	0x05, r25	; 5
+      ae:	95 b1       	in	r25, 0x05	; 5
+      b0:	9d 7f       	andi	r25, 0xFD	; 253
+      b2:	95 b9       	out	0x05, r25	; 5
+      b4:	90 e0       	ldi	r25, 0x00	; 0
+      b6:	21 c0       	rjmp	.+66     	; 0xfa <adc_write+0x6a>
+      b8:	48 b1       	in	r20, 0x08	; 8
+      ba:	e2 e0       	ldi	r30, 0x02	; 2
+      bc:	f0 e0       	ldi	r31, 0x00	; 0
+      be:	e9 1b       	sub	r30, r25
+      c0:	f1 09       	sbc	r31, r1
+      c2:	28 2f       	mov	r18, r24
+      c4:	30 e0       	ldi	r19, 0x00	; 0
+      c6:	02 c0       	rjmp	.+4      	; 0xcc <adc_write+0x3c>
+      c8:	35 95       	asr	r19
+      ca:	27 95       	ror	r18
+      cc:	ea 95       	dec	r30
+      ce:	e2 f7       	brpl	.-8      	; 0xc8 <adc_write+0x38>
+      d0:	21 70       	andi	r18, 0x01	; 1
+      d2:	33 27       	eor	r19, r19
+      d4:	22 0f       	add	r18, r18
+      d6:	33 1f       	adc	r19, r19
+      d8:	22 95       	swap	r18
+      da:	32 95       	swap	r19
+      dc:	30 7f       	andi	r19, 0xF0	; 240
+      de:	32 27       	eor	r19, r18
+      e0:	20 7f       	andi	r18, 0xF0	; 240
+      e2:	32 27       	eor	r19, r18
+      e4:	34 2f       	mov	r19, r20
+      e6:	3f 7d       	andi	r19, 0xDF	; 223
+      e8:	23 2b       	or	r18, r19
+      ea:	28 b9       	out	0x08, r18	; 8
+      ec:	25 b1       	in	r18, 0x05	; 5
+      ee:	22 60       	ori	r18, 0x02	; 2
+      f0:	25 b9       	out	0x05, r18	; 5
+      f2:	25 b1       	in	r18, 0x05	; 5
+      f4:	2d 7f       	andi	r18, 0xFD	; 253
+      f6:	25 b9       	out	0x05, r18	; 5
+      f8:	9f 5f       	subi	r25, 0xFF	; 255
+      fa:	93 30       	cpi	r25, 0x03	; 3
+      fc:	e8 f2       	brcs	.-70     	; 0xb8 <adc_write+0x28>
+      fe:	88 b1       	in	r24, 0x08	; 8
+     100:	8f 7d       	andi	r24, 0xDF	; 223
+     102:	88 b9       	out	0x08, r24	; 8
+     104:	90 e0       	ldi	r25, 0x00	; 0
+     106:	07 c0       	rjmp	.+14     	; 0x116 <adc_write+0x86>
+     108:	85 b1       	in	r24, 0x05	; 5
+     10a:	82 60       	ori	r24, 0x02	; 2
+     10c:	85 b9       	out	0x05, r24	; 5
+     10e:	85 b1       	in	r24, 0x05	; 5
+     110:	8d 7f       	andi	r24, 0xFD	; 253
+     112:	85 b9       	out	0x05, r24	; 5
+     114:	9f 5f       	subi	r25, 0xFF	; 255
+     116:	93 30       	cpi	r25, 0x03	; 3
+     118:	b8 f3       	brcs	.-18     	; 0x108 <adc_write+0x78>
+     11a:	40 e0       	ldi	r20, 0x00	; 0
+     11c:	1a c0       	rjmp	.+52     	; 0x152 <adc_write+0xc2>
+     11e:	98 b1       	in	r25, 0x08	; 8
+     120:	28 e0       	ldi	r18, 0x08	; 8
+     122:	30 e0       	ldi	r19, 0x00	; 0
+     124:	24 1b       	sub	r18, r20
+     126:	31 09       	sbc	r19, r1
+     128:	fb 01       	movw	r30, r22
+     12a:	02 c0       	rjmp	.+4      	; 0x130 <adc_write+0xa0>
+     12c:	f6 95       	lsr	r31
+     12e:	e7 95       	ror	r30
+     130:	2a 95       	dec	r18
+     132:	e2 f7       	brpl	.-8      	; 0x12c <adc_write+0x9c>
+     134:	8e 2f       	mov	r24, r30
+     136:	81 70       	andi	r24, 0x01	; 1
+     138:	82 95       	swap	r24
+     13a:	88 0f       	add	r24, r24
+     13c:	80 7e       	andi	r24, 0xE0	; 224
+     13e:	9f 7d       	andi	r25, 0xDF	; 223
+     140:	89 2b       	or	r24, r25
+     142:	88 b9       	out	0x08, r24	; 8
+     144:	85 b1       	in	r24, 0x05	; 5
+     146:	82 60       	ori	r24, 0x02	; 2
+     148:	85 b9       	out	0x05, r24	; 5
+     14a:	85 b1       	in	r24, 0x05	; 5
+     14c:	8d 7f       	andi	r24, 0xFD	; 253
+     14e:	85 b9       	out	0x05, r24	; 5
+     150:	4f 5f       	subi	r20, 0xFF	; 255
+     152:	49 30       	cpi	r20, 0x09	; 9
+     154:	20 f3       	brcs	.-56     	; 0x11e <adc_write+0x8e>
+     156:	8b b1       	in	r24, 0x0b	; 11
+     158:	80 62       	ori	r24, 0x20	; 32
+     15a:	8b b9       	out	0x0b, r24	; 11
+     15c:	08 95       	ret
+
+0000015e <readout>:
+
+void readout() {
+     15e:	cf 93       	push	r28
+	int STATE4 = 0b10110110;
+	int STATE5 = 0b10110011;*/
+	
+	//PORTD = IDLE;//STATE0;
+	
+	uint8_t temp = PORTC;
+     160:	88 b1       	in	r24, 0x08	; 8
+	temp |= CLK_V1;
+     162:	81 60       	ori	r24, 0x01	; 1
+	PORTC = temp;
+     164:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     166:	94 e6       	ldi	r25, 0x64	; 100
+     168:	9a 95       	dec	r25
+     16a:	f1 f7       	brne	.-4      	; 0x168 <readout+0xa>
+	_delay_us(15);
+	
+	for (uint16_t row = 0; row < 2720 * 4; row++) {
+     16c:	20 e0       	ldi	r18, 0x00	; 0
+     16e:	30 e0       	ldi	r19, 0x00	; 0
+     170:	0f c0       	rjmp	.+30     	; 0x190 <readout+0x32>
+     172:	98 2f       	mov	r25, r24
+     174:	9e 7f       	andi	r25, 0xFE	; 254
+		temp |= CLK_V2;
+		temp &= ~CLK_V1;
+     176:	92 60       	ori	r25, 0x02	; 2
+		PORTC = temp;
+     178:	98 b9       	out	0x08, r25	; 8
+     17a:	94 e6       	ldi	r25, 0x64	; 100
+     17c:	9a 95       	dec	r25
+     17e:	f1 f7       	brne	.-4      	; 0x17c <readout+0x1e>
+     180:	8c 7f       	andi	r24, 0xFC	; 252
+		
+		_delay_us(15);
+		
+		temp |= CLK_V1;
+		temp &= ~CLK_V2;
+     182:	81 60       	ori	r24, 0x01	; 1
+		PORTC = temp;
+     184:	88 b9       	out	0x08, r24	; 8
+     186:	94 e6       	ldi	r25, 0x64	; 100
+     188:	9a 95       	dec	r25
+     18a:	f1 f7       	brne	.-4      	; 0x188 <readout+0x2a>
+	uint8_t temp = PORTC;
+	temp |= CLK_V1;
+	PORTC = temp;
+	_delay_us(15);
+	
+	for (uint16_t row = 0; row < 2720 * 4; row++) {
+     18c:	2f 5f       	subi	r18, 0xFF	; 255
+     18e:	3f 4f       	sbci	r19, 0xFF	; 255
+     190:	20 38       	cpi	r18, 0x80	; 128
+     192:	9a e2       	ldi	r25, 0x2A	; 42
+     194:	39 07       	cpc	r19, r25
+     196:	68 f3       	brcs	.-38     	; 0x172 <readout+0x14>
+		
+		//_delay_us(235);
+		_delay_us(15);
+	}
+	
+	PORTC |= CLK_FD;
+     198:	88 b1       	in	r24, 0x08	; 8
+     19a:	88 60       	ori	r24, 0x08	; 8
+     19c:	88 b9       	out	0x08, r24	; 8
+	
+	PORTC |= CLK_V2;
+     19e:	88 b1       	in	r24, 0x08	; 8
+     1a0:	82 60       	ori	r24, 0x02	; 2
+     1a2:	88 b9       	out	0x08, r24	; 8
+     1a4:	8b eb       	ldi	r24, 0xBB	; 187
+     1a6:	92 e0       	ldi	r25, 0x02	; 2
+     1a8:	01 97       	sbiw	r24, 0x01	; 1
+     1aa:	f1 f7       	brne	.-4      	; 0x1a8 <readout+0x4a>
+     1ac:	00 c0       	rjmp	.+0      	; 0x1ae <readout+0x50>
+     1ae:	00 00       	nop
+	
+	_delay_us(140);
+	
+	//uint8_t temp = PORTC;
+	temp = PORTC;
+     1b0:	88 b1       	in	r24, 0x08	; 8
+     1b2:	98 2f       	mov	r25, r24
+     1b4:	9e 7f       	andi	r25, 0xFE	; 254
+	temp |= CLK_V2H;
+	temp &= ~CLK_V1;
+     1b6:	94 60       	ori	r25, 0x04	; 4
+	//PORTC |= CLK_V2H; // TODO V1
+	PORTC = temp;
+     1b8:	98 b9       	out	0x08, r25	; 8
+     1ba:	94 e6       	ldi	r25, 0x64	; 100
+     1bc:	9a 95       	dec	r25
+     1be:	f1 f7       	brne	.-4      	; 0x1bc <readout+0x5e>
+     1c0:	8a 7f       	andi	r24, 0xFA	; 250
+	
+	_delay_us(15);
+	
+	temp &= ~CLK_V2H;
+	temp |= CLK_V1;
+     1c2:	c8 2f       	mov	r28, r24
+     1c4:	c1 60       	ori	r28, 0x01	; 1
+	PORTC = temp;
+     1c6:	c8 b9       	out	0x08, r28	; 8
+     1c8:	88 ec       	ldi	r24, 0xC8	; 200
+     1ca:	8a 95       	dec	r24
+     1cc:	f1 f7       	brne	.-4      	; 0x1ca <readout+0x6c>
+
+	_delay_us(30);
+	
+	PORTC &= ~CLK_V2;
+     1ce:	88 b1       	in	r24, 0x08	; 8
+     1d0:	8d 7f       	andi	r24, 0xFD	; 253
+     1d2:	88 b9       	out	0x08, r24	; 8
+	
+	PORTD = IDLE; // TODO
+     1d4:	82 e7       	ldi	r24, 0x72	; 114
+     1d6:	8b b9       	out	0x0b, r24	; 11
+	
+	adc_write(REG_CFG, 0b011011000);
+     1d8:	68 ed       	ldi	r22, 0xD8	; 216
+     1da:	70 e0       	ldi	r23, 0x00	; 0
+     1dc:	80 e0       	ldi	r24, 0x00	; 0
+     1de:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+     1e2:	9a e1       	ldi	r25, 0x1A	; 26
+     1e4:	9a 95       	dec	r25
+     1e6:	f1 f7       	brne	.-4      	; 0x1e4 <readout+0x86>
+     1e8:	00 c0       	rjmp	.+0      	; 0x1ea <readout+0x8c>
+	
+	_delay_us(4);
+
+	for (uint16_t row = 0; row < 2720; row++) {
+     1ea:	20 e0       	ldi	r18, 0x00	; 0
+     1ec:	30 e0       	ldi	r19, 0x00	; 0
+     1ee:	0c 94 59 0b 	jmp	0x16b2	; 0x16b2 <__stack+0xdb3>
+		// TODO row
+		for (uint8_t i = 0; i < 16; i++) {
+			PIXEL256;
+     1f2:	62 e6       	ldi	r22, 0x62	; 98
+     1f4:	6b b9       	out	0x0b, r22	; 11
+     1f6:	53 e7       	ldi	r21, 0x73	; 115
+     1f8:	5b b9       	out	0x0b, r21	; 11
+     1fa:	49 e7       	ldi	r20, 0x79	; 121
+     1fc:	4b b9       	out	0x0b, r20	; 11
+     1fe:	90 e7       	ldi	r25, 0x70	; 112
+     200:	9b b9       	out	0x0b, r25	; 11
+     202:	9b b9       	out	0x0b, r25	; 11
+     204:	a0 eb       	ldi	r26, 0xB0	; 176
+     206:	ab b9       	out	0x0b, r26	; 11
+     208:	f5 eb       	ldi	r31, 0xB5	; 181
+     20a:	fb b9       	out	0x0b, r31	; 11
+     20c:	e7 eb       	ldi	r30, 0xB7	; 183
+     20e:	eb b9       	out	0x0b, r30	; 11
+     210:	82 eb       	ldi	r24, 0xB2	; 178
+     212:	8b b9       	out	0x0b, r24	; 11
+     214:	8b b9       	out	0x0b, r24	; 11
+     216:	6b b9       	out	0x0b, r22	; 11
+     218:	5b b9       	out	0x0b, r21	; 11
+     21a:	4b b9       	out	0x0b, r20	; 11
+     21c:	9b b9       	out	0x0b, r25	; 11
+     21e:	9b b9       	out	0x0b, r25	; 11
+     220:	ab b9       	out	0x0b, r26	; 11
+     222:	fb b9       	out	0x0b, r31	; 11
+     224:	eb b9       	out	0x0b, r30	; 11
+     226:	8b b9       	out	0x0b, r24	; 11
+     228:	8b b9       	out	0x0b, r24	; 11
+     22a:	6b b9       	out	0x0b, r22	; 11
+     22c:	5b b9       	out	0x0b, r21	; 11
+     22e:	4b b9       	out	0x0b, r20	; 11
+     230:	9b b9       	out	0x0b, r25	; 11
+     232:	9b b9       	out	0x0b, r25	; 11
+     234:	ab b9       	out	0x0b, r26	; 11
+     236:	fb b9       	out	0x0b, r31	; 11
+     238:	eb b9       	out	0x0b, r30	; 11
+     23a:	8b b9       	out	0x0b, r24	; 11
+     23c:	8b b9       	out	0x0b, r24	; 11
+     23e:	6b b9       	out	0x0b, r22	; 11
+     240:	5b b9       	out	0x0b, r21	; 11
+     242:	4b b9       	out	0x0b, r20	; 11
+     244:	9b b9       	out	0x0b, r25	; 11
+     246:	9b b9       	out	0x0b, r25	; 11
+     248:	ab b9       	out	0x0b, r26	; 11
+     24a:	fb b9       	out	0x0b, r31	; 11
+     24c:	eb b9       	out	0x0b, r30	; 11
+     24e:	8b b9       	out	0x0b, r24	; 11
+     250:	8b b9       	out	0x0b, r24	; 11
+     252:	6b b9       	out	0x0b, r22	; 11
+     254:	5b b9       	out	0x0b, r21	; 11
+     256:	4b b9       	out	0x0b, r20	; 11
+     258:	9b b9       	out	0x0b, r25	; 11
+     25a:	9b b9       	out	0x0b, r25	; 11
+     25c:	ab b9       	out	0x0b, r26	; 11
+     25e:	fb b9       	out	0x0b, r31	; 11
+     260:	eb b9       	out	0x0b, r30	; 11
+     262:	8b b9       	out	0x0b, r24	; 11
+     264:	8b b9       	out	0x0b, r24	; 11
+     266:	6b b9       	out	0x0b, r22	; 11
+     268:	5b b9       	out	0x0b, r21	; 11
+     26a:	4b b9       	out	0x0b, r20	; 11
+     26c:	9b b9       	out	0x0b, r25	; 11
+     26e:	9b b9       	out	0x0b, r25	; 11
+     270:	ab b9       	out	0x0b, r26	; 11
+     272:	fb b9       	out	0x0b, r31	; 11
+     274:	eb b9       	out	0x0b, r30	; 11
+     276:	8b b9       	out	0x0b, r24	; 11
+     278:	8b b9       	out	0x0b, r24	; 11
+     27a:	6b b9       	out	0x0b, r22	; 11
+     27c:	5b b9       	out	0x0b, r21	; 11
+     27e:	4b b9       	out	0x0b, r20	; 11
+     280:	9b b9       	out	0x0b, r25	; 11
+     282:	9b b9       	out	0x0b, r25	; 11
+     284:	ab b9       	out	0x0b, r26	; 11
+     286:	fb b9       	out	0x0b, r31	; 11
+     288:	eb b9       	out	0x0b, r30	; 11
+     28a:	8b b9       	out	0x0b, r24	; 11
+     28c:	8b b9       	out	0x0b, r24	; 11
+     28e:	6b b9       	out	0x0b, r22	; 11
+     290:	5b b9       	out	0x0b, r21	; 11
+     292:	4b b9       	out	0x0b, r20	; 11
+     294:	9b b9       	out	0x0b, r25	; 11
+     296:	9b b9       	out	0x0b, r25	; 11
+     298:	ab b9       	out	0x0b, r26	; 11
+     29a:	fb b9       	out	0x0b, r31	; 11
+     29c:	eb b9       	out	0x0b, r30	; 11
+     29e:	8b b9       	out	0x0b, r24	; 11
+     2a0:	8b b9       	out	0x0b, r24	; 11
+     2a2:	6b b9       	out	0x0b, r22	; 11
+     2a4:	5b b9       	out	0x0b, r21	; 11
+     2a6:	4b b9       	out	0x0b, r20	; 11
+     2a8:	9b b9       	out	0x0b, r25	; 11
+     2aa:	9b b9       	out	0x0b, r25	; 11
+     2ac:	ab b9       	out	0x0b, r26	; 11
+     2ae:	fb b9       	out	0x0b, r31	; 11
+     2b0:	eb b9       	out	0x0b, r30	; 11
+     2b2:	8b b9       	out	0x0b, r24	; 11
+     2b4:	8b b9       	out	0x0b, r24	; 11
+     2b6:	6b b9       	out	0x0b, r22	; 11
+     2b8:	5b b9       	out	0x0b, r21	; 11
+     2ba:	4b b9       	out	0x0b, r20	; 11
+     2bc:	9b b9       	out	0x0b, r25	; 11
+     2be:	9b b9       	out	0x0b, r25	; 11
+     2c0:	ab b9       	out	0x0b, r26	; 11
+     2c2:	fb b9       	out	0x0b, r31	; 11
+     2c4:	eb b9       	out	0x0b, r30	; 11
+     2c6:	8b b9       	out	0x0b, r24	; 11
+     2c8:	8b b9       	out	0x0b, r24	; 11
+     2ca:	6b b9       	out	0x0b, r22	; 11
+     2cc:	5b b9       	out	0x0b, r21	; 11
+     2ce:	4b b9       	out	0x0b, r20	; 11
+     2d0:	9b b9       	out	0x0b, r25	; 11
+     2d2:	9b b9       	out	0x0b, r25	; 11
+     2d4:	ab b9       	out	0x0b, r26	; 11
+     2d6:	fb b9       	out	0x0b, r31	; 11
+     2d8:	eb b9       	out	0x0b, r30	; 11
+     2da:	8b b9       	out	0x0b, r24	; 11
+     2dc:	8b b9       	out	0x0b, r24	; 11
+     2de:	6b b9       	out	0x0b, r22	; 11
+     2e0:	5b b9       	out	0x0b, r21	; 11
+     2e2:	4b b9       	out	0x0b, r20	; 11
+     2e4:	9b b9       	out	0x0b, r25	; 11
+     2e6:	9b b9       	out	0x0b, r25	; 11
+     2e8:	ab b9       	out	0x0b, r26	; 11
+     2ea:	fb b9       	out	0x0b, r31	; 11
+     2ec:	eb b9       	out	0x0b, r30	; 11
+     2ee:	8b b9       	out	0x0b, r24	; 11
+     2f0:	8b b9       	out	0x0b, r24	; 11
+     2f2:	6b b9       	out	0x0b, r22	; 11
+     2f4:	5b b9       	out	0x0b, r21	; 11
+     2f6:	4b b9       	out	0x0b, r20	; 11
+     2f8:	9b b9       	out	0x0b, r25	; 11
+     2fa:	9b b9       	out	0x0b, r25	; 11
+     2fc:	ab b9       	out	0x0b, r26	; 11
+     2fe:	fb b9       	out	0x0b, r31	; 11
+     300:	eb b9       	out	0x0b, r30	; 11
+     302:	8b b9       	out	0x0b, r24	; 11
+     304:	8b b9       	out	0x0b, r24	; 11
+     306:	6b b9       	out	0x0b, r22	; 11
+     308:	5b b9       	out	0x0b, r21	; 11
+     30a:	4b b9       	out	0x0b, r20	; 11
+     30c:	9b b9       	out	0x0b, r25	; 11
+     30e:	9b b9       	out	0x0b, r25	; 11
+     310:	ab b9       	out	0x0b, r26	; 11
+     312:	fb b9       	out	0x0b, r31	; 11
+     314:	eb b9       	out	0x0b, r30	; 11
+     316:	8b b9       	out	0x0b, r24	; 11
+     318:	8b b9       	out	0x0b, r24	; 11
+     31a:	6b b9       	out	0x0b, r22	; 11
+     31c:	5b b9       	out	0x0b, r21	; 11
+     31e:	4b b9       	out	0x0b, r20	; 11
+     320:	9b b9       	out	0x0b, r25	; 11
+     322:	9b b9       	out	0x0b, r25	; 11
+     324:	ab b9       	out	0x0b, r26	; 11
+     326:	fb b9       	out	0x0b, r31	; 11
+     328:	eb b9       	out	0x0b, r30	; 11
+     32a:	8b b9       	out	0x0b, r24	; 11
+     32c:	8b b9       	out	0x0b, r24	; 11
+     32e:	6b b9       	out	0x0b, r22	; 11
+     330:	5b b9       	out	0x0b, r21	; 11
+     332:	4b b9       	out	0x0b, r20	; 11
+     334:	9b b9       	out	0x0b, r25	; 11
+     336:	9b b9       	out	0x0b, r25	; 11
+     338:	ab b9       	out	0x0b, r26	; 11
+     33a:	fb b9       	out	0x0b, r31	; 11
+     33c:	eb b9       	out	0x0b, r30	; 11
+     33e:	8b b9       	out	0x0b, r24	; 11
+     340:	8b b9       	out	0x0b, r24	; 11
+     342:	6b b9       	out	0x0b, r22	; 11
+     344:	5b b9       	out	0x0b, r21	; 11
+     346:	4b b9       	out	0x0b, r20	; 11
+     348:	9b b9       	out	0x0b, r25	; 11
+     34a:	9b b9       	out	0x0b, r25	; 11
+     34c:	ab b9       	out	0x0b, r26	; 11
+     34e:	fb b9       	out	0x0b, r31	; 11
+     350:	eb b9       	out	0x0b, r30	; 11
+     352:	8b b9       	out	0x0b, r24	; 11
+     354:	8b b9       	out	0x0b, r24	; 11
+     356:	6b b9       	out	0x0b, r22	; 11
+     358:	5b b9       	out	0x0b, r21	; 11
+     35a:	4b b9       	out	0x0b, r20	; 11
+     35c:	9b b9       	out	0x0b, r25	; 11
+     35e:	9b b9       	out	0x0b, r25	; 11
+     360:	ab b9       	out	0x0b, r26	; 11
+     362:	fb b9       	out	0x0b, r31	; 11
+     364:	eb b9       	out	0x0b, r30	; 11
+     366:	8b b9       	out	0x0b, r24	; 11
+     368:	8b b9       	out	0x0b, r24	; 11
+     36a:	6b b9       	out	0x0b, r22	; 11
+     36c:	5b b9       	out	0x0b, r21	; 11
+     36e:	4b b9       	out	0x0b, r20	; 11
+     370:	9b b9       	out	0x0b, r25	; 11
+     372:	9b b9       	out	0x0b, r25	; 11
+     374:	ab b9       	out	0x0b, r26	; 11
+     376:	fb b9       	out	0x0b, r31	; 11
+     378:	eb b9       	out	0x0b, r30	; 11
+     37a:	8b b9       	out	0x0b, r24	; 11
+     37c:	8b b9       	out	0x0b, r24	; 11
+     37e:	6b b9       	out	0x0b, r22	; 11
+     380:	5b b9       	out	0x0b, r21	; 11
+     382:	4b b9       	out	0x0b, r20	; 11
+     384:	9b b9       	out	0x0b, r25	; 11
+     386:	9b b9       	out	0x0b, r25	; 11
+     388:	ab b9       	out	0x0b, r26	; 11
+     38a:	fb b9       	out	0x0b, r31	; 11
+     38c:	eb b9       	out	0x0b, r30	; 11
+     38e:	8b b9       	out	0x0b, r24	; 11
+     390:	8b b9       	out	0x0b, r24	; 11
+     392:	6b b9       	out	0x0b, r22	; 11
+     394:	5b b9       	out	0x0b, r21	; 11
+     396:	4b b9       	out	0x0b, r20	; 11
+     398:	9b b9       	out	0x0b, r25	; 11
+     39a:	9b b9       	out	0x0b, r25	; 11
+     39c:	ab b9       	out	0x0b, r26	; 11
+     39e:	fb b9       	out	0x0b, r31	; 11
+     3a0:	eb b9       	out	0x0b, r30	; 11
+     3a2:	8b b9       	out	0x0b, r24	; 11
+     3a4:	8b b9       	out	0x0b, r24	; 11
+     3a6:	6b b9       	out	0x0b, r22	; 11
+     3a8:	5b b9       	out	0x0b, r21	; 11
+     3aa:	4b b9       	out	0x0b, r20	; 11
+     3ac:	9b b9       	out	0x0b, r25	; 11
+     3ae:	9b b9       	out	0x0b, r25	; 11
+     3b0:	ab b9       	out	0x0b, r26	; 11
+     3b2:	fb b9       	out	0x0b, r31	; 11
+     3b4:	eb b9       	out	0x0b, r30	; 11
+     3b6:	8b b9       	out	0x0b, r24	; 11
+     3b8:	8b b9       	out	0x0b, r24	; 11
+     3ba:	6b b9       	out	0x0b, r22	; 11
+     3bc:	5b b9       	out	0x0b, r21	; 11
+     3be:	4b b9       	out	0x0b, r20	; 11
+     3c0:	9b b9       	out	0x0b, r25	; 11
+     3c2:	9b b9       	out	0x0b, r25	; 11
+     3c4:	ab b9       	out	0x0b, r26	; 11
+     3c6:	fb b9       	out	0x0b, r31	; 11
+     3c8:	eb b9       	out	0x0b, r30	; 11
+     3ca:	8b b9       	out	0x0b, r24	; 11
+     3cc:	8b b9       	out	0x0b, r24	; 11
+     3ce:	6b b9       	out	0x0b, r22	; 11
+     3d0:	5b b9       	out	0x0b, r21	; 11
+     3d2:	4b b9       	out	0x0b, r20	; 11
+     3d4:	9b b9       	out	0x0b, r25	; 11
+     3d6:	9b b9       	out	0x0b, r25	; 11
+     3d8:	ab b9       	out	0x0b, r26	; 11
+     3da:	fb b9       	out	0x0b, r31	; 11
+     3dc:	eb b9       	out	0x0b, r30	; 11
+     3de:	8b b9       	out	0x0b, r24	; 11
+     3e0:	8b b9       	out	0x0b, r24	; 11
+     3e2:	6b b9       	out	0x0b, r22	; 11
+     3e4:	5b b9       	out	0x0b, r21	; 11
+     3e6:	4b b9       	out	0x0b, r20	; 11
+     3e8:	9b b9       	out	0x0b, r25	; 11
+     3ea:	9b b9       	out	0x0b, r25	; 11
+     3ec:	ab b9       	out	0x0b, r26	; 11
+     3ee:	fb b9       	out	0x0b, r31	; 11
+     3f0:	eb b9       	out	0x0b, r30	; 11
+     3f2:	8b b9       	out	0x0b, r24	; 11
+     3f4:	8b b9       	out	0x0b, r24	; 11
+     3f6:	6b b9       	out	0x0b, r22	; 11
+     3f8:	5b b9       	out	0x0b, r21	; 11
+     3fa:	4b b9       	out	0x0b, r20	; 11
+     3fc:	9b b9       	out	0x0b, r25	; 11
+     3fe:	9b b9       	out	0x0b, r25	; 11
+     400:	ab b9       	out	0x0b, r26	; 11
+     402:	fb b9       	out	0x0b, r31	; 11
+     404:	eb b9       	out	0x0b, r30	; 11
+     406:	8b b9       	out	0x0b, r24	; 11
+     408:	8b b9       	out	0x0b, r24	; 11
+     40a:	6b b9       	out	0x0b, r22	; 11
+     40c:	5b b9       	out	0x0b, r21	; 11
+     40e:	4b b9       	out	0x0b, r20	; 11
+     410:	9b b9       	out	0x0b, r25	; 11
+     412:	9b b9       	out	0x0b, r25	; 11
+     414:	ab b9       	out	0x0b, r26	; 11
+     416:	fb b9       	out	0x0b, r31	; 11
+     418:	eb b9       	out	0x0b, r30	; 11
+     41a:	8b b9       	out	0x0b, r24	; 11
+     41c:	8b b9       	out	0x0b, r24	; 11
+     41e:	6b b9       	out	0x0b, r22	; 11
+     420:	5b b9       	out	0x0b, r21	; 11
+     422:	4b b9       	out	0x0b, r20	; 11
+     424:	9b b9       	out	0x0b, r25	; 11
+     426:	9b b9       	out	0x0b, r25	; 11
+     428:	ab b9       	out	0x0b, r26	; 11
+     42a:	fb b9       	out	0x0b, r31	; 11
+     42c:	eb b9       	out	0x0b, r30	; 11
+     42e:	8b b9       	out	0x0b, r24	; 11
+     430:	8b b9       	out	0x0b, r24	; 11
+     432:	6b b9       	out	0x0b, r22	; 11
+     434:	5b b9       	out	0x0b, r21	; 11
+     436:	4b b9       	out	0x0b, r20	; 11
+     438:	9b b9       	out	0x0b, r25	; 11
+     43a:	9b b9       	out	0x0b, r25	; 11
+     43c:	ab b9       	out	0x0b, r26	; 11
+     43e:	fb b9       	out	0x0b, r31	; 11
+     440:	eb b9       	out	0x0b, r30	; 11
+     442:	8b b9       	out	0x0b, r24	; 11
+     444:	8b b9       	out	0x0b, r24	; 11
+     446:	6b b9       	out	0x0b, r22	; 11
+     448:	5b b9       	out	0x0b, r21	; 11
+     44a:	4b b9       	out	0x0b, r20	; 11
+     44c:	9b b9       	out	0x0b, r25	; 11
+     44e:	9b b9       	out	0x0b, r25	; 11
+     450:	ab b9       	out	0x0b, r26	; 11
+     452:	fb b9       	out	0x0b, r31	; 11
+     454:	eb b9       	out	0x0b, r30	; 11
+     456:	8b b9       	out	0x0b, r24	; 11
+     458:	8b b9       	out	0x0b, r24	; 11
+     45a:	6b b9       	out	0x0b, r22	; 11
+     45c:	5b b9       	out	0x0b, r21	; 11
+     45e:	4b b9       	out	0x0b, r20	; 11
+     460:	9b b9       	out	0x0b, r25	; 11
+     462:	9b b9       	out	0x0b, r25	; 11
+     464:	ab b9       	out	0x0b, r26	; 11
+     466:	fb b9       	out	0x0b, r31	; 11
+     468:	eb b9       	out	0x0b, r30	; 11
+     46a:	8b b9       	out	0x0b, r24	; 11
+     46c:	8b b9       	out	0x0b, r24	; 11
+     46e:	6b b9       	out	0x0b, r22	; 11
+     470:	5b b9       	out	0x0b, r21	; 11
+     472:	4b b9       	out	0x0b, r20	; 11
+     474:	9b b9       	out	0x0b, r25	; 11
+     476:	9b b9       	out	0x0b, r25	; 11
+     478:	ab b9       	out	0x0b, r26	; 11
+     47a:	fb b9       	out	0x0b, r31	; 11
+     47c:	eb b9       	out	0x0b, r30	; 11
+     47e:	8b b9       	out	0x0b, r24	; 11
+     480:	8b b9       	out	0x0b, r24	; 11
+     482:	6b b9       	out	0x0b, r22	; 11
+     484:	5b b9       	out	0x0b, r21	; 11
+     486:	4b b9       	out	0x0b, r20	; 11
+     488:	9b b9       	out	0x0b, r25	; 11
+     48a:	9b b9       	out	0x0b, r25	; 11
+     48c:	ab b9       	out	0x0b, r26	; 11
+     48e:	fb b9       	out	0x0b, r31	; 11
+     490:	eb b9       	out	0x0b, r30	; 11
+     492:	8b b9       	out	0x0b, r24	; 11
+     494:	8b b9       	out	0x0b, r24	; 11
+     496:	6b b9       	out	0x0b, r22	; 11
+     498:	5b b9       	out	0x0b, r21	; 11
+     49a:	4b b9       	out	0x0b, r20	; 11
+     49c:	80 e7       	ldi	r24, 0x70	; 112
+     49e:	8b b9       	out	0x0b, r24	; 11
+     4a0:	8b b9       	out	0x0b, r24	; 11
+     4a2:	50 eb       	ldi	r21, 0xB0	; 176
+     4a4:	5b b9       	out	0x0b, r21	; 11
+     4a6:	45 eb       	ldi	r20, 0xB5	; 181
+     4a8:	4b b9       	out	0x0b, r20	; 11
+     4aa:	a7 eb       	ldi	r26, 0xB7	; 183
+     4ac:	ab b9       	out	0x0b, r26	; 11
+     4ae:	92 eb       	ldi	r25, 0xB2	; 178
+     4b0:	9b b9       	out	0x0b, r25	; 11
+     4b2:	9b b9       	out	0x0b, r25	; 11
+     4b4:	f2 e6       	ldi	r31, 0x62	; 98
+     4b6:	fb b9       	out	0x0b, r31	; 11
+     4b8:	e3 e7       	ldi	r30, 0x73	; 115
+     4ba:	eb b9       	out	0x0b, r30	; 11
+     4bc:	69 e7       	ldi	r22, 0x79	; 121
+     4be:	6b b9       	out	0x0b, r22	; 11
+     4c0:	8b b9       	out	0x0b, r24	; 11
+     4c2:	8b b9       	out	0x0b, r24	; 11
+     4c4:	5b b9       	out	0x0b, r21	; 11
+     4c6:	4b b9       	out	0x0b, r20	; 11
+     4c8:	ab b9       	out	0x0b, r26	; 11
+     4ca:	9b b9       	out	0x0b, r25	; 11
+     4cc:	9b b9       	out	0x0b, r25	; 11
+     4ce:	fb b9       	out	0x0b, r31	; 11
+     4d0:	eb b9       	out	0x0b, r30	; 11
+     4d2:	6b b9       	out	0x0b, r22	; 11
+     4d4:	8b b9       	out	0x0b, r24	; 11
+     4d6:	8b b9       	out	0x0b, r24	; 11
+     4d8:	5b b9       	out	0x0b, r21	; 11
+     4da:	4b b9       	out	0x0b, r20	; 11
+     4dc:	ab b9       	out	0x0b, r26	; 11
+     4de:	9b b9       	out	0x0b, r25	; 11
+     4e0:	9b b9       	out	0x0b, r25	; 11
+     4e2:	fb b9       	out	0x0b, r31	; 11
+     4e4:	eb b9       	out	0x0b, r30	; 11
+     4e6:	6b b9       	out	0x0b, r22	; 11
+     4e8:	8b b9       	out	0x0b, r24	; 11
+     4ea:	8b b9       	out	0x0b, r24	; 11
+     4ec:	5b b9       	out	0x0b, r21	; 11
+     4ee:	4b b9       	out	0x0b, r20	; 11
+     4f0:	ab b9       	out	0x0b, r26	; 11
+     4f2:	9b b9       	out	0x0b, r25	; 11
+     4f4:	9b b9       	out	0x0b, r25	; 11
+     4f6:	fb b9       	out	0x0b, r31	; 11
+     4f8:	eb b9       	out	0x0b, r30	; 11
+     4fa:	6b b9       	out	0x0b, r22	; 11
+     4fc:	8b b9       	out	0x0b, r24	; 11
+     4fe:	8b b9       	out	0x0b, r24	; 11
+     500:	5b b9       	out	0x0b, r21	; 11
+     502:	4b b9       	out	0x0b, r20	; 11
+     504:	ab b9       	out	0x0b, r26	; 11
+     506:	9b b9       	out	0x0b, r25	; 11
+     508:	9b b9       	out	0x0b, r25	; 11
+     50a:	fb b9       	out	0x0b, r31	; 11
+     50c:	eb b9       	out	0x0b, r30	; 11
+     50e:	6b b9       	out	0x0b, r22	; 11
+     510:	8b b9       	out	0x0b, r24	; 11
+     512:	8b b9       	out	0x0b, r24	; 11
+     514:	5b b9       	out	0x0b, r21	; 11
+     516:	4b b9       	out	0x0b, r20	; 11
+     518:	ab b9       	out	0x0b, r26	; 11
+     51a:	9b b9       	out	0x0b, r25	; 11
+     51c:	9b b9       	out	0x0b, r25	; 11
+     51e:	fb b9       	out	0x0b, r31	; 11
+     520:	eb b9       	out	0x0b, r30	; 11
+     522:	6b b9       	out	0x0b, r22	; 11
+     524:	8b b9       	out	0x0b, r24	; 11
+     526:	8b b9       	out	0x0b, r24	; 11
+     528:	5b b9       	out	0x0b, r21	; 11
+     52a:	4b b9       	out	0x0b, r20	; 11
+     52c:	ab b9       	out	0x0b, r26	; 11
+     52e:	9b b9       	out	0x0b, r25	; 11
+     530:	9b b9       	out	0x0b, r25	; 11
+     532:	fb b9       	out	0x0b, r31	; 11
+     534:	eb b9       	out	0x0b, r30	; 11
+     536:	6b b9       	out	0x0b, r22	; 11
+     538:	8b b9       	out	0x0b, r24	; 11
+     53a:	8b b9       	out	0x0b, r24	; 11
+     53c:	5b b9       	out	0x0b, r21	; 11
+     53e:	4b b9       	out	0x0b, r20	; 11
+     540:	ab b9       	out	0x0b, r26	; 11
+     542:	9b b9       	out	0x0b, r25	; 11
+     544:	9b b9       	out	0x0b, r25	; 11
+     546:	fb b9       	out	0x0b, r31	; 11
+     548:	eb b9       	out	0x0b, r30	; 11
+     54a:	6b b9       	out	0x0b, r22	; 11
+     54c:	8b b9       	out	0x0b, r24	; 11
+     54e:	8b b9       	out	0x0b, r24	; 11
+     550:	5b b9       	out	0x0b, r21	; 11
+     552:	4b b9       	out	0x0b, r20	; 11
+     554:	ab b9       	out	0x0b, r26	; 11
+     556:	9b b9       	out	0x0b, r25	; 11
+     558:	9b b9       	out	0x0b, r25	; 11
+     55a:	fb b9       	out	0x0b, r31	; 11
+     55c:	eb b9       	out	0x0b, r30	; 11
+     55e:	6b b9       	out	0x0b, r22	; 11
+     560:	8b b9       	out	0x0b, r24	; 11
+     562:	8b b9       	out	0x0b, r24	; 11
+     564:	5b b9       	out	0x0b, r21	; 11
+     566:	4b b9       	out	0x0b, r20	; 11
+     568:	ab b9       	out	0x0b, r26	; 11
+     56a:	9b b9       	out	0x0b, r25	; 11
+     56c:	9b b9       	out	0x0b, r25	; 11
+     56e:	fb b9       	out	0x0b, r31	; 11
+     570:	eb b9       	out	0x0b, r30	; 11
+     572:	6b b9       	out	0x0b, r22	; 11
+     574:	8b b9       	out	0x0b, r24	; 11
+     576:	8b b9       	out	0x0b, r24	; 11
+     578:	5b b9       	out	0x0b, r21	; 11
+     57a:	4b b9       	out	0x0b, r20	; 11
+     57c:	ab b9       	out	0x0b, r26	; 11
+     57e:	9b b9       	out	0x0b, r25	; 11
+     580:	9b b9       	out	0x0b, r25	; 11
+     582:	fb b9       	out	0x0b, r31	; 11
+     584:	eb b9       	out	0x0b, r30	; 11
+     586:	6b b9       	out	0x0b, r22	; 11
+     588:	8b b9       	out	0x0b, r24	; 11
+     58a:	8b b9       	out	0x0b, r24	; 11
+     58c:	5b b9       	out	0x0b, r21	; 11
+     58e:	4b b9       	out	0x0b, r20	; 11
+     590:	ab b9       	out	0x0b, r26	; 11
+     592:	9b b9       	out	0x0b, r25	; 11
+     594:	9b b9       	out	0x0b, r25	; 11
+     596:	fb b9       	out	0x0b, r31	; 11
+     598:	eb b9       	out	0x0b, r30	; 11
+     59a:	6b b9       	out	0x0b, r22	; 11
+     59c:	8b b9       	out	0x0b, r24	; 11
+     59e:	8b b9       	out	0x0b, r24	; 11
+     5a0:	5b b9       	out	0x0b, r21	; 11
+     5a2:	4b b9       	out	0x0b, r20	; 11
+     5a4:	ab b9       	out	0x0b, r26	; 11
+     5a6:	9b b9       	out	0x0b, r25	; 11
+     5a8:	9b b9       	out	0x0b, r25	; 11
+     5aa:	fb b9       	out	0x0b, r31	; 11
+     5ac:	eb b9       	out	0x0b, r30	; 11
+     5ae:	6b b9       	out	0x0b, r22	; 11
+     5b0:	8b b9       	out	0x0b, r24	; 11
+     5b2:	8b b9       	out	0x0b, r24	; 11
+     5b4:	5b b9       	out	0x0b, r21	; 11
+     5b6:	4b b9       	out	0x0b, r20	; 11
+     5b8:	ab b9       	out	0x0b, r26	; 11
+     5ba:	9b b9       	out	0x0b, r25	; 11
+     5bc:	9b b9       	out	0x0b, r25	; 11
+     5be:	fb b9       	out	0x0b, r31	; 11
+     5c0:	eb b9       	out	0x0b, r30	; 11
+     5c2:	6b b9       	out	0x0b, r22	; 11
+     5c4:	8b b9       	out	0x0b, r24	; 11
+     5c6:	8b b9       	out	0x0b, r24	; 11
+     5c8:	5b b9       	out	0x0b, r21	; 11
+     5ca:	4b b9       	out	0x0b, r20	; 11
+     5cc:	ab b9       	out	0x0b, r26	; 11
+     5ce:	9b b9       	out	0x0b, r25	; 11
+     5d0:	9b b9       	out	0x0b, r25	; 11
+     5d2:	fb b9       	out	0x0b, r31	; 11
+     5d4:	eb b9       	out	0x0b, r30	; 11
+     5d6:	6b b9       	out	0x0b, r22	; 11
+     5d8:	8b b9       	out	0x0b, r24	; 11
+     5da:	8b b9       	out	0x0b, r24	; 11
+     5dc:	5b b9       	out	0x0b, r21	; 11
+     5de:	4b b9       	out	0x0b, r20	; 11
+     5e0:	ab b9       	out	0x0b, r26	; 11
+     5e2:	9b b9       	out	0x0b, r25	; 11
+     5e4:	9b b9       	out	0x0b, r25	; 11
+     5e6:	fb b9       	out	0x0b, r31	; 11
+     5e8:	eb b9       	out	0x0b, r30	; 11
+     5ea:	6b b9       	out	0x0b, r22	; 11
+     5ec:	8b b9       	out	0x0b, r24	; 11
+     5ee:	8b b9       	out	0x0b, r24	; 11
+     5f0:	5b b9       	out	0x0b, r21	; 11
+     5f2:	4b b9       	out	0x0b, r20	; 11
+     5f4:	ab b9       	out	0x0b, r26	; 11
+     5f6:	9b b9       	out	0x0b, r25	; 11
+     5f8:	9b b9       	out	0x0b, r25	; 11
+     5fa:	fb b9       	out	0x0b, r31	; 11
+     5fc:	eb b9       	out	0x0b, r30	; 11
+     5fe:	6b b9       	out	0x0b, r22	; 11
+     600:	8b b9       	out	0x0b, r24	; 11
+     602:	8b b9       	out	0x0b, r24	; 11
+     604:	5b b9       	out	0x0b, r21	; 11
+     606:	4b b9       	out	0x0b, r20	; 11
+     608:	ab b9       	out	0x0b, r26	; 11
+     60a:	9b b9       	out	0x0b, r25	; 11
+     60c:	9b b9       	out	0x0b, r25	; 11
+     60e:	fb b9       	out	0x0b, r31	; 11
+     610:	eb b9       	out	0x0b, r30	; 11
+     612:	6b b9       	out	0x0b, r22	; 11
+     614:	8b b9       	out	0x0b, r24	; 11
+     616:	8b b9       	out	0x0b, r24	; 11
+     618:	5b b9       	out	0x0b, r21	; 11
+     61a:	4b b9       	out	0x0b, r20	; 11
+     61c:	ab b9       	out	0x0b, r26	; 11
+     61e:	9b b9       	out	0x0b, r25	; 11
+     620:	9b b9       	out	0x0b, r25	; 11
+     622:	fb b9       	out	0x0b, r31	; 11
+     624:	eb b9       	out	0x0b, r30	; 11
+     626:	6b b9       	out	0x0b, r22	; 11
+     628:	8b b9       	out	0x0b, r24	; 11
+     62a:	8b b9       	out	0x0b, r24	; 11
+     62c:	5b b9       	out	0x0b, r21	; 11
+     62e:	4b b9       	out	0x0b, r20	; 11
+     630:	ab b9       	out	0x0b, r26	; 11
+     632:	9b b9       	out	0x0b, r25	; 11
+     634:	9b b9       	out	0x0b, r25	; 11
+     636:	fb b9       	out	0x0b, r31	; 11
+     638:	eb b9       	out	0x0b, r30	; 11
+     63a:	6b b9       	out	0x0b, r22	; 11
+     63c:	8b b9       	out	0x0b, r24	; 11
+     63e:	8b b9       	out	0x0b, r24	; 11
+     640:	5b b9       	out	0x0b, r21	; 11
+     642:	4b b9       	out	0x0b, r20	; 11
+     644:	ab b9       	out	0x0b, r26	; 11
+     646:	9b b9       	out	0x0b, r25	; 11
+     648:	9b b9       	out	0x0b, r25	; 11
+     64a:	fb b9       	out	0x0b, r31	; 11
+     64c:	eb b9       	out	0x0b, r30	; 11
+     64e:	6b b9       	out	0x0b, r22	; 11
+     650:	8b b9       	out	0x0b, r24	; 11
+     652:	8b b9       	out	0x0b, r24	; 11
+     654:	5b b9       	out	0x0b, r21	; 11
+     656:	4b b9       	out	0x0b, r20	; 11
+     658:	ab b9       	out	0x0b, r26	; 11
+     65a:	9b b9       	out	0x0b, r25	; 11
+     65c:	9b b9       	out	0x0b, r25	; 11
+     65e:	fb b9       	out	0x0b, r31	; 11
+     660:	eb b9       	out	0x0b, r30	; 11
+     662:	6b b9       	out	0x0b, r22	; 11
+     664:	8b b9       	out	0x0b, r24	; 11
+     666:	8b b9       	out	0x0b, r24	; 11
+     668:	5b b9       	out	0x0b, r21	; 11
+     66a:	4b b9       	out	0x0b, r20	; 11
+     66c:	ab b9       	out	0x0b, r26	; 11
+     66e:	9b b9       	out	0x0b, r25	; 11
+     670:	9b b9       	out	0x0b, r25	; 11
+     672:	fb b9       	out	0x0b, r31	; 11
+     674:	eb b9       	out	0x0b, r30	; 11
+     676:	6b b9       	out	0x0b, r22	; 11
+     678:	8b b9       	out	0x0b, r24	; 11
+     67a:	8b b9       	out	0x0b, r24	; 11
+     67c:	5b b9       	out	0x0b, r21	; 11
+     67e:	4b b9       	out	0x0b, r20	; 11
+     680:	ab b9       	out	0x0b, r26	; 11
+     682:	9b b9       	out	0x0b, r25	; 11
+     684:	9b b9       	out	0x0b, r25	; 11
+     686:	fb b9       	out	0x0b, r31	; 11
+     688:	eb b9       	out	0x0b, r30	; 11
+     68a:	6b b9       	out	0x0b, r22	; 11
+     68c:	8b b9       	out	0x0b, r24	; 11
+     68e:	8b b9       	out	0x0b, r24	; 11
+     690:	5b b9       	out	0x0b, r21	; 11
+     692:	4b b9       	out	0x0b, r20	; 11
+     694:	ab b9       	out	0x0b, r26	; 11
+     696:	9b b9       	out	0x0b, r25	; 11
+     698:	9b b9       	out	0x0b, r25	; 11
+     69a:	fb b9       	out	0x0b, r31	; 11
+     69c:	eb b9       	out	0x0b, r30	; 11
+     69e:	6b b9       	out	0x0b, r22	; 11
+     6a0:	8b b9       	out	0x0b, r24	; 11
+     6a2:	8b b9       	out	0x0b, r24	; 11
+     6a4:	5b b9       	out	0x0b, r21	; 11
+     6a6:	4b b9       	out	0x0b, r20	; 11
+     6a8:	ab b9       	out	0x0b, r26	; 11
+     6aa:	9b b9       	out	0x0b, r25	; 11
+     6ac:	9b b9       	out	0x0b, r25	; 11
+     6ae:	fb b9       	out	0x0b, r31	; 11
+     6b0:	eb b9       	out	0x0b, r30	; 11
+     6b2:	6b b9       	out	0x0b, r22	; 11
+     6b4:	8b b9       	out	0x0b, r24	; 11
+     6b6:	8b b9       	out	0x0b, r24	; 11
+     6b8:	5b b9       	out	0x0b, r21	; 11
+     6ba:	4b b9       	out	0x0b, r20	; 11
+     6bc:	ab b9       	out	0x0b, r26	; 11
+     6be:	9b b9       	out	0x0b, r25	; 11
+     6c0:	9b b9       	out	0x0b, r25	; 11
+     6c2:	fb b9       	out	0x0b, r31	; 11
+     6c4:	eb b9       	out	0x0b, r30	; 11
+     6c6:	6b b9       	out	0x0b, r22	; 11
+     6c8:	8b b9       	out	0x0b, r24	; 11
+     6ca:	8b b9       	out	0x0b, r24	; 11
+     6cc:	5b b9       	out	0x0b, r21	; 11
+     6ce:	4b b9       	out	0x0b, r20	; 11
+     6d0:	ab b9       	out	0x0b, r26	; 11
+     6d2:	9b b9       	out	0x0b, r25	; 11
+     6d4:	9b b9       	out	0x0b, r25	; 11
+     6d6:	fb b9       	out	0x0b, r31	; 11
+     6d8:	eb b9       	out	0x0b, r30	; 11
+     6da:	6b b9       	out	0x0b, r22	; 11
+     6dc:	8b b9       	out	0x0b, r24	; 11
+     6de:	8b b9       	out	0x0b, r24	; 11
+     6e0:	5b b9       	out	0x0b, r21	; 11
+     6e2:	4b b9       	out	0x0b, r20	; 11
+     6e4:	ab b9       	out	0x0b, r26	; 11
+     6e6:	9b b9       	out	0x0b, r25	; 11
+     6e8:	9b b9       	out	0x0b, r25	; 11
+     6ea:	fb b9       	out	0x0b, r31	; 11
+     6ec:	eb b9       	out	0x0b, r30	; 11
+     6ee:	6b b9       	out	0x0b, r22	; 11
+     6f0:	8b b9       	out	0x0b, r24	; 11
+     6f2:	8b b9       	out	0x0b, r24	; 11
+     6f4:	5b b9       	out	0x0b, r21	; 11
+     6f6:	4b b9       	out	0x0b, r20	; 11
+     6f8:	ab b9       	out	0x0b, r26	; 11
+     6fa:	9b b9       	out	0x0b, r25	; 11
+     6fc:	9b b9       	out	0x0b, r25	; 11
+     6fe:	fb b9       	out	0x0b, r31	; 11
+     700:	eb b9       	out	0x0b, r30	; 11
+     702:	6b b9       	out	0x0b, r22	; 11
+     704:	8b b9       	out	0x0b, r24	; 11
+     706:	8b b9       	out	0x0b, r24	; 11
+     708:	5b b9       	out	0x0b, r21	; 11
+     70a:	4b b9       	out	0x0b, r20	; 11
+     70c:	ab b9       	out	0x0b, r26	; 11
+     70e:	9b b9       	out	0x0b, r25	; 11
+     710:	9b b9       	out	0x0b, r25	; 11
+     712:	fb b9       	out	0x0b, r31	; 11
+     714:	eb b9       	out	0x0b, r30	; 11
+     716:	6b b9       	out	0x0b, r22	; 11
+     718:	8b b9       	out	0x0b, r24	; 11
+     71a:	8b b9       	out	0x0b, r24	; 11
+     71c:	5b b9       	out	0x0b, r21	; 11
+     71e:	4b b9       	out	0x0b, r20	; 11
+     720:	ab b9       	out	0x0b, r26	; 11
+     722:	9b b9       	out	0x0b, r25	; 11
+     724:	9b b9       	out	0x0b, r25	; 11
+     726:	fb b9       	out	0x0b, r31	; 11
+     728:	eb b9       	out	0x0b, r30	; 11
+     72a:	6b b9       	out	0x0b, r22	; 11
+     72c:	8b b9       	out	0x0b, r24	; 11
+     72e:	8b b9       	out	0x0b, r24	; 11
+     730:	5b b9       	out	0x0b, r21	; 11
+     732:	4b b9       	out	0x0b, r20	; 11
+     734:	ab b9       	out	0x0b, r26	; 11
+     736:	9b b9       	out	0x0b, r25	; 11
+     738:	9b b9       	out	0x0b, r25	; 11
+     73a:	fb b9       	out	0x0b, r31	; 11
+     73c:	eb b9       	out	0x0b, r30	; 11
+     73e:	6b b9       	out	0x0b, r22	; 11
+     740:	8b b9       	out	0x0b, r24	; 11
+     742:	8b b9       	out	0x0b, r24	; 11
+     744:	5b b9       	out	0x0b, r21	; 11
+     746:	4b b9       	out	0x0b, r20	; 11
+     748:	87 eb       	ldi	r24, 0xB7	; 183
+     74a:	8b b9       	out	0x0b, r24	; 11
+     74c:	82 eb       	ldi	r24, 0xB2	; 178
+     74e:	8b b9       	out	0x0b, r24	; 11
+     750:	8b b9       	out	0x0b, r24	; 11
+     752:	42 e6       	ldi	r20, 0x62	; 98
+     754:	4b b9       	out	0x0b, r20	; 11
+     756:	a3 e7       	ldi	r26, 0x73	; 115
+     758:	ab b9       	out	0x0b, r26	; 11
+     75a:	f9 e7       	ldi	r31, 0x79	; 121
+     75c:	fb b9       	out	0x0b, r31	; 11
+     75e:	90 e7       	ldi	r25, 0x70	; 112
+     760:	9b b9       	out	0x0b, r25	; 11
+     762:	9b b9       	out	0x0b, r25	; 11
+     764:	e0 eb       	ldi	r30, 0xB0	; 176
+     766:	eb b9       	out	0x0b, r30	; 11
+     768:	65 eb       	ldi	r22, 0xB5	; 181
+     76a:	6b b9       	out	0x0b, r22	; 11
+     76c:	57 eb       	ldi	r21, 0xB7	; 183
+     76e:	5b b9       	out	0x0b, r21	; 11
+     770:	8b b9       	out	0x0b, r24	; 11
+     772:	8b b9       	out	0x0b, r24	; 11
+     774:	4b b9       	out	0x0b, r20	; 11
+     776:	ab b9       	out	0x0b, r26	; 11
+     778:	fb b9       	out	0x0b, r31	; 11
+     77a:	9b b9       	out	0x0b, r25	; 11
+     77c:	9b b9       	out	0x0b, r25	; 11
+     77e:	eb b9       	out	0x0b, r30	; 11
+     780:	6b b9       	out	0x0b, r22	; 11
+     782:	5b b9       	out	0x0b, r21	; 11
+     784:	8b b9       	out	0x0b, r24	; 11
+     786:	8b b9       	out	0x0b, r24	; 11
+     788:	4b b9       	out	0x0b, r20	; 11
+     78a:	ab b9       	out	0x0b, r26	; 11
+     78c:	fb b9       	out	0x0b, r31	; 11
+     78e:	9b b9       	out	0x0b, r25	; 11
+     790:	9b b9       	out	0x0b, r25	; 11
+     792:	eb b9       	out	0x0b, r30	; 11
+     794:	6b b9       	out	0x0b, r22	; 11
+     796:	5b b9       	out	0x0b, r21	; 11
+     798:	8b b9       	out	0x0b, r24	; 11
+     79a:	8b b9       	out	0x0b, r24	; 11
+     79c:	4b b9       	out	0x0b, r20	; 11
+     79e:	ab b9       	out	0x0b, r26	; 11
+     7a0:	fb b9       	out	0x0b, r31	; 11
+     7a2:	9b b9       	out	0x0b, r25	; 11
+     7a4:	9b b9       	out	0x0b, r25	; 11
+     7a6:	eb b9       	out	0x0b, r30	; 11
+     7a8:	6b b9       	out	0x0b, r22	; 11
+     7aa:	5b b9       	out	0x0b, r21	; 11
+     7ac:	8b b9       	out	0x0b, r24	; 11
+     7ae:	8b b9       	out	0x0b, r24	; 11
+     7b0:	4b b9       	out	0x0b, r20	; 11
+     7b2:	ab b9       	out	0x0b, r26	; 11
+     7b4:	fb b9       	out	0x0b, r31	; 11
+     7b6:	9b b9       	out	0x0b, r25	; 11
+     7b8:	9b b9       	out	0x0b, r25	; 11
+     7ba:	eb b9       	out	0x0b, r30	; 11
+     7bc:	6b b9       	out	0x0b, r22	; 11
+     7be:	5b b9       	out	0x0b, r21	; 11
+     7c0:	8b b9       	out	0x0b, r24	; 11
+     7c2:	8b b9       	out	0x0b, r24	; 11
+     7c4:	4b b9       	out	0x0b, r20	; 11
+     7c6:	ab b9       	out	0x0b, r26	; 11
+     7c8:	fb b9       	out	0x0b, r31	; 11
+     7ca:	9b b9       	out	0x0b, r25	; 11
+     7cc:	9b b9       	out	0x0b, r25	; 11
+     7ce:	eb b9       	out	0x0b, r30	; 11
+     7d0:	6b b9       	out	0x0b, r22	; 11
+     7d2:	5b b9       	out	0x0b, r21	; 11
+     7d4:	8b b9       	out	0x0b, r24	; 11
+     7d6:	8b b9       	out	0x0b, r24	; 11
+     7d8:	4b b9       	out	0x0b, r20	; 11
+     7da:	ab b9       	out	0x0b, r26	; 11
+     7dc:	fb b9       	out	0x0b, r31	; 11
+     7de:	9b b9       	out	0x0b, r25	; 11
+     7e0:	9b b9       	out	0x0b, r25	; 11
+     7e2:	eb b9       	out	0x0b, r30	; 11
+     7e4:	6b b9       	out	0x0b, r22	; 11
+     7e6:	5b b9       	out	0x0b, r21	; 11
+     7e8:	8b b9       	out	0x0b, r24	; 11
+     7ea:	8b b9       	out	0x0b, r24	; 11
+     7ec:	4b b9       	out	0x0b, r20	; 11
+     7ee:	ab b9       	out	0x0b, r26	; 11
+     7f0:	fb b9       	out	0x0b, r31	; 11
+     7f2:	9b b9       	out	0x0b, r25	; 11
+     7f4:	9b b9       	out	0x0b, r25	; 11
+     7f6:	eb b9       	out	0x0b, r30	; 11
+     7f8:	6b b9       	out	0x0b, r22	; 11
+     7fa:	5b b9       	out	0x0b, r21	; 11
+     7fc:	8b b9       	out	0x0b, r24	; 11
+     7fe:	8b b9       	out	0x0b, r24	; 11
+     800:	4b b9       	out	0x0b, r20	; 11
+     802:	ab b9       	out	0x0b, r26	; 11
+     804:	fb b9       	out	0x0b, r31	; 11
+     806:	9b b9       	out	0x0b, r25	; 11
+     808:	9b b9       	out	0x0b, r25	; 11
+     80a:	eb b9       	out	0x0b, r30	; 11
+     80c:	6b b9       	out	0x0b, r22	; 11
+     80e:	5b b9       	out	0x0b, r21	; 11
+     810:	8b b9       	out	0x0b, r24	; 11
+     812:	8b b9       	out	0x0b, r24	; 11
+     814:	4b b9       	out	0x0b, r20	; 11
+     816:	ab b9       	out	0x0b, r26	; 11
+     818:	fb b9       	out	0x0b, r31	; 11
+     81a:	9b b9       	out	0x0b, r25	; 11
+     81c:	9b b9       	out	0x0b, r25	; 11
+     81e:	eb b9       	out	0x0b, r30	; 11
+     820:	6b b9       	out	0x0b, r22	; 11
+     822:	5b b9       	out	0x0b, r21	; 11
+     824:	8b b9       	out	0x0b, r24	; 11
+     826:	8b b9       	out	0x0b, r24	; 11
+     828:	4b b9       	out	0x0b, r20	; 11
+     82a:	ab b9       	out	0x0b, r26	; 11
+     82c:	fb b9       	out	0x0b, r31	; 11
+     82e:	9b b9       	out	0x0b, r25	; 11
+     830:	9b b9       	out	0x0b, r25	; 11
+     832:	eb b9       	out	0x0b, r30	; 11
+     834:	6b b9       	out	0x0b, r22	; 11
+     836:	5b b9       	out	0x0b, r21	; 11
+     838:	8b b9       	out	0x0b, r24	; 11
+     83a:	8b b9       	out	0x0b, r24	; 11
+     83c:	4b b9       	out	0x0b, r20	; 11
+     83e:	ab b9       	out	0x0b, r26	; 11
+     840:	fb b9       	out	0x0b, r31	; 11
+     842:	9b b9       	out	0x0b, r25	; 11
+     844:	9b b9       	out	0x0b, r25	; 11
+     846:	eb b9       	out	0x0b, r30	; 11
+     848:	6b b9       	out	0x0b, r22	; 11
+     84a:	5b b9       	out	0x0b, r21	; 11
+     84c:	8b b9       	out	0x0b, r24	; 11
+     84e:	8b b9       	out	0x0b, r24	; 11
+     850:	4b b9       	out	0x0b, r20	; 11
+     852:	ab b9       	out	0x0b, r26	; 11
+     854:	fb b9       	out	0x0b, r31	; 11
+     856:	9b b9       	out	0x0b, r25	; 11
+     858:	9b b9       	out	0x0b, r25	; 11
+     85a:	eb b9       	out	0x0b, r30	; 11
+     85c:	6b b9       	out	0x0b, r22	; 11
+     85e:	5b b9       	out	0x0b, r21	; 11
+     860:	8b b9       	out	0x0b, r24	; 11
+     862:	8b b9       	out	0x0b, r24	; 11
+     864:	4b b9       	out	0x0b, r20	; 11
+     866:	ab b9       	out	0x0b, r26	; 11
+     868:	fb b9       	out	0x0b, r31	; 11
+     86a:	9b b9       	out	0x0b, r25	; 11
+     86c:	9b b9       	out	0x0b, r25	; 11
+     86e:	eb b9       	out	0x0b, r30	; 11
+     870:	6b b9       	out	0x0b, r22	; 11
+     872:	5b b9       	out	0x0b, r21	; 11
+     874:	8b b9       	out	0x0b, r24	; 11
+     876:	8b b9       	out	0x0b, r24	; 11
+     878:	4b b9       	out	0x0b, r20	; 11
+     87a:	ab b9       	out	0x0b, r26	; 11
+     87c:	fb b9       	out	0x0b, r31	; 11
+     87e:	9b b9       	out	0x0b, r25	; 11
+     880:	9b b9       	out	0x0b, r25	; 11
+     882:	eb b9       	out	0x0b, r30	; 11
+     884:	6b b9       	out	0x0b, r22	; 11
+     886:	5b b9       	out	0x0b, r21	; 11
+     888:	8b b9       	out	0x0b, r24	; 11
+     88a:	8b b9       	out	0x0b, r24	; 11
+     88c:	4b b9       	out	0x0b, r20	; 11
+     88e:	ab b9       	out	0x0b, r26	; 11
+     890:	fb b9       	out	0x0b, r31	; 11
+     892:	9b b9       	out	0x0b, r25	; 11
+     894:	9b b9       	out	0x0b, r25	; 11
+     896:	eb b9       	out	0x0b, r30	; 11
+     898:	6b b9       	out	0x0b, r22	; 11
+     89a:	5b b9       	out	0x0b, r21	; 11
+     89c:	8b b9       	out	0x0b, r24	; 11
+     89e:	8b b9       	out	0x0b, r24	; 11
+     8a0:	4b b9       	out	0x0b, r20	; 11
+     8a2:	ab b9       	out	0x0b, r26	; 11
+     8a4:	fb b9       	out	0x0b, r31	; 11
+     8a6:	9b b9       	out	0x0b, r25	; 11
+     8a8:	9b b9       	out	0x0b, r25	; 11
+     8aa:	eb b9       	out	0x0b, r30	; 11
+     8ac:	6b b9       	out	0x0b, r22	; 11
+     8ae:	5b b9       	out	0x0b, r21	; 11
+     8b0:	8b b9       	out	0x0b, r24	; 11
+     8b2:	8b b9       	out	0x0b, r24	; 11
+     8b4:	4b b9       	out	0x0b, r20	; 11
+     8b6:	ab b9       	out	0x0b, r26	; 11
+     8b8:	fb b9       	out	0x0b, r31	; 11
+     8ba:	9b b9       	out	0x0b, r25	; 11
+     8bc:	9b b9       	out	0x0b, r25	; 11
+     8be:	eb b9       	out	0x0b, r30	; 11
+     8c0:	6b b9       	out	0x0b, r22	; 11
+     8c2:	5b b9       	out	0x0b, r21	; 11
+     8c4:	8b b9       	out	0x0b, r24	; 11
+     8c6:	8b b9       	out	0x0b, r24	; 11
+     8c8:	4b b9       	out	0x0b, r20	; 11
+     8ca:	ab b9       	out	0x0b, r26	; 11
+     8cc:	fb b9       	out	0x0b, r31	; 11
+     8ce:	9b b9       	out	0x0b, r25	; 11
+     8d0:	9b b9       	out	0x0b, r25	; 11
+     8d2:	eb b9       	out	0x0b, r30	; 11
+     8d4:	6b b9       	out	0x0b, r22	; 11
+     8d6:	5b b9       	out	0x0b, r21	; 11
+     8d8:	8b b9       	out	0x0b, r24	; 11
+     8da:	8b b9       	out	0x0b, r24	; 11
+     8dc:	4b b9       	out	0x0b, r20	; 11
+     8de:	ab b9       	out	0x0b, r26	; 11
+     8e0:	fb b9       	out	0x0b, r31	; 11
+     8e2:	9b b9       	out	0x0b, r25	; 11
+     8e4:	9b b9       	out	0x0b, r25	; 11
+     8e6:	eb b9       	out	0x0b, r30	; 11
+     8e8:	6b b9       	out	0x0b, r22	; 11
+     8ea:	5b b9       	out	0x0b, r21	; 11
+     8ec:	8b b9       	out	0x0b, r24	; 11
+     8ee:	8b b9       	out	0x0b, r24	; 11
+     8f0:	4b b9       	out	0x0b, r20	; 11
+     8f2:	ab b9       	out	0x0b, r26	; 11
+     8f4:	fb b9       	out	0x0b, r31	; 11
+     8f6:	9b b9       	out	0x0b, r25	; 11
+     8f8:	9b b9       	out	0x0b, r25	; 11
+     8fa:	eb b9       	out	0x0b, r30	; 11
+     8fc:	6b b9       	out	0x0b, r22	; 11
+     8fe:	5b b9       	out	0x0b, r21	; 11
+     900:	8b b9       	out	0x0b, r24	; 11
+     902:	8b b9       	out	0x0b, r24	; 11
+     904:	4b b9       	out	0x0b, r20	; 11
+     906:	ab b9       	out	0x0b, r26	; 11
+     908:	fb b9       	out	0x0b, r31	; 11
+     90a:	9b b9       	out	0x0b, r25	; 11
+     90c:	9b b9       	out	0x0b, r25	; 11
+     90e:	eb b9       	out	0x0b, r30	; 11
+     910:	6b b9       	out	0x0b, r22	; 11
+     912:	5b b9       	out	0x0b, r21	; 11
+     914:	8b b9       	out	0x0b, r24	; 11
+     916:	8b b9       	out	0x0b, r24	; 11
+     918:	4b b9       	out	0x0b, r20	; 11
+     91a:	ab b9       	out	0x0b, r26	; 11
+     91c:	fb b9       	out	0x0b, r31	; 11
+     91e:	9b b9       	out	0x0b, r25	; 11
+     920:	9b b9       	out	0x0b, r25	; 11
+     922:	eb b9       	out	0x0b, r30	; 11
+     924:	6b b9       	out	0x0b, r22	; 11
+     926:	5b b9       	out	0x0b, r21	; 11
+     928:	8b b9       	out	0x0b, r24	; 11
+     92a:	8b b9       	out	0x0b, r24	; 11
+     92c:	4b b9       	out	0x0b, r20	; 11
+     92e:	ab b9       	out	0x0b, r26	; 11
+     930:	fb b9       	out	0x0b, r31	; 11
+     932:	9b b9       	out	0x0b, r25	; 11
+     934:	9b b9       	out	0x0b, r25	; 11
+     936:	eb b9       	out	0x0b, r30	; 11
+     938:	6b b9       	out	0x0b, r22	; 11
+     93a:	5b b9       	out	0x0b, r21	; 11
+     93c:	8b b9       	out	0x0b, r24	; 11
+     93e:	8b b9       	out	0x0b, r24	; 11
+     940:	4b b9       	out	0x0b, r20	; 11
+     942:	ab b9       	out	0x0b, r26	; 11
+     944:	fb b9       	out	0x0b, r31	; 11
+     946:	9b b9       	out	0x0b, r25	; 11
+     948:	9b b9       	out	0x0b, r25	; 11
+     94a:	eb b9       	out	0x0b, r30	; 11
+     94c:	6b b9       	out	0x0b, r22	; 11
+     94e:	5b b9       	out	0x0b, r21	; 11
+     950:	8b b9       	out	0x0b, r24	; 11
+     952:	8b b9       	out	0x0b, r24	; 11
+     954:	4b b9       	out	0x0b, r20	; 11
+     956:	ab b9       	out	0x0b, r26	; 11
+     958:	fb b9       	out	0x0b, r31	; 11
+     95a:	9b b9       	out	0x0b, r25	; 11
+     95c:	9b b9       	out	0x0b, r25	; 11
+     95e:	eb b9       	out	0x0b, r30	; 11
+     960:	6b b9       	out	0x0b, r22	; 11
+     962:	5b b9       	out	0x0b, r21	; 11
+     964:	8b b9       	out	0x0b, r24	; 11
+     966:	8b b9       	out	0x0b, r24	; 11
+     968:	4b b9       	out	0x0b, r20	; 11
+     96a:	ab b9       	out	0x0b, r26	; 11
+     96c:	fb b9       	out	0x0b, r31	; 11
+     96e:	9b b9       	out	0x0b, r25	; 11
+     970:	9b b9       	out	0x0b, r25	; 11
+     972:	eb b9       	out	0x0b, r30	; 11
+     974:	6b b9       	out	0x0b, r22	; 11
+     976:	5b b9       	out	0x0b, r21	; 11
+     978:	8b b9       	out	0x0b, r24	; 11
+     97a:	8b b9       	out	0x0b, r24	; 11
+     97c:	4b b9       	out	0x0b, r20	; 11
+     97e:	ab b9       	out	0x0b, r26	; 11
+     980:	fb b9       	out	0x0b, r31	; 11
+     982:	9b b9       	out	0x0b, r25	; 11
+     984:	9b b9       	out	0x0b, r25	; 11
+     986:	eb b9       	out	0x0b, r30	; 11
+     988:	6b b9       	out	0x0b, r22	; 11
+     98a:	5b b9       	out	0x0b, r21	; 11
+     98c:	8b b9       	out	0x0b, r24	; 11
+     98e:	8b b9       	out	0x0b, r24	; 11
+     990:	4b b9       	out	0x0b, r20	; 11
+     992:	ab b9       	out	0x0b, r26	; 11
+     994:	fb b9       	out	0x0b, r31	; 11
+     996:	9b b9       	out	0x0b, r25	; 11
+     998:	9b b9       	out	0x0b, r25	; 11
+     99a:	eb b9       	out	0x0b, r30	; 11
+     99c:	6b b9       	out	0x0b, r22	; 11
+     99e:	5b b9       	out	0x0b, r21	; 11
+     9a0:	8b b9       	out	0x0b, r24	; 11
+     9a2:	8b b9       	out	0x0b, r24	; 11
+     9a4:	4b b9       	out	0x0b, r20	; 11
+     9a6:	ab b9       	out	0x0b, r26	; 11
+     9a8:	fb b9       	out	0x0b, r31	; 11
+     9aa:	9b b9       	out	0x0b, r25	; 11
+     9ac:	9b b9       	out	0x0b, r25	; 11
+     9ae:	eb b9       	out	0x0b, r30	; 11
+     9b0:	6b b9       	out	0x0b, r22	; 11
+     9b2:	5b b9       	out	0x0b, r21	; 11
+     9b4:	8b b9       	out	0x0b, r24	; 11
+     9b6:	8b b9       	out	0x0b, r24	; 11
+     9b8:	4b b9       	out	0x0b, r20	; 11
+     9ba:	ab b9       	out	0x0b, r26	; 11
+     9bc:	fb b9       	out	0x0b, r31	; 11
+     9be:	9b b9       	out	0x0b, r25	; 11
+     9c0:	9b b9       	out	0x0b, r25	; 11
+     9c2:	eb b9       	out	0x0b, r30	; 11
+     9c4:	6b b9       	out	0x0b, r22	; 11
+     9c6:	5b b9       	out	0x0b, r21	; 11
+     9c8:	8b b9       	out	0x0b, r24	; 11
+     9ca:	8b b9       	out	0x0b, r24	; 11
+     9cc:	4b b9       	out	0x0b, r20	; 11
+     9ce:	ab b9       	out	0x0b, r26	; 11
+     9d0:	fb b9       	out	0x0b, r31	; 11
+     9d2:	9b b9       	out	0x0b, r25	; 11
+     9d4:	9b b9       	out	0x0b, r25	; 11
+     9d6:	eb b9       	out	0x0b, r30	; 11
+     9d8:	6b b9       	out	0x0b, r22	; 11
+     9da:	5b b9       	out	0x0b, r21	; 11
+     9dc:	8b b9       	out	0x0b, r24	; 11
+     9de:	8b b9       	out	0x0b, r24	; 11
+     9e0:	4b b9       	out	0x0b, r20	; 11
+     9e2:	ab b9       	out	0x0b, r26	; 11
+     9e4:	fb b9       	out	0x0b, r31	; 11
+     9e6:	9b b9       	out	0x0b, r25	; 11
+     9e8:	9b b9       	out	0x0b, r25	; 11
+     9ea:	eb b9       	out	0x0b, r30	; 11
+     9ec:	6b b9       	out	0x0b, r22	; 11
+     9ee:	5b b9       	out	0x0b, r21	; 11
+     9f0:	8b b9       	out	0x0b, r24	; 11
+     9f2:	8b b9       	out	0x0b, r24	; 11
+     9f4:	4b b9       	out	0x0b, r20	; 11
+     9f6:	83 e7       	ldi	r24, 0x73	; 115
+     9f8:	8b b9       	out	0x0b, r24	; 11
+     9fa:	49 e7       	ldi	r20, 0x79	; 121
+     9fc:	4b b9       	out	0x0b, r20	; 11
+     9fe:	80 e7       	ldi	r24, 0x70	; 112
+     a00:	8b b9       	out	0x0b, r24	; 11
+     a02:	8b b9       	out	0x0b, r24	; 11
+     a04:	a0 eb       	ldi	r26, 0xB0	; 176
+     a06:	ab b9       	out	0x0b, r26	; 11
+     a08:	f5 eb       	ldi	r31, 0xB5	; 181
+     a0a:	fb b9       	out	0x0b, r31	; 11
+     a0c:	e7 eb       	ldi	r30, 0xB7	; 183
+     a0e:	eb b9       	out	0x0b, r30	; 11
+     a10:	92 eb       	ldi	r25, 0xB2	; 178
+     a12:	9b b9       	out	0x0b, r25	; 11
+     a14:	9b b9       	out	0x0b, r25	; 11
+     a16:	62 e6       	ldi	r22, 0x62	; 98
+     a18:	6b b9       	out	0x0b, r22	; 11
+     a1a:	53 e7       	ldi	r21, 0x73	; 115
+     a1c:	5b b9       	out	0x0b, r21	; 11
+     a1e:	4b b9       	out	0x0b, r20	; 11
+     a20:	8b b9       	out	0x0b, r24	; 11
+     a22:	8b b9       	out	0x0b, r24	; 11
+     a24:	ab b9       	out	0x0b, r26	; 11
+     a26:	fb b9       	out	0x0b, r31	; 11
+     a28:	eb b9       	out	0x0b, r30	; 11
+     a2a:	9b b9       	out	0x0b, r25	; 11
+     a2c:	9b b9       	out	0x0b, r25	; 11
+     a2e:	6b b9       	out	0x0b, r22	; 11
+     a30:	5b b9       	out	0x0b, r21	; 11
+     a32:	4b b9       	out	0x0b, r20	; 11
+     a34:	8b b9       	out	0x0b, r24	; 11
+     a36:	8b b9       	out	0x0b, r24	; 11
+     a38:	ab b9       	out	0x0b, r26	; 11
+     a3a:	fb b9       	out	0x0b, r31	; 11
+     a3c:	eb b9       	out	0x0b, r30	; 11
+     a3e:	9b b9       	out	0x0b, r25	; 11
+     a40:	9b b9       	out	0x0b, r25	; 11
+     a42:	6b b9       	out	0x0b, r22	; 11
+     a44:	5b b9       	out	0x0b, r21	; 11
+     a46:	4b b9       	out	0x0b, r20	; 11
+     a48:	8b b9       	out	0x0b, r24	; 11
+     a4a:	8b b9       	out	0x0b, r24	; 11
+     a4c:	ab b9       	out	0x0b, r26	; 11
+     a4e:	fb b9       	out	0x0b, r31	; 11
+     a50:	eb b9       	out	0x0b, r30	; 11
+     a52:	9b b9       	out	0x0b, r25	; 11
+     a54:	9b b9       	out	0x0b, r25	; 11
+     a56:	6b b9       	out	0x0b, r22	; 11
+     a58:	5b b9       	out	0x0b, r21	; 11
+     a5a:	4b b9       	out	0x0b, r20	; 11
+     a5c:	8b b9       	out	0x0b, r24	; 11
+     a5e:	8b b9       	out	0x0b, r24	; 11
+     a60:	ab b9       	out	0x0b, r26	; 11
+     a62:	fb b9       	out	0x0b, r31	; 11
+     a64:	eb b9       	out	0x0b, r30	; 11
+     a66:	9b b9       	out	0x0b, r25	; 11
+     a68:	9b b9       	out	0x0b, r25	; 11
+     a6a:	6b b9       	out	0x0b, r22	; 11
+     a6c:	5b b9       	out	0x0b, r21	; 11
+     a6e:	4b b9       	out	0x0b, r20	; 11
+     a70:	8b b9       	out	0x0b, r24	; 11
+     a72:	8b b9       	out	0x0b, r24	; 11
+     a74:	ab b9       	out	0x0b, r26	; 11
+     a76:	fb b9       	out	0x0b, r31	; 11
+     a78:	eb b9       	out	0x0b, r30	; 11
+     a7a:	9b b9       	out	0x0b, r25	; 11
+     a7c:	9b b9       	out	0x0b, r25	; 11
+     a7e:	6b b9       	out	0x0b, r22	; 11
+     a80:	5b b9       	out	0x0b, r21	; 11
+     a82:	4b b9       	out	0x0b, r20	; 11
+     a84:	8b b9       	out	0x0b, r24	; 11
+     a86:	8b b9       	out	0x0b, r24	; 11
+     a88:	ab b9       	out	0x0b, r26	; 11
+     a8a:	fb b9       	out	0x0b, r31	; 11
+     a8c:	eb b9       	out	0x0b, r30	; 11
+     a8e:	9b b9       	out	0x0b, r25	; 11
+     a90:	9b b9       	out	0x0b, r25	; 11
+     a92:	6b b9       	out	0x0b, r22	; 11
+     a94:	5b b9       	out	0x0b, r21	; 11
+     a96:	4b b9       	out	0x0b, r20	; 11
+     a98:	8b b9       	out	0x0b, r24	; 11
+     a9a:	8b b9       	out	0x0b, r24	; 11
+     a9c:	ab b9       	out	0x0b, r26	; 11
+     a9e:	fb b9       	out	0x0b, r31	; 11
+     aa0:	eb b9       	out	0x0b, r30	; 11
+     aa2:	9b b9       	out	0x0b, r25	; 11
+     aa4:	9b b9       	out	0x0b, r25	; 11
+     aa6:	6b b9       	out	0x0b, r22	; 11
+     aa8:	5b b9       	out	0x0b, r21	; 11
+     aaa:	4b b9       	out	0x0b, r20	; 11
+     aac:	8b b9       	out	0x0b, r24	; 11
+     aae:	8b b9       	out	0x0b, r24	; 11
+     ab0:	ab b9       	out	0x0b, r26	; 11
+     ab2:	fb b9       	out	0x0b, r31	; 11
+     ab4:	eb b9       	out	0x0b, r30	; 11
+     ab6:	9b b9       	out	0x0b, r25	; 11
+     ab8:	9b b9       	out	0x0b, r25	; 11
+     aba:	6b b9       	out	0x0b, r22	; 11
+     abc:	5b b9       	out	0x0b, r21	; 11
+     abe:	4b b9       	out	0x0b, r20	; 11
+     ac0:	8b b9       	out	0x0b, r24	; 11
+     ac2:	8b b9       	out	0x0b, r24	; 11
+     ac4:	ab b9       	out	0x0b, r26	; 11
+     ac6:	fb b9       	out	0x0b, r31	; 11
+     ac8:	eb b9       	out	0x0b, r30	; 11
+     aca:	9b b9       	out	0x0b, r25	; 11
+     acc:	9b b9       	out	0x0b, r25	; 11
+     ace:	6b b9       	out	0x0b, r22	; 11
+     ad0:	5b b9       	out	0x0b, r21	; 11
+     ad2:	4b b9       	out	0x0b, r20	; 11
+     ad4:	8b b9       	out	0x0b, r24	; 11
+     ad6:	8b b9       	out	0x0b, r24	; 11
+     ad8:	ab b9       	out	0x0b, r26	; 11
+     ada:	fb b9       	out	0x0b, r31	; 11
+     adc:	eb b9       	out	0x0b, r30	; 11
+     ade:	9b b9       	out	0x0b, r25	; 11
+     ae0:	9b b9       	out	0x0b, r25	; 11
+     ae2:	6b b9       	out	0x0b, r22	; 11
+     ae4:	5b b9       	out	0x0b, r21	; 11
+     ae6:	4b b9       	out	0x0b, r20	; 11
+     ae8:	8b b9       	out	0x0b, r24	; 11
+     aea:	8b b9       	out	0x0b, r24	; 11
+     aec:	ab b9       	out	0x0b, r26	; 11
+     aee:	fb b9       	out	0x0b, r31	; 11
+     af0:	eb b9       	out	0x0b, r30	; 11
+     af2:	9b b9       	out	0x0b, r25	; 11
+     af4:	9b b9       	out	0x0b, r25	; 11
+     af6:	6b b9       	out	0x0b, r22	; 11
+     af8:	5b b9       	out	0x0b, r21	; 11
+     afa:	4b b9       	out	0x0b, r20	; 11
+     afc:	8b b9       	out	0x0b, r24	; 11
+     afe:	8b b9       	out	0x0b, r24	; 11
+     b00:	ab b9       	out	0x0b, r26	; 11
+     b02:	fb b9       	out	0x0b, r31	; 11
+     b04:	eb b9       	out	0x0b, r30	; 11
+     b06:	9b b9       	out	0x0b, r25	; 11
+     b08:	9b b9       	out	0x0b, r25	; 11
+     b0a:	6b b9       	out	0x0b, r22	; 11
+     b0c:	5b b9       	out	0x0b, r21	; 11
+     b0e:	4b b9       	out	0x0b, r20	; 11
+     b10:	8b b9       	out	0x0b, r24	; 11
+     b12:	8b b9       	out	0x0b, r24	; 11
+     b14:	ab b9       	out	0x0b, r26	; 11
+     b16:	fb b9       	out	0x0b, r31	; 11
+     b18:	eb b9       	out	0x0b, r30	; 11
+     b1a:	9b b9       	out	0x0b, r25	; 11
+     b1c:	9b b9       	out	0x0b, r25	; 11
+     b1e:	6b b9       	out	0x0b, r22	; 11
+     b20:	5b b9       	out	0x0b, r21	; 11
+     b22:	4b b9       	out	0x0b, r20	; 11
+     b24:	8b b9       	out	0x0b, r24	; 11
+     b26:	8b b9       	out	0x0b, r24	; 11
+     b28:	ab b9       	out	0x0b, r26	; 11
+     b2a:	fb b9       	out	0x0b, r31	; 11
+     b2c:	eb b9       	out	0x0b, r30	; 11
+     b2e:	9b b9       	out	0x0b, r25	; 11
+     b30:	9b b9       	out	0x0b, r25	; 11
+     b32:	6b b9       	out	0x0b, r22	; 11
+     b34:	5b b9       	out	0x0b, r21	; 11
+     b36:	4b b9       	out	0x0b, r20	; 11
+     b38:	8b b9       	out	0x0b, r24	; 11
+     b3a:	8b b9       	out	0x0b, r24	; 11
+     b3c:	ab b9       	out	0x0b, r26	; 11
+     b3e:	fb b9       	out	0x0b, r31	; 11
+     b40:	eb b9       	out	0x0b, r30	; 11
+     b42:	9b b9       	out	0x0b, r25	; 11
+     b44:	9b b9       	out	0x0b, r25	; 11
+     b46:	6b b9       	out	0x0b, r22	; 11
+     b48:	5b b9       	out	0x0b, r21	; 11
+     b4a:	4b b9       	out	0x0b, r20	; 11
+     b4c:	8b b9       	out	0x0b, r24	; 11
+     b4e:	8b b9       	out	0x0b, r24	; 11
+     b50:	ab b9       	out	0x0b, r26	; 11
+     b52:	fb b9       	out	0x0b, r31	; 11
+     b54:	eb b9       	out	0x0b, r30	; 11
+     b56:	9b b9       	out	0x0b, r25	; 11
+     b58:	9b b9       	out	0x0b, r25	; 11
+     b5a:	6b b9       	out	0x0b, r22	; 11
+     b5c:	5b b9       	out	0x0b, r21	; 11
+     b5e:	4b b9       	out	0x0b, r20	; 11
+     b60:	8b b9       	out	0x0b, r24	; 11
+     b62:	8b b9       	out	0x0b, r24	; 11
+     b64:	ab b9       	out	0x0b, r26	; 11
+     b66:	fb b9       	out	0x0b, r31	; 11
+     b68:	eb b9       	out	0x0b, r30	; 11
+     b6a:	9b b9       	out	0x0b, r25	; 11
+     b6c:	9b b9       	out	0x0b, r25	; 11
+     b6e:	6b b9       	out	0x0b, r22	; 11
+     b70:	5b b9       	out	0x0b, r21	; 11
+     b72:	4b b9       	out	0x0b, r20	; 11
+     b74:	8b b9       	out	0x0b, r24	; 11
+     b76:	8b b9       	out	0x0b, r24	; 11
+     b78:	ab b9       	out	0x0b, r26	; 11
+     b7a:	fb b9       	out	0x0b, r31	; 11
+     b7c:	eb b9       	out	0x0b, r30	; 11
+     b7e:	9b b9       	out	0x0b, r25	; 11
+     b80:	9b b9       	out	0x0b, r25	; 11
+     b82:	6b b9       	out	0x0b, r22	; 11
+     b84:	5b b9       	out	0x0b, r21	; 11
+     b86:	4b b9       	out	0x0b, r20	; 11
+     b88:	8b b9       	out	0x0b, r24	; 11
+     b8a:	8b b9       	out	0x0b, r24	; 11
+     b8c:	ab b9       	out	0x0b, r26	; 11
+     b8e:	fb b9       	out	0x0b, r31	; 11
+     b90:	eb b9       	out	0x0b, r30	; 11
+     b92:	9b b9       	out	0x0b, r25	; 11
+     b94:	9b b9       	out	0x0b, r25	; 11
+     b96:	6b b9       	out	0x0b, r22	; 11
+     b98:	5b b9       	out	0x0b, r21	; 11
+     b9a:	4b b9       	out	0x0b, r20	; 11
+     b9c:	8b b9       	out	0x0b, r24	; 11
+     b9e:	8b b9       	out	0x0b, r24	; 11
+     ba0:	ab b9       	out	0x0b, r26	; 11
+     ba2:	fb b9       	out	0x0b, r31	; 11
+     ba4:	eb b9       	out	0x0b, r30	; 11
+     ba6:	9b b9       	out	0x0b, r25	; 11
+     ba8:	9b b9       	out	0x0b, r25	; 11
+     baa:	6b b9       	out	0x0b, r22	; 11
+     bac:	5b b9       	out	0x0b, r21	; 11
+     bae:	4b b9       	out	0x0b, r20	; 11
+     bb0:	8b b9       	out	0x0b, r24	; 11
+     bb2:	8b b9       	out	0x0b, r24	; 11
+     bb4:	ab b9       	out	0x0b, r26	; 11
+     bb6:	fb b9       	out	0x0b, r31	; 11
+     bb8:	eb b9       	out	0x0b, r30	; 11
+     bba:	9b b9       	out	0x0b, r25	; 11
+     bbc:	9b b9       	out	0x0b, r25	; 11
+     bbe:	6b b9       	out	0x0b, r22	; 11
+     bc0:	5b b9       	out	0x0b, r21	; 11
+     bc2:	4b b9       	out	0x0b, r20	; 11
+     bc4:	8b b9       	out	0x0b, r24	; 11
+     bc6:	8b b9       	out	0x0b, r24	; 11
+     bc8:	ab b9       	out	0x0b, r26	; 11
+     bca:	fb b9       	out	0x0b, r31	; 11
+     bcc:	eb b9       	out	0x0b, r30	; 11
+     bce:	9b b9       	out	0x0b, r25	; 11
+     bd0:	9b b9       	out	0x0b, r25	; 11
+     bd2:	6b b9       	out	0x0b, r22	; 11
+     bd4:	5b b9       	out	0x0b, r21	; 11
+     bd6:	4b b9       	out	0x0b, r20	; 11
+     bd8:	8b b9       	out	0x0b, r24	; 11
+     bda:	8b b9       	out	0x0b, r24	; 11
+     bdc:	ab b9       	out	0x0b, r26	; 11
+     bde:	fb b9       	out	0x0b, r31	; 11
+     be0:	eb b9       	out	0x0b, r30	; 11
+     be2:	9b b9       	out	0x0b, r25	; 11
+     be4:	9b b9       	out	0x0b, r25	; 11
+     be6:	6b b9       	out	0x0b, r22	; 11
+     be8:	5b b9       	out	0x0b, r21	; 11
+     bea:	4b b9       	out	0x0b, r20	; 11
+     bec:	8b b9       	out	0x0b, r24	; 11
+     bee:	8b b9       	out	0x0b, r24	; 11
+     bf0:	ab b9       	out	0x0b, r26	; 11
+     bf2:	fb b9       	out	0x0b, r31	; 11
+     bf4:	eb b9       	out	0x0b, r30	; 11
+     bf6:	9b b9       	out	0x0b, r25	; 11
+     bf8:	9b b9       	out	0x0b, r25	; 11
+     bfa:	6b b9       	out	0x0b, r22	; 11
+     bfc:	5b b9       	out	0x0b, r21	; 11
+     bfe:	4b b9       	out	0x0b, r20	; 11
+     c00:	8b b9       	out	0x0b, r24	; 11
+     c02:	8b b9       	out	0x0b, r24	; 11
+     c04:	ab b9       	out	0x0b, r26	; 11
+     c06:	fb b9       	out	0x0b, r31	; 11
+     c08:	eb b9       	out	0x0b, r30	; 11
+     c0a:	9b b9       	out	0x0b, r25	; 11
+     c0c:	9b b9       	out	0x0b, r25	; 11
+     c0e:	6b b9       	out	0x0b, r22	; 11
+     c10:	5b b9       	out	0x0b, r21	; 11
+     c12:	4b b9       	out	0x0b, r20	; 11
+     c14:	8b b9       	out	0x0b, r24	; 11
+     c16:	8b b9       	out	0x0b, r24	; 11
+     c18:	ab b9       	out	0x0b, r26	; 11
+     c1a:	fb b9       	out	0x0b, r31	; 11
+     c1c:	eb b9       	out	0x0b, r30	; 11
+     c1e:	9b b9       	out	0x0b, r25	; 11
+     c20:	9b b9       	out	0x0b, r25	; 11
+     c22:	6b b9       	out	0x0b, r22	; 11
+     c24:	5b b9       	out	0x0b, r21	; 11
+     c26:	4b b9       	out	0x0b, r20	; 11
+     c28:	8b b9       	out	0x0b, r24	; 11
+     c2a:	8b b9       	out	0x0b, r24	; 11
+     c2c:	ab b9       	out	0x0b, r26	; 11
+     c2e:	fb b9       	out	0x0b, r31	; 11
+     c30:	eb b9       	out	0x0b, r30	; 11
+     c32:	9b b9       	out	0x0b, r25	; 11
+     c34:	9b b9       	out	0x0b, r25	; 11
+     c36:	6b b9       	out	0x0b, r22	; 11
+     c38:	5b b9       	out	0x0b, r21	; 11
+     c3a:	4b b9       	out	0x0b, r20	; 11
+     c3c:	8b b9       	out	0x0b, r24	; 11
+     c3e:	8b b9       	out	0x0b, r24	; 11
+     c40:	ab b9       	out	0x0b, r26	; 11
+     c42:	fb b9       	out	0x0b, r31	; 11
+     c44:	eb b9       	out	0x0b, r30	; 11
+     c46:	9b b9       	out	0x0b, r25	; 11
+     c48:	9b b9       	out	0x0b, r25	; 11
+     c4a:	6b b9       	out	0x0b, r22	; 11
+     c4c:	5b b9       	out	0x0b, r21	; 11
+     c4e:	4b b9       	out	0x0b, r20	; 11
+     c50:	8b b9       	out	0x0b, r24	; 11
+     c52:	8b b9       	out	0x0b, r24	; 11
+     c54:	ab b9       	out	0x0b, r26	; 11
+     c56:	fb b9       	out	0x0b, r31	; 11
+     c58:	eb b9       	out	0x0b, r30	; 11
+     c5a:	9b b9       	out	0x0b, r25	; 11
+     c5c:	9b b9       	out	0x0b, r25	; 11
+     c5e:	6b b9       	out	0x0b, r22	; 11
+     c60:	5b b9       	out	0x0b, r21	; 11
+     c62:	4b b9       	out	0x0b, r20	; 11
+     c64:	8b b9       	out	0x0b, r24	; 11
+     c66:	8b b9       	out	0x0b, r24	; 11
+     c68:	ab b9       	out	0x0b, r26	; 11
+     c6a:	fb b9       	out	0x0b, r31	; 11
+     c6c:	eb b9       	out	0x0b, r30	; 11
+     c6e:	9b b9       	out	0x0b, r25	; 11
+     c70:	9b b9       	out	0x0b, r25	; 11
+     c72:	6b b9       	out	0x0b, r22	; 11
+     c74:	5b b9       	out	0x0b, r21	; 11
+     c76:	4b b9       	out	0x0b, r20	; 11
+     c78:	8b b9       	out	0x0b, r24	; 11
+     c7a:	8b b9       	out	0x0b, r24	; 11
+     c7c:	ab b9       	out	0x0b, r26	; 11
+     c7e:	fb b9       	out	0x0b, r31	; 11
+     c80:	eb b9       	out	0x0b, r30	; 11
+     c82:	9b b9       	out	0x0b, r25	; 11
+     c84:	9b b9       	out	0x0b, r25	; 11
+     c86:	6b b9       	out	0x0b, r22	; 11
+     c88:	5b b9       	out	0x0b, r21	; 11
+     c8a:	4b b9       	out	0x0b, r20	; 11
+     c8c:	8b b9       	out	0x0b, r24	; 11
+     c8e:	8b b9       	out	0x0b, r24	; 11
+     c90:	ab b9       	out	0x0b, r26	; 11
+     c92:	fb b9       	out	0x0b, r31	; 11
+     c94:	eb b9       	out	0x0b, r30	; 11
+     c96:	9b b9       	out	0x0b, r25	; 11
+     c98:	9b b9       	out	0x0b, r25	; 11
+     c9a:	6b b9       	out	0x0b, r22	; 11
+     c9c:	5b b9       	out	0x0b, r21	; 11
+     c9e:	4b b9       	out	0x0b, r20	; 11
+     ca0:	8b b9       	out	0x0b, r24	; 11
+     ca2:	8b b9       	out	0x0b, r24	; 11
+     ca4:	80 eb       	ldi	r24, 0xB0	; 176
+     ca6:	8b b9       	out	0x0b, r24	; 11
+     ca8:	55 eb       	ldi	r21, 0xB5	; 181
+     caa:	5b b9       	out	0x0b, r21	; 11
+     cac:	47 eb       	ldi	r20, 0xB7	; 183
+     cae:	4b b9       	out	0x0b, r20	; 11
+     cb0:	82 eb       	ldi	r24, 0xB2	; 178
+     cb2:	8b b9       	out	0x0b, r24	; 11
+     cb4:	8b b9       	out	0x0b, r24	; 11
+     cb6:	a2 e6       	ldi	r26, 0x62	; 98
+     cb8:	ab b9       	out	0x0b, r26	; 11
+     cba:	f3 e7       	ldi	r31, 0x73	; 115
+     cbc:	fb b9       	out	0x0b, r31	; 11
+     cbe:	e9 e7       	ldi	r30, 0x79	; 121
+     cc0:	eb b9       	out	0x0b, r30	; 11
+     cc2:	90 e7       	ldi	r25, 0x70	; 112
+     cc4:	9b b9       	out	0x0b, r25	; 11
+     cc6:	9b b9       	out	0x0b, r25	; 11
+     cc8:	60 eb       	ldi	r22, 0xB0	; 176
+     cca:	6b b9       	out	0x0b, r22	; 11
+     ccc:	5b b9       	out	0x0b, r21	; 11
+     cce:	4b b9       	out	0x0b, r20	; 11
+     cd0:	8b b9       	out	0x0b, r24	; 11
+     cd2:	8b b9       	out	0x0b, r24	; 11
+     cd4:	ab b9       	out	0x0b, r26	; 11
+     cd6:	fb b9       	out	0x0b, r31	; 11
+     cd8:	eb b9       	out	0x0b, r30	; 11
+     cda:	9b b9       	out	0x0b, r25	; 11
+     cdc:	9b b9       	out	0x0b, r25	; 11
+     cde:	6b b9       	out	0x0b, r22	; 11
+     ce0:	5b b9       	out	0x0b, r21	; 11
+     ce2:	4b b9       	out	0x0b, r20	; 11
+     ce4:	8b b9       	out	0x0b, r24	; 11
+     ce6:	8b b9       	out	0x0b, r24	; 11
+     ce8:	ab b9       	out	0x0b, r26	; 11
+     cea:	fb b9       	out	0x0b, r31	; 11
+     cec:	eb b9       	out	0x0b, r30	; 11
+     cee:	9b b9       	out	0x0b, r25	; 11
+     cf0:	9b b9       	out	0x0b, r25	; 11
+     cf2:	6b b9       	out	0x0b, r22	; 11
+     cf4:	5b b9       	out	0x0b, r21	; 11
+     cf6:	4b b9       	out	0x0b, r20	; 11
+     cf8:	8b b9       	out	0x0b, r24	; 11
+     cfa:	8b b9       	out	0x0b, r24	; 11
+     cfc:	ab b9       	out	0x0b, r26	; 11
+     cfe:	fb b9       	out	0x0b, r31	; 11
+     d00:	eb b9       	out	0x0b, r30	; 11
+     d02:	9b b9       	out	0x0b, r25	; 11
+     d04:	9b b9       	out	0x0b, r25	; 11
+     d06:	6b b9       	out	0x0b, r22	; 11
+     d08:	5b b9       	out	0x0b, r21	; 11
+     d0a:	4b b9       	out	0x0b, r20	; 11
+     d0c:	8b b9       	out	0x0b, r24	; 11
+     d0e:	8b b9       	out	0x0b, r24	; 11
+     d10:	ab b9       	out	0x0b, r26	; 11
+     d12:	fb b9       	out	0x0b, r31	; 11
+     d14:	eb b9       	out	0x0b, r30	; 11
+     d16:	9b b9       	out	0x0b, r25	; 11
+     d18:	9b b9       	out	0x0b, r25	; 11
+     d1a:	6b b9       	out	0x0b, r22	; 11
+     d1c:	5b b9       	out	0x0b, r21	; 11
+     d1e:	4b b9       	out	0x0b, r20	; 11
+     d20:	8b b9       	out	0x0b, r24	; 11
+     d22:	8b b9       	out	0x0b, r24	; 11
+     d24:	ab b9       	out	0x0b, r26	; 11
+     d26:	fb b9       	out	0x0b, r31	; 11
+     d28:	eb b9       	out	0x0b, r30	; 11
+     d2a:	9b b9       	out	0x0b, r25	; 11
+     d2c:	9b b9       	out	0x0b, r25	; 11
+     d2e:	6b b9       	out	0x0b, r22	; 11
+     d30:	5b b9       	out	0x0b, r21	; 11
+     d32:	4b b9       	out	0x0b, r20	; 11
+     d34:	8b b9       	out	0x0b, r24	; 11
+     d36:	8b b9       	out	0x0b, r24	; 11
+     d38:	ab b9       	out	0x0b, r26	; 11
+     d3a:	fb b9       	out	0x0b, r31	; 11
+     d3c:	eb b9       	out	0x0b, r30	; 11
+     d3e:	9b b9       	out	0x0b, r25	; 11
+     d40:	9b b9       	out	0x0b, r25	; 11
+     d42:	6b b9       	out	0x0b, r22	; 11
+     d44:	5b b9       	out	0x0b, r21	; 11
+     d46:	4b b9       	out	0x0b, r20	; 11
+     d48:	8b b9       	out	0x0b, r24	; 11
+     d4a:	8b b9       	out	0x0b, r24	; 11
+     d4c:	ab b9       	out	0x0b, r26	; 11
+     d4e:	fb b9       	out	0x0b, r31	; 11
+     d50:	eb b9       	out	0x0b, r30	; 11
+     d52:	9b b9       	out	0x0b, r25	; 11
+     d54:	9b b9       	out	0x0b, r25	; 11
+     d56:	6b b9       	out	0x0b, r22	; 11
+     d58:	5b b9       	out	0x0b, r21	; 11
+     d5a:	4b b9       	out	0x0b, r20	; 11
+     d5c:	8b b9       	out	0x0b, r24	; 11
+     d5e:	8b b9       	out	0x0b, r24	; 11
+     d60:	ab b9       	out	0x0b, r26	; 11
+     d62:	fb b9       	out	0x0b, r31	; 11
+     d64:	eb b9       	out	0x0b, r30	; 11
+     d66:	9b b9       	out	0x0b, r25	; 11
+     d68:	9b b9       	out	0x0b, r25	; 11
+     d6a:	6b b9       	out	0x0b, r22	; 11
+     d6c:	5b b9       	out	0x0b, r21	; 11
+     d6e:	4b b9       	out	0x0b, r20	; 11
+     d70:	8b b9       	out	0x0b, r24	; 11
+     d72:	8b b9       	out	0x0b, r24	; 11
+     d74:	ab b9       	out	0x0b, r26	; 11
+     d76:	fb b9       	out	0x0b, r31	; 11
+     d78:	eb b9       	out	0x0b, r30	; 11
+     d7a:	9b b9       	out	0x0b, r25	; 11
+     d7c:	9b b9       	out	0x0b, r25	; 11
+     d7e:	6b b9       	out	0x0b, r22	; 11
+     d80:	5b b9       	out	0x0b, r21	; 11
+     d82:	4b b9       	out	0x0b, r20	; 11
+     d84:	8b b9       	out	0x0b, r24	; 11
+     d86:	8b b9       	out	0x0b, r24	; 11
+     d88:	ab b9       	out	0x0b, r26	; 11
+     d8a:	fb b9       	out	0x0b, r31	; 11
+     d8c:	eb b9       	out	0x0b, r30	; 11
+     d8e:	9b b9       	out	0x0b, r25	; 11
+     d90:	9b b9       	out	0x0b, r25	; 11
+     d92:	6b b9       	out	0x0b, r22	; 11
+     d94:	5b b9       	out	0x0b, r21	; 11
+     d96:	4b b9       	out	0x0b, r20	; 11
+     d98:	8b b9       	out	0x0b, r24	; 11
+     d9a:	8b b9       	out	0x0b, r24	; 11
+     d9c:	ab b9       	out	0x0b, r26	; 11
+     d9e:	fb b9       	out	0x0b, r31	; 11
+     da0:	eb b9       	out	0x0b, r30	; 11
+     da2:	9b b9       	out	0x0b, r25	; 11
+     da4:	9b b9       	out	0x0b, r25	; 11
+     da6:	6b b9       	out	0x0b, r22	; 11
+     da8:	5b b9       	out	0x0b, r21	; 11
+     daa:	4b b9       	out	0x0b, r20	; 11
+     dac:	8b b9       	out	0x0b, r24	; 11
+     dae:	8b b9       	out	0x0b, r24	; 11
+     db0:	ab b9       	out	0x0b, r26	; 11
+     db2:	fb b9       	out	0x0b, r31	; 11
+     db4:	eb b9       	out	0x0b, r30	; 11
+     db6:	9b b9       	out	0x0b, r25	; 11
+     db8:	9b b9       	out	0x0b, r25	; 11
+     dba:	6b b9       	out	0x0b, r22	; 11
+     dbc:	5b b9       	out	0x0b, r21	; 11
+     dbe:	4b b9       	out	0x0b, r20	; 11
+     dc0:	8b b9       	out	0x0b, r24	; 11
+     dc2:	8b b9       	out	0x0b, r24	; 11
+     dc4:	ab b9       	out	0x0b, r26	; 11
+     dc6:	fb b9       	out	0x0b, r31	; 11
+     dc8:	eb b9       	out	0x0b, r30	; 11
+     dca:	9b b9       	out	0x0b, r25	; 11
+     dcc:	9b b9       	out	0x0b, r25	; 11
+     dce:	6b b9       	out	0x0b, r22	; 11
+     dd0:	5b b9       	out	0x0b, r21	; 11
+     dd2:	4b b9       	out	0x0b, r20	; 11
+     dd4:	8b b9       	out	0x0b, r24	; 11
+     dd6:	8b b9       	out	0x0b, r24	; 11
+     dd8:	ab b9       	out	0x0b, r26	; 11
+     dda:	fb b9       	out	0x0b, r31	; 11
+     ddc:	eb b9       	out	0x0b, r30	; 11
+     dde:	9b b9       	out	0x0b, r25	; 11
+     de0:	9b b9       	out	0x0b, r25	; 11
+     de2:	6b b9       	out	0x0b, r22	; 11
+     de4:	5b b9       	out	0x0b, r21	; 11
+     de6:	4b b9       	out	0x0b, r20	; 11
+     de8:	8b b9       	out	0x0b, r24	; 11
+     dea:	8b b9       	out	0x0b, r24	; 11
+     dec:	ab b9       	out	0x0b, r26	; 11
+     dee:	fb b9       	out	0x0b, r31	; 11
+     df0:	eb b9       	out	0x0b, r30	; 11
+     df2:	9b b9       	out	0x0b, r25	; 11
+     df4:	9b b9       	out	0x0b, r25	; 11
+     df6:	6b b9       	out	0x0b, r22	; 11
+     df8:	5b b9       	out	0x0b, r21	; 11
+     dfa:	4b b9       	out	0x0b, r20	; 11
+     dfc:	8b b9       	out	0x0b, r24	; 11
+     dfe:	8b b9       	out	0x0b, r24	; 11
+     e00:	ab b9       	out	0x0b, r26	; 11
+     e02:	fb b9       	out	0x0b, r31	; 11
+     e04:	eb b9       	out	0x0b, r30	; 11
+     e06:	9b b9       	out	0x0b, r25	; 11
+     e08:	9b b9       	out	0x0b, r25	; 11
+     e0a:	6b b9       	out	0x0b, r22	; 11
+     e0c:	5b b9       	out	0x0b, r21	; 11
+     e0e:	4b b9       	out	0x0b, r20	; 11
+     e10:	8b b9       	out	0x0b, r24	; 11
+     e12:	8b b9       	out	0x0b, r24	; 11
+     e14:	ab b9       	out	0x0b, r26	; 11
+     e16:	fb b9       	out	0x0b, r31	; 11
+     e18:	eb b9       	out	0x0b, r30	; 11
+     e1a:	9b b9       	out	0x0b, r25	; 11
+     e1c:	9b b9       	out	0x0b, r25	; 11
+     e1e:	6b b9       	out	0x0b, r22	; 11
+     e20:	5b b9       	out	0x0b, r21	; 11
+     e22:	4b b9       	out	0x0b, r20	; 11
+     e24:	8b b9       	out	0x0b, r24	; 11
+     e26:	8b b9       	out	0x0b, r24	; 11
+     e28:	ab b9       	out	0x0b, r26	; 11
+     e2a:	fb b9       	out	0x0b, r31	; 11
+     e2c:	eb b9       	out	0x0b, r30	; 11
+     e2e:	9b b9       	out	0x0b, r25	; 11
+     e30:	9b b9       	out	0x0b, r25	; 11
+     e32:	6b b9       	out	0x0b, r22	; 11
+     e34:	5b b9       	out	0x0b, r21	; 11
+     e36:	4b b9       	out	0x0b, r20	; 11
+     e38:	8b b9       	out	0x0b, r24	; 11
+     e3a:	8b b9       	out	0x0b, r24	; 11
+     e3c:	ab b9       	out	0x0b, r26	; 11
+     e3e:	fb b9       	out	0x0b, r31	; 11
+     e40:	eb b9       	out	0x0b, r30	; 11
+     e42:	9b b9       	out	0x0b, r25	; 11
+     e44:	9b b9       	out	0x0b, r25	; 11
+     e46:	6b b9       	out	0x0b, r22	; 11
+     e48:	5b b9       	out	0x0b, r21	; 11
+     e4a:	4b b9       	out	0x0b, r20	; 11
+     e4c:	8b b9       	out	0x0b, r24	; 11
+     e4e:	8b b9       	out	0x0b, r24	; 11
+     e50:	ab b9       	out	0x0b, r26	; 11
+     e52:	fb b9       	out	0x0b, r31	; 11
+     e54:	eb b9       	out	0x0b, r30	; 11
+     e56:	9b b9       	out	0x0b, r25	; 11
+     e58:	9b b9       	out	0x0b, r25	; 11
+     e5a:	6b b9       	out	0x0b, r22	; 11
+     e5c:	5b b9       	out	0x0b, r21	; 11
+     e5e:	4b b9       	out	0x0b, r20	; 11
+     e60:	8b b9       	out	0x0b, r24	; 11
+     e62:	8b b9       	out	0x0b, r24	; 11
+     e64:	ab b9       	out	0x0b, r26	; 11
+     e66:	fb b9       	out	0x0b, r31	; 11
+     e68:	eb b9       	out	0x0b, r30	; 11
+     e6a:	9b b9       	out	0x0b, r25	; 11
+     e6c:	9b b9       	out	0x0b, r25	; 11
+     e6e:	6b b9       	out	0x0b, r22	; 11
+     e70:	5b b9       	out	0x0b, r21	; 11
+     e72:	4b b9       	out	0x0b, r20	; 11
+     e74:	8b b9       	out	0x0b, r24	; 11
+     e76:	8b b9       	out	0x0b, r24	; 11
+     e78:	ab b9       	out	0x0b, r26	; 11
+     e7a:	fb b9       	out	0x0b, r31	; 11
+     e7c:	eb b9       	out	0x0b, r30	; 11
+     e7e:	9b b9       	out	0x0b, r25	; 11
+     e80:	9b b9       	out	0x0b, r25	; 11
+     e82:	6b b9       	out	0x0b, r22	; 11
+     e84:	5b b9       	out	0x0b, r21	; 11
+     e86:	4b b9       	out	0x0b, r20	; 11
+     e88:	8b b9       	out	0x0b, r24	; 11
+     e8a:	8b b9       	out	0x0b, r24	; 11
+     e8c:	ab b9       	out	0x0b, r26	; 11
+     e8e:	fb b9       	out	0x0b, r31	; 11
+     e90:	eb b9       	out	0x0b, r30	; 11
+     e92:	9b b9       	out	0x0b, r25	; 11
+     e94:	9b b9       	out	0x0b, r25	; 11
+     e96:	6b b9       	out	0x0b, r22	; 11
+     e98:	5b b9       	out	0x0b, r21	; 11
+     e9a:	4b b9       	out	0x0b, r20	; 11
+     e9c:	8b b9       	out	0x0b, r24	; 11
+     e9e:	8b b9       	out	0x0b, r24	; 11
+     ea0:	ab b9       	out	0x0b, r26	; 11
+     ea2:	fb b9       	out	0x0b, r31	; 11
+     ea4:	eb b9       	out	0x0b, r30	; 11
+     ea6:	9b b9       	out	0x0b, r25	; 11
+     ea8:	9b b9       	out	0x0b, r25	; 11
+     eaa:	6b b9       	out	0x0b, r22	; 11
+     eac:	5b b9       	out	0x0b, r21	; 11
+     eae:	4b b9       	out	0x0b, r20	; 11
+     eb0:	8b b9       	out	0x0b, r24	; 11
+     eb2:	8b b9       	out	0x0b, r24	; 11
+     eb4:	ab b9       	out	0x0b, r26	; 11
+     eb6:	fb b9       	out	0x0b, r31	; 11
+     eb8:	eb b9       	out	0x0b, r30	; 11
+     eba:	9b b9       	out	0x0b, r25	; 11
+     ebc:	9b b9       	out	0x0b, r25	; 11
+     ebe:	6b b9       	out	0x0b, r22	; 11
+     ec0:	5b b9       	out	0x0b, r21	; 11
+     ec2:	4b b9       	out	0x0b, r20	; 11
+     ec4:	8b b9       	out	0x0b, r24	; 11
+     ec6:	8b b9       	out	0x0b, r24	; 11
+     ec8:	ab b9       	out	0x0b, r26	; 11
+     eca:	fb b9       	out	0x0b, r31	; 11
+     ecc:	eb b9       	out	0x0b, r30	; 11
+     ece:	9b b9       	out	0x0b, r25	; 11
+     ed0:	9b b9       	out	0x0b, r25	; 11
+     ed2:	6b b9       	out	0x0b, r22	; 11
+     ed4:	5b b9       	out	0x0b, r21	; 11
+     ed6:	4b b9       	out	0x0b, r20	; 11
+     ed8:	8b b9       	out	0x0b, r24	; 11
+     eda:	8b b9       	out	0x0b, r24	; 11
+     edc:	ab b9       	out	0x0b, r26	; 11
+     ede:	fb b9       	out	0x0b, r31	; 11
+     ee0:	eb b9       	out	0x0b, r30	; 11
+     ee2:	9b b9       	out	0x0b, r25	; 11
+     ee4:	9b b9       	out	0x0b, r25	; 11
+     ee6:	6b b9       	out	0x0b, r22	; 11
+     ee8:	5b b9       	out	0x0b, r21	; 11
+     eea:	4b b9       	out	0x0b, r20	; 11
+     eec:	8b b9       	out	0x0b, r24	; 11
+     eee:	8b b9       	out	0x0b, r24	; 11
+     ef0:	ab b9       	out	0x0b, r26	; 11
+     ef2:	fb b9       	out	0x0b, r31	; 11
+     ef4:	eb b9       	out	0x0b, r30	; 11
+     ef6:	9b b9       	out	0x0b, r25	; 11
+     ef8:	9b b9       	out	0x0b, r25	; 11
+     efa:	6b b9       	out	0x0b, r22	; 11
+     efc:	5b b9       	out	0x0b, r21	; 11
+     efe:	4b b9       	out	0x0b, r20	; 11
+     f00:	8b b9       	out	0x0b, r24	; 11
+     f02:	8b b9       	out	0x0b, r24	; 11
+     f04:	ab b9       	out	0x0b, r26	; 11
+     f06:	fb b9       	out	0x0b, r31	; 11
+     f08:	eb b9       	out	0x0b, r30	; 11
+     f0a:	9b b9       	out	0x0b, r25	; 11
+     f0c:	9b b9       	out	0x0b, r25	; 11
+     f0e:	6b b9       	out	0x0b, r22	; 11
+     f10:	5b b9       	out	0x0b, r21	; 11
+     f12:	4b b9       	out	0x0b, r20	; 11
+     f14:	8b b9       	out	0x0b, r24	; 11
+     f16:	8b b9       	out	0x0b, r24	; 11
+     f18:	ab b9       	out	0x0b, r26	; 11
+     f1a:	fb b9       	out	0x0b, r31	; 11
+     f1c:	eb b9       	out	0x0b, r30	; 11
+     f1e:	9b b9       	out	0x0b, r25	; 11
+     f20:	9b b9       	out	0x0b, r25	; 11
+     f22:	6b b9       	out	0x0b, r22	; 11
+     f24:	5b b9       	out	0x0b, r21	; 11
+     f26:	4b b9       	out	0x0b, r20	; 11
+     f28:	8b b9       	out	0x0b, r24	; 11
+     f2a:	8b b9       	out	0x0b, r24	; 11
+     f2c:	ab b9       	out	0x0b, r26	; 11
+     f2e:	fb b9       	out	0x0b, r31	; 11
+     f30:	eb b9       	out	0x0b, r30	; 11
+     f32:	9b b9       	out	0x0b, r25	; 11
+     f34:	9b b9       	out	0x0b, r25	; 11
+     f36:	6b b9       	out	0x0b, r22	; 11
+     f38:	5b b9       	out	0x0b, r21	; 11
+     f3a:	4b b9       	out	0x0b, r20	; 11
+     f3c:	8b b9       	out	0x0b, r24	; 11
+     f3e:	8b b9       	out	0x0b, r24	; 11
+     f40:	ab b9       	out	0x0b, r26	; 11
+     f42:	fb b9       	out	0x0b, r31	; 11
+     f44:	eb b9       	out	0x0b, r30	; 11
+     f46:	9b b9       	out	0x0b, r25	; 11
+     f48:	9b b9       	out	0x0b, r25	; 11
+     f4a:	6b b9       	out	0x0b, r22	; 11
+     f4c:	5b b9       	out	0x0b, r21	; 11
+     f4e:	4b b9       	out	0x0b, r20	; 11
+     f50:	8b b9       	out	0x0b, r24	; 11
+     f52:	8b b9       	out	0x0b, r24	; 11
+     f54:	62 e6       	ldi	r22, 0x62	; 98
+     f56:	6b b9       	out	0x0b, r22	; 11
+     f58:	53 e7       	ldi	r21, 0x73	; 115
+     f5a:	5b b9       	out	0x0b, r21	; 11
+     f5c:	49 e7       	ldi	r20, 0x79	; 121
+     f5e:	4b b9       	out	0x0b, r20	; 11
+     f60:	9b b9       	out	0x0b, r25	; 11
+     f62:	9b b9       	out	0x0b, r25	; 11
+     f64:	a0 eb       	ldi	r26, 0xB0	; 176
+     f66:	ab b9       	out	0x0b, r26	; 11
+     f68:	f5 eb       	ldi	r31, 0xB5	; 181
+     f6a:	fb b9       	out	0x0b, r31	; 11
+     f6c:	e7 eb       	ldi	r30, 0xB7	; 183
+     f6e:	eb b9       	out	0x0b, r30	; 11
+     f70:	8b b9       	out	0x0b, r24	; 11
+     f72:	8b b9       	out	0x0b, r24	; 11
+     f74:	6b b9       	out	0x0b, r22	; 11
+     f76:	5b b9       	out	0x0b, r21	; 11
+     f78:	4b b9       	out	0x0b, r20	; 11
+     f7a:	9b b9       	out	0x0b, r25	; 11
+     f7c:	9b b9       	out	0x0b, r25	; 11
+     f7e:	ab b9       	out	0x0b, r26	; 11
+     f80:	fb b9       	out	0x0b, r31	; 11
+     f82:	eb b9       	out	0x0b, r30	; 11
+     f84:	8b b9       	out	0x0b, r24	; 11
+     f86:	8b b9       	out	0x0b, r24	; 11
+     f88:	6b b9       	out	0x0b, r22	; 11
+     f8a:	5b b9       	out	0x0b, r21	; 11
+     f8c:	4b b9       	out	0x0b, r20	; 11
+     f8e:	9b b9       	out	0x0b, r25	; 11
+     f90:	9b b9       	out	0x0b, r25	; 11
+     f92:	ab b9       	out	0x0b, r26	; 11
+     f94:	fb b9       	out	0x0b, r31	; 11
+     f96:	eb b9       	out	0x0b, r30	; 11
+     f98:	8b b9       	out	0x0b, r24	; 11
+     f9a:	8b b9       	out	0x0b, r24	; 11
+     f9c:	6b b9       	out	0x0b, r22	; 11
+     f9e:	5b b9       	out	0x0b, r21	; 11
+     fa0:	4b b9       	out	0x0b, r20	; 11
+     fa2:	9b b9       	out	0x0b, r25	; 11
+     fa4:	9b b9       	out	0x0b, r25	; 11
+     fa6:	ab b9       	out	0x0b, r26	; 11
+     fa8:	fb b9       	out	0x0b, r31	; 11
+     faa:	eb b9       	out	0x0b, r30	; 11
+     fac:	8b b9       	out	0x0b, r24	; 11
+     fae:	8b b9       	out	0x0b, r24	; 11
+     fb0:	6b b9       	out	0x0b, r22	; 11
+     fb2:	5b b9       	out	0x0b, r21	; 11
+     fb4:	4b b9       	out	0x0b, r20	; 11
+     fb6:	9b b9       	out	0x0b, r25	; 11
+     fb8:	9b b9       	out	0x0b, r25	; 11
+     fba:	ab b9       	out	0x0b, r26	; 11
+     fbc:	fb b9       	out	0x0b, r31	; 11
+     fbe:	eb b9       	out	0x0b, r30	; 11
+     fc0:	8b b9       	out	0x0b, r24	; 11
+     fc2:	8b b9       	out	0x0b, r24	; 11
+     fc4:	6b b9       	out	0x0b, r22	; 11
+     fc6:	5b b9       	out	0x0b, r21	; 11
+     fc8:	4b b9       	out	0x0b, r20	; 11
+     fca:	9b b9       	out	0x0b, r25	; 11
+     fcc:	9b b9       	out	0x0b, r25	; 11
+     fce:	ab b9       	out	0x0b, r26	; 11
+     fd0:	fb b9       	out	0x0b, r31	; 11
+     fd2:	eb b9       	out	0x0b, r30	; 11
+     fd4:	8b b9       	out	0x0b, r24	; 11
+     fd6:	8b b9       	out	0x0b, r24	; 11
+     fd8:	6b b9       	out	0x0b, r22	; 11
+     fda:	5b b9       	out	0x0b, r21	; 11
+     fdc:	4b b9       	out	0x0b, r20	; 11
+     fde:	9b b9       	out	0x0b, r25	; 11
+     fe0:	9b b9       	out	0x0b, r25	; 11
+     fe2:	ab b9       	out	0x0b, r26	; 11
+     fe4:	fb b9       	out	0x0b, r31	; 11
+     fe6:	eb b9       	out	0x0b, r30	; 11
+     fe8:	8b b9       	out	0x0b, r24	; 11
+     fea:	8b b9       	out	0x0b, r24	; 11
+     fec:	6b b9       	out	0x0b, r22	; 11
+     fee:	5b b9       	out	0x0b, r21	; 11
+     ff0:	4b b9       	out	0x0b, r20	; 11
+     ff2:	9b b9       	out	0x0b, r25	; 11
+     ff4:	9b b9       	out	0x0b, r25	; 11
+     ff6:	ab b9       	out	0x0b, r26	; 11
+     ff8:	fb b9       	out	0x0b, r31	; 11
+     ffa:	eb b9       	out	0x0b, r30	; 11
+     ffc:	8b b9       	out	0x0b, r24	; 11
+     ffe:	8b b9       	out	0x0b, r24	; 11
+    1000:	6b b9       	out	0x0b, r22	; 11
+    1002:	5b b9       	out	0x0b, r21	; 11
+    1004:	4b b9       	out	0x0b, r20	; 11
+    1006:	9b b9       	out	0x0b, r25	; 11
+    1008:	9b b9       	out	0x0b, r25	; 11
+    100a:	ab b9       	out	0x0b, r26	; 11
+    100c:	fb b9       	out	0x0b, r31	; 11
+    100e:	eb b9       	out	0x0b, r30	; 11
+    1010:	8b b9       	out	0x0b, r24	; 11
+    1012:	8b b9       	out	0x0b, r24	; 11
+    1014:	6b b9       	out	0x0b, r22	; 11
+    1016:	5b b9       	out	0x0b, r21	; 11
+    1018:	4b b9       	out	0x0b, r20	; 11
+    101a:	9b b9       	out	0x0b, r25	; 11
+    101c:	9b b9       	out	0x0b, r25	; 11
+    101e:	ab b9       	out	0x0b, r26	; 11
+    1020:	fb b9       	out	0x0b, r31	; 11
+    1022:	eb b9       	out	0x0b, r30	; 11
+    1024:	8b b9       	out	0x0b, r24	; 11
+    1026:	8b b9       	out	0x0b, r24	; 11
+    1028:	6b b9       	out	0x0b, r22	; 11
+    102a:	5b b9       	out	0x0b, r21	; 11
+    102c:	4b b9       	out	0x0b, r20	; 11
+    102e:	9b b9       	out	0x0b, r25	; 11
+    1030:	9b b9       	out	0x0b, r25	; 11
+    1032:	ab b9       	out	0x0b, r26	; 11
+    1034:	fb b9       	out	0x0b, r31	; 11
+    1036:	eb b9       	out	0x0b, r30	; 11
+    1038:	8b b9       	out	0x0b, r24	; 11
+    103a:	8b b9       	out	0x0b, r24	; 11
+    103c:	6b b9       	out	0x0b, r22	; 11
+    103e:	5b b9       	out	0x0b, r21	; 11
+    1040:	4b b9       	out	0x0b, r20	; 11
+    1042:	9b b9       	out	0x0b, r25	; 11
+    1044:	9b b9       	out	0x0b, r25	; 11
+    1046:	ab b9       	out	0x0b, r26	; 11
+    1048:	fb b9       	out	0x0b, r31	; 11
+    104a:	eb b9       	out	0x0b, r30	; 11
+    104c:	8b b9       	out	0x0b, r24	; 11
+    104e:	8b b9       	out	0x0b, r24	; 11
+    1050:	6b b9       	out	0x0b, r22	; 11
+    1052:	5b b9       	out	0x0b, r21	; 11
+    1054:	4b b9       	out	0x0b, r20	; 11
+    1056:	9b b9       	out	0x0b, r25	; 11
+    1058:	9b b9       	out	0x0b, r25	; 11
+    105a:	ab b9       	out	0x0b, r26	; 11
+    105c:	fb b9       	out	0x0b, r31	; 11
+    105e:	eb b9       	out	0x0b, r30	; 11
+    1060:	8b b9       	out	0x0b, r24	; 11
+    1062:	8b b9       	out	0x0b, r24	; 11
+    1064:	6b b9       	out	0x0b, r22	; 11
+    1066:	5b b9       	out	0x0b, r21	; 11
+    1068:	4b b9       	out	0x0b, r20	; 11
+    106a:	9b b9       	out	0x0b, r25	; 11
+    106c:	9b b9       	out	0x0b, r25	; 11
+    106e:	ab b9       	out	0x0b, r26	; 11
+    1070:	fb b9       	out	0x0b, r31	; 11
+    1072:	eb b9       	out	0x0b, r30	; 11
+    1074:	8b b9       	out	0x0b, r24	; 11
+    1076:	8b b9       	out	0x0b, r24	; 11
+    1078:	6b b9       	out	0x0b, r22	; 11
+    107a:	5b b9       	out	0x0b, r21	; 11
+    107c:	4b b9       	out	0x0b, r20	; 11
+    107e:	9b b9       	out	0x0b, r25	; 11
+    1080:	9b b9       	out	0x0b, r25	; 11
+    1082:	ab b9       	out	0x0b, r26	; 11
+    1084:	fb b9       	out	0x0b, r31	; 11
+    1086:	eb b9       	out	0x0b, r30	; 11
+    1088:	8b b9       	out	0x0b, r24	; 11
+    108a:	8b b9       	out	0x0b, r24	; 11
+    108c:	6b b9       	out	0x0b, r22	; 11
+    108e:	5b b9       	out	0x0b, r21	; 11
+    1090:	4b b9       	out	0x0b, r20	; 11
+    1092:	9b b9       	out	0x0b, r25	; 11
+    1094:	9b b9       	out	0x0b, r25	; 11
+    1096:	ab b9       	out	0x0b, r26	; 11
+    1098:	fb b9       	out	0x0b, r31	; 11
+    109a:	eb b9       	out	0x0b, r30	; 11
+    109c:	8b b9       	out	0x0b, r24	; 11
+    109e:	8b b9       	out	0x0b, r24	; 11
+    10a0:	6b b9       	out	0x0b, r22	; 11
+    10a2:	5b b9       	out	0x0b, r21	; 11
+    10a4:	4b b9       	out	0x0b, r20	; 11
+    10a6:	9b b9       	out	0x0b, r25	; 11
+    10a8:	9b b9       	out	0x0b, r25	; 11
+    10aa:	ab b9       	out	0x0b, r26	; 11
+    10ac:	fb b9       	out	0x0b, r31	; 11
+    10ae:	eb b9       	out	0x0b, r30	; 11
+    10b0:	8b b9       	out	0x0b, r24	; 11
+    10b2:	8b b9       	out	0x0b, r24	; 11
+    10b4:	6b b9       	out	0x0b, r22	; 11
+    10b6:	5b b9       	out	0x0b, r21	; 11
+    10b8:	4b b9       	out	0x0b, r20	; 11
+    10ba:	9b b9       	out	0x0b, r25	; 11
+    10bc:	9b b9       	out	0x0b, r25	; 11
+    10be:	ab b9       	out	0x0b, r26	; 11
+    10c0:	fb b9       	out	0x0b, r31	; 11
+    10c2:	eb b9       	out	0x0b, r30	; 11
+    10c4:	8b b9       	out	0x0b, r24	; 11
+    10c6:	8b b9       	out	0x0b, r24	; 11
+    10c8:	6b b9       	out	0x0b, r22	; 11
+    10ca:	5b b9       	out	0x0b, r21	; 11
+    10cc:	4b b9       	out	0x0b, r20	; 11
+    10ce:	9b b9       	out	0x0b, r25	; 11
+    10d0:	9b b9       	out	0x0b, r25	; 11
+    10d2:	ab b9       	out	0x0b, r26	; 11
+    10d4:	fb b9       	out	0x0b, r31	; 11
+    10d6:	eb b9       	out	0x0b, r30	; 11
+    10d8:	8b b9       	out	0x0b, r24	; 11
+    10da:	8b b9       	out	0x0b, r24	; 11
+    10dc:	6b b9       	out	0x0b, r22	; 11
+    10de:	5b b9       	out	0x0b, r21	; 11
+    10e0:	4b b9       	out	0x0b, r20	; 11
+    10e2:	9b b9       	out	0x0b, r25	; 11
+    10e4:	9b b9       	out	0x0b, r25	; 11
+    10e6:	ab b9       	out	0x0b, r26	; 11
+    10e8:	fb b9       	out	0x0b, r31	; 11
+    10ea:	eb b9       	out	0x0b, r30	; 11
+    10ec:	8b b9       	out	0x0b, r24	; 11
+    10ee:	8b b9       	out	0x0b, r24	; 11
+    10f0:	6b b9       	out	0x0b, r22	; 11
+    10f2:	5b b9       	out	0x0b, r21	; 11
+    10f4:	4b b9       	out	0x0b, r20	; 11
+    10f6:	9b b9       	out	0x0b, r25	; 11
+    10f8:	9b b9       	out	0x0b, r25	; 11
+    10fa:	ab b9       	out	0x0b, r26	; 11
+    10fc:	fb b9       	out	0x0b, r31	; 11
+    10fe:	eb b9       	out	0x0b, r30	; 11
+    1100:	8b b9       	out	0x0b, r24	; 11
+    1102:	8b b9       	out	0x0b, r24	; 11
+    1104:	6b b9       	out	0x0b, r22	; 11
+    1106:	5b b9       	out	0x0b, r21	; 11
+    1108:	4b b9       	out	0x0b, r20	; 11
+    110a:	9b b9       	out	0x0b, r25	; 11
+    110c:	9b b9       	out	0x0b, r25	; 11
+    110e:	ab b9       	out	0x0b, r26	; 11
+    1110:	fb b9       	out	0x0b, r31	; 11
+    1112:	eb b9       	out	0x0b, r30	; 11
+    1114:	8b b9       	out	0x0b, r24	; 11
+    1116:	8b b9       	out	0x0b, r24	; 11
+    1118:	6b b9       	out	0x0b, r22	; 11
+    111a:	5b b9       	out	0x0b, r21	; 11
+    111c:	4b b9       	out	0x0b, r20	; 11
+    111e:	9b b9       	out	0x0b, r25	; 11
+    1120:	9b b9       	out	0x0b, r25	; 11
+    1122:	ab b9       	out	0x0b, r26	; 11
+    1124:	fb b9       	out	0x0b, r31	; 11
+    1126:	eb b9       	out	0x0b, r30	; 11
+    1128:	8b b9       	out	0x0b, r24	; 11
+    112a:	8b b9       	out	0x0b, r24	; 11
+    112c:	6b b9       	out	0x0b, r22	; 11
+    112e:	5b b9       	out	0x0b, r21	; 11
+    1130:	4b b9       	out	0x0b, r20	; 11
+    1132:	9b b9       	out	0x0b, r25	; 11
+    1134:	9b b9       	out	0x0b, r25	; 11
+    1136:	ab b9       	out	0x0b, r26	; 11
+    1138:	fb b9       	out	0x0b, r31	; 11
+    113a:	eb b9       	out	0x0b, r30	; 11
+    113c:	8b b9       	out	0x0b, r24	; 11
+    113e:	8b b9       	out	0x0b, r24	; 11
+    1140:	6b b9       	out	0x0b, r22	; 11
+    1142:	5b b9       	out	0x0b, r21	; 11
+    1144:	4b b9       	out	0x0b, r20	; 11
+    1146:	9b b9       	out	0x0b, r25	; 11
+    1148:	9b b9       	out	0x0b, r25	; 11
+    114a:	ab b9       	out	0x0b, r26	; 11
+    114c:	fb b9       	out	0x0b, r31	; 11
+    114e:	eb b9       	out	0x0b, r30	; 11
+    1150:	8b b9       	out	0x0b, r24	; 11
+    1152:	8b b9       	out	0x0b, r24	; 11
+    1154:	6b b9       	out	0x0b, r22	; 11
+    1156:	5b b9       	out	0x0b, r21	; 11
+    1158:	4b b9       	out	0x0b, r20	; 11
+    115a:	9b b9       	out	0x0b, r25	; 11
+    115c:	9b b9       	out	0x0b, r25	; 11
+    115e:	ab b9       	out	0x0b, r26	; 11
+    1160:	fb b9       	out	0x0b, r31	; 11
+    1162:	eb b9       	out	0x0b, r30	; 11
+    1164:	8b b9       	out	0x0b, r24	; 11
+    1166:	8b b9       	out	0x0b, r24	; 11
+    1168:	6b b9       	out	0x0b, r22	; 11
+    116a:	5b b9       	out	0x0b, r21	; 11
+    116c:	4b b9       	out	0x0b, r20	; 11
+    116e:	9b b9       	out	0x0b, r25	; 11
+    1170:	9b b9       	out	0x0b, r25	; 11
+    1172:	ab b9       	out	0x0b, r26	; 11
+    1174:	fb b9       	out	0x0b, r31	; 11
+    1176:	eb b9       	out	0x0b, r30	; 11
+    1178:	8b b9       	out	0x0b, r24	; 11
+    117a:	8b b9       	out	0x0b, r24	; 11
+    117c:	6b b9       	out	0x0b, r22	; 11
+    117e:	5b b9       	out	0x0b, r21	; 11
+    1180:	4b b9       	out	0x0b, r20	; 11
+    1182:	9b b9       	out	0x0b, r25	; 11
+    1184:	9b b9       	out	0x0b, r25	; 11
+    1186:	ab b9       	out	0x0b, r26	; 11
+    1188:	fb b9       	out	0x0b, r31	; 11
+    118a:	eb b9       	out	0x0b, r30	; 11
+    118c:	8b b9       	out	0x0b, r24	; 11
+    118e:	8b b9       	out	0x0b, r24	; 11
+    1190:	6b b9       	out	0x0b, r22	; 11
+    1192:	5b b9       	out	0x0b, r21	; 11
+    1194:	4b b9       	out	0x0b, r20	; 11
+    1196:	9b b9       	out	0x0b, r25	; 11
+    1198:	9b b9       	out	0x0b, r25	; 11
+    119a:	ab b9       	out	0x0b, r26	; 11
+    119c:	fb b9       	out	0x0b, r31	; 11
+    119e:	eb b9       	out	0x0b, r30	; 11
+    11a0:	8b b9       	out	0x0b, r24	; 11
+    11a2:	8b b9       	out	0x0b, r24	; 11
+    11a4:	6b b9       	out	0x0b, r22	; 11
+    11a6:	5b b9       	out	0x0b, r21	; 11
+    11a8:	4b b9       	out	0x0b, r20	; 11
+    11aa:	9b b9       	out	0x0b, r25	; 11
+    11ac:	9b b9       	out	0x0b, r25	; 11
+    11ae:	ab b9       	out	0x0b, r26	; 11
+    11b0:	fb b9       	out	0x0b, r31	; 11
+    11b2:	eb b9       	out	0x0b, r30	; 11
+    11b4:	8b b9       	out	0x0b, r24	; 11
+    11b6:	8b b9       	out	0x0b, r24	; 11
+    11b8:	6b b9       	out	0x0b, r22	; 11
+    11ba:	5b b9       	out	0x0b, r21	; 11
+    11bc:	4b b9       	out	0x0b, r20	; 11
+    11be:	9b b9       	out	0x0b, r25	; 11
+    11c0:	9b b9       	out	0x0b, r25	; 11
+    11c2:	ab b9       	out	0x0b, r26	; 11
+    11c4:	fb b9       	out	0x0b, r31	; 11
+    11c6:	eb b9       	out	0x0b, r30	; 11
+    11c8:	8b b9       	out	0x0b, r24	; 11
+    11ca:	8b b9       	out	0x0b, r24	; 11
+    11cc:	6b b9       	out	0x0b, r22	; 11
+    11ce:	5b b9       	out	0x0b, r21	; 11
+    11d0:	4b b9       	out	0x0b, r20	; 11
+    11d2:	9b b9       	out	0x0b, r25	; 11
+    11d4:	9b b9       	out	0x0b, r25	; 11
+    11d6:	ab b9       	out	0x0b, r26	; 11
+    11d8:	fb b9       	out	0x0b, r31	; 11
+    11da:	eb b9       	out	0x0b, r30	; 11
+    11dc:	8b b9       	out	0x0b, r24	; 11
+    11de:	8b b9       	out	0x0b, r24	; 11
+    11e0:	6b b9       	out	0x0b, r22	; 11
+    11e2:	5b b9       	out	0x0b, r21	; 11
+    11e4:	4b b9       	out	0x0b, r20	; 11
+    11e6:	9b b9       	out	0x0b, r25	; 11
+    11e8:	9b b9       	out	0x0b, r25	; 11
+    11ea:	ab b9       	out	0x0b, r26	; 11
+    11ec:	fb b9       	out	0x0b, r31	; 11
+    11ee:	eb b9       	out	0x0b, r30	; 11
+    11f0:	8b b9       	out	0x0b, r24	; 11
+    11f2:	8b b9       	out	0x0b, r24	; 11
+    11f4:	6b b9       	out	0x0b, r22	; 11
+    11f6:	5b b9       	out	0x0b, r21	; 11
+    11f8:	4b b9       	out	0x0b, r20	; 11
+    11fa:	80 e7       	ldi	r24, 0x70	; 112
+    11fc:	8b b9       	out	0x0b, r24	; 11
+    11fe:	8b b9       	out	0x0b, r24	; 11
+    1200:	50 eb       	ldi	r21, 0xB0	; 176
+    1202:	5b b9       	out	0x0b, r21	; 11
+    1204:	45 eb       	ldi	r20, 0xB5	; 181
+    1206:	4b b9       	out	0x0b, r20	; 11
+    1208:	a7 eb       	ldi	r26, 0xB7	; 183
+    120a:	ab b9       	out	0x0b, r26	; 11
+    120c:	92 eb       	ldi	r25, 0xB2	; 178
+    120e:	9b b9       	out	0x0b, r25	; 11
+    1210:	9b b9       	out	0x0b, r25	; 11
+    1212:	f2 e6       	ldi	r31, 0x62	; 98
+    1214:	fb b9       	out	0x0b, r31	; 11
+    1216:	e3 e7       	ldi	r30, 0x73	; 115
+    1218:	eb b9       	out	0x0b, r30	; 11
+    121a:	69 e7       	ldi	r22, 0x79	; 121
+    121c:	6b b9       	out	0x0b, r22	; 11
+    121e:	8b b9       	out	0x0b, r24	; 11
+    1220:	8b b9       	out	0x0b, r24	; 11
+    1222:	5b b9       	out	0x0b, r21	; 11
+    1224:	4b b9       	out	0x0b, r20	; 11
+    1226:	ab b9       	out	0x0b, r26	; 11
+    1228:	9b b9       	out	0x0b, r25	; 11
+    122a:	9b b9       	out	0x0b, r25	; 11
+    122c:	fb b9       	out	0x0b, r31	; 11
+    122e:	eb b9       	out	0x0b, r30	; 11
+    1230:	6b b9       	out	0x0b, r22	; 11
+    1232:	8b b9       	out	0x0b, r24	; 11
+    1234:	8b b9       	out	0x0b, r24	; 11
+    1236:	5b b9       	out	0x0b, r21	; 11
+    1238:	4b b9       	out	0x0b, r20	; 11
+    123a:	ab b9       	out	0x0b, r26	; 11
+    123c:	9b b9       	out	0x0b, r25	; 11
+    123e:	9b b9       	out	0x0b, r25	; 11
+    1240:	fb b9       	out	0x0b, r31	; 11
+    1242:	eb b9       	out	0x0b, r30	; 11
+    1244:	6b b9       	out	0x0b, r22	; 11
+    1246:	8b b9       	out	0x0b, r24	; 11
+    1248:	8b b9       	out	0x0b, r24	; 11
+    124a:	5b b9       	out	0x0b, r21	; 11
+    124c:	4b b9       	out	0x0b, r20	; 11
+    124e:	ab b9       	out	0x0b, r26	; 11
+    1250:	9b b9       	out	0x0b, r25	; 11
+    1252:	9b b9       	out	0x0b, r25	; 11
+    1254:	fb b9       	out	0x0b, r31	; 11
+    1256:	eb b9       	out	0x0b, r30	; 11
+    1258:	6b b9       	out	0x0b, r22	; 11
+    125a:	8b b9       	out	0x0b, r24	; 11
+    125c:	8b b9       	out	0x0b, r24	; 11
+    125e:	5b b9       	out	0x0b, r21	; 11
+    1260:	4b b9       	out	0x0b, r20	; 11
+    1262:	ab b9       	out	0x0b, r26	; 11
+    1264:	9b b9       	out	0x0b, r25	; 11
+    1266:	9b b9       	out	0x0b, r25	; 11
+    1268:	fb b9       	out	0x0b, r31	; 11
+    126a:	eb b9       	out	0x0b, r30	; 11
+    126c:	6b b9       	out	0x0b, r22	; 11
+    126e:	8b b9       	out	0x0b, r24	; 11
+    1270:	8b b9       	out	0x0b, r24	; 11
+    1272:	5b b9       	out	0x0b, r21	; 11
+    1274:	4b b9       	out	0x0b, r20	; 11
+    1276:	ab b9       	out	0x0b, r26	; 11
+    1278:	9b b9       	out	0x0b, r25	; 11
+    127a:	9b b9       	out	0x0b, r25	; 11
+    127c:	fb b9       	out	0x0b, r31	; 11
+    127e:	eb b9       	out	0x0b, r30	; 11
+    1280:	6b b9       	out	0x0b, r22	; 11
+    1282:	8b b9       	out	0x0b, r24	; 11
+    1284:	8b b9       	out	0x0b, r24	; 11
+    1286:	5b b9       	out	0x0b, r21	; 11
+    1288:	4b b9       	out	0x0b, r20	; 11
+    128a:	ab b9       	out	0x0b, r26	; 11
+    128c:	9b b9       	out	0x0b, r25	; 11
+    128e:	9b b9       	out	0x0b, r25	; 11
+    1290:	fb b9       	out	0x0b, r31	; 11
+    1292:	eb b9       	out	0x0b, r30	; 11
+    1294:	6b b9       	out	0x0b, r22	; 11
+    1296:	8b b9       	out	0x0b, r24	; 11
+    1298:	8b b9       	out	0x0b, r24	; 11
+    129a:	5b b9       	out	0x0b, r21	; 11
+    129c:	4b b9       	out	0x0b, r20	; 11
+    129e:	ab b9       	out	0x0b, r26	; 11
+    12a0:	9b b9       	out	0x0b, r25	; 11
+    12a2:	9b b9       	out	0x0b, r25	; 11
+    12a4:	fb b9       	out	0x0b, r31	; 11
+    12a6:	eb b9       	out	0x0b, r30	; 11
+    12a8:	6b b9       	out	0x0b, r22	; 11
+    12aa:	8b b9       	out	0x0b, r24	; 11
+    12ac:	8b b9       	out	0x0b, r24	; 11
+    12ae:	5b b9       	out	0x0b, r21	; 11
+    12b0:	4b b9       	out	0x0b, r20	; 11
+    12b2:	ab b9       	out	0x0b, r26	; 11
+    12b4:	9b b9       	out	0x0b, r25	; 11
+    12b6:	9b b9       	out	0x0b, r25	; 11
+    12b8:	fb b9       	out	0x0b, r31	; 11
+    12ba:	eb b9       	out	0x0b, r30	; 11
+    12bc:	6b b9       	out	0x0b, r22	; 11
+    12be:	8b b9       	out	0x0b, r24	; 11
+    12c0:	8b b9       	out	0x0b, r24	; 11
+    12c2:	5b b9       	out	0x0b, r21	; 11
+    12c4:	4b b9       	out	0x0b, r20	; 11
+    12c6:	ab b9       	out	0x0b, r26	; 11
+    12c8:	9b b9       	out	0x0b, r25	; 11
+    12ca:	9b b9       	out	0x0b, r25	; 11
+    12cc:	fb b9       	out	0x0b, r31	; 11
+    12ce:	eb b9       	out	0x0b, r30	; 11
+    12d0:	6b b9       	out	0x0b, r22	; 11
+    12d2:	8b b9       	out	0x0b, r24	; 11
+    12d4:	8b b9       	out	0x0b, r24	; 11
+    12d6:	5b b9       	out	0x0b, r21	; 11
+    12d8:	4b b9       	out	0x0b, r20	; 11
+    12da:	ab b9       	out	0x0b, r26	; 11
+    12dc:	9b b9       	out	0x0b, r25	; 11
+    12de:	9b b9       	out	0x0b, r25	; 11
+    12e0:	fb b9       	out	0x0b, r31	; 11
+    12e2:	eb b9       	out	0x0b, r30	; 11
+    12e4:	6b b9       	out	0x0b, r22	; 11
+    12e6:	8b b9       	out	0x0b, r24	; 11
+    12e8:	8b b9       	out	0x0b, r24	; 11
+    12ea:	5b b9       	out	0x0b, r21	; 11
+    12ec:	4b b9       	out	0x0b, r20	; 11
+    12ee:	ab b9       	out	0x0b, r26	; 11
+    12f0:	9b b9       	out	0x0b, r25	; 11
+    12f2:	9b b9       	out	0x0b, r25	; 11
+    12f4:	fb b9       	out	0x0b, r31	; 11
+    12f6:	eb b9       	out	0x0b, r30	; 11
+    12f8:	6b b9       	out	0x0b, r22	; 11
+    12fa:	8b b9       	out	0x0b, r24	; 11
+    12fc:	8b b9       	out	0x0b, r24	; 11
+    12fe:	5b b9       	out	0x0b, r21	; 11
+    1300:	4b b9       	out	0x0b, r20	; 11
+    1302:	ab b9       	out	0x0b, r26	; 11
+    1304:	9b b9       	out	0x0b, r25	; 11
+    1306:	9b b9       	out	0x0b, r25	; 11
+    1308:	fb b9       	out	0x0b, r31	; 11
+    130a:	eb b9       	out	0x0b, r30	; 11
+    130c:	6b b9       	out	0x0b, r22	; 11
+    130e:	8b b9       	out	0x0b, r24	; 11
+    1310:	8b b9       	out	0x0b, r24	; 11
+    1312:	5b b9       	out	0x0b, r21	; 11
+    1314:	4b b9       	out	0x0b, r20	; 11
+    1316:	ab b9       	out	0x0b, r26	; 11
+    1318:	9b b9       	out	0x0b, r25	; 11
+    131a:	9b b9       	out	0x0b, r25	; 11
+    131c:	fb b9       	out	0x0b, r31	; 11
+    131e:	eb b9       	out	0x0b, r30	; 11
+    1320:	6b b9       	out	0x0b, r22	; 11
+    1322:	8b b9       	out	0x0b, r24	; 11
+    1324:	8b b9       	out	0x0b, r24	; 11
+    1326:	5b b9       	out	0x0b, r21	; 11
+    1328:	4b b9       	out	0x0b, r20	; 11
+    132a:	ab b9       	out	0x0b, r26	; 11
+    132c:	9b b9       	out	0x0b, r25	; 11
+    132e:	9b b9       	out	0x0b, r25	; 11
+    1330:	fb b9       	out	0x0b, r31	; 11
+    1332:	eb b9       	out	0x0b, r30	; 11
+    1334:	6b b9       	out	0x0b, r22	; 11
+    1336:	8b b9       	out	0x0b, r24	; 11
+    1338:	8b b9       	out	0x0b, r24	; 11
+    133a:	5b b9       	out	0x0b, r21	; 11
+    133c:	4b b9       	out	0x0b, r20	; 11
+    133e:	ab b9       	out	0x0b, r26	; 11
+    1340:	9b b9       	out	0x0b, r25	; 11
+    1342:	9b b9       	out	0x0b, r25	; 11
+    1344:	fb b9       	out	0x0b, r31	; 11
+    1346:	eb b9       	out	0x0b, r30	; 11
+    1348:	6b b9       	out	0x0b, r22	; 11
+    134a:	8b b9       	out	0x0b, r24	; 11
+    134c:	8b b9       	out	0x0b, r24	; 11
+    134e:	5b b9       	out	0x0b, r21	; 11
+    1350:	4b b9       	out	0x0b, r20	; 11
+    1352:	ab b9       	out	0x0b, r26	; 11
+    1354:	9b b9       	out	0x0b, r25	; 11
+    1356:	9b b9       	out	0x0b, r25	; 11
+    1358:	fb b9       	out	0x0b, r31	; 11
+    135a:	eb b9       	out	0x0b, r30	; 11
+    135c:	6b b9       	out	0x0b, r22	; 11
+    135e:	8b b9       	out	0x0b, r24	; 11
+    1360:	8b b9       	out	0x0b, r24	; 11
+    1362:	5b b9       	out	0x0b, r21	; 11
+    1364:	4b b9       	out	0x0b, r20	; 11
+    1366:	ab b9       	out	0x0b, r26	; 11
+    1368:	9b b9       	out	0x0b, r25	; 11
+    136a:	9b b9       	out	0x0b, r25	; 11
+    136c:	fb b9       	out	0x0b, r31	; 11
+    136e:	eb b9       	out	0x0b, r30	; 11
+    1370:	6b b9       	out	0x0b, r22	; 11
+    1372:	8b b9       	out	0x0b, r24	; 11
+    1374:	8b b9       	out	0x0b, r24	; 11
+    1376:	5b b9       	out	0x0b, r21	; 11
+    1378:	4b b9       	out	0x0b, r20	; 11
+    137a:	ab b9       	out	0x0b, r26	; 11
+    137c:	9b b9       	out	0x0b, r25	; 11
+    137e:	9b b9       	out	0x0b, r25	; 11
+    1380:	fb b9       	out	0x0b, r31	; 11
+    1382:	eb b9       	out	0x0b, r30	; 11
+    1384:	6b b9       	out	0x0b, r22	; 11
+    1386:	8b b9       	out	0x0b, r24	; 11
+    1388:	8b b9       	out	0x0b, r24	; 11
+    138a:	5b b9       	out	0x0b, r21	; 11
+    138c:	4b b9       	out	0x0b, r20	; 11
+    138e:	ab b9       	out	0x0b, r26	; 11
+    1390:	9b b9       	out	0x0b, r25	; 11
+    1392:	9b b9       	out	0x0b, r25	; 11
+    1394:	fb b9       	out	0x0b, r31	; 11
+    1396:	eb b9       	out	0x0b, r30	; 11
+    1398:	6b b9       	out	0x0b, r22	; 11
+    139a:	8b b9       	out	0x0b, r24	; 11
+    139c:	8b b9       	out	0x0b, r24	; 11
+    139e:	5b b9       	out	0x0b, r21	; 11
+    13a0:	4b b9       	out	0x0b, r20	; 11
+    13a2:	ab b9       	out	0x0b, r26	; 11
+    13a4:	9b b9       	out	0x0b, r25	; 11
+    13a6:	9b b9       	out	0x0b, r25	; 11
+    13a8:	fb b9       	out	0x0b, r31	; 11
+    13aa:	eb b9       	out	0x0b, r30	; 11
+    13ac:	6b b9       	out	0x0b, r22	; 11
+    13ae:	8b b9       	out	0x0b, r24	; 11
+    13b0:	8b b9       	out	0x0b, r24	; 11
+    13b2:	5b b9       	out	0x0b, r21	; 11
+    13b4:	4b b9       	out	0x0b, r20	; 11
+    13b6:	ab b9       	out	0x0b, r26	; 11
+    13b8:	9b b9       	out	0x0b, r25	; 11
+    13ba:	9b b9       	out	0x0b, r25	; 11
+    13bc:	fb b9       	out	0x0b, r31	; 11
+    13be:	eb b9       	out	0x0b, r30	; 11
+    13c0:	6b b9       	out	0x0b, r22	; 11
+    13c2:	8b b9       	out	0x0b, r24	; 11
+    13c4:	8b b9       	out	0x0b, r24	; 11
+    13c6:	5b b9       	out	0x0b, r21	; 11
+    13c8:	4b b9       	out	0x0b, r20	; 11
+    13ca:	ab b9       	out	0x0b, r26	; 11
+    13cc:	9b b9       	out	0x0b, r25	; 11
+    13ce:	9b b9       	out	0x0b, r25	; 11
+    13d0:	fb b9       	out	0x0b, r31	; 11
+    13d2:	eb b9       	out	0x0b, r30	; 11
+    13d4:	6b b9       	out	0x0b, r22	; 11
+    13d6:	8b b9       	out	0x0b, r24	; 11
+    13d8:	8b b9       	out	0x0b, r24	; 11
+    13da:	5b b9       	out	0x0b, r21	; 11
+    13dc:	4b b9       	out	0x0b, r20	; 11
+    13de:	ab b9       	out	0x0b, r26	; 11
+    13e0:	9b b9       	out	0x0b, r25	; 11
+    13e2:	9b b9       	out	0x0b, r25	; 11
+    13e4:	fb b9       	out	0x0b, r31	; 11
+    13e6:	eb b9       	out	0x0b, r30	; 11
+    13e8:	6b b9       	out	0x0b, r22	; 11
+    13ea:	8b b9       	out	0x0b, r24	; 11
+    13ec:	8b b9       	out	0x0b, r24	; 11
+    13ee:	5b b9       	out	0x0b, r21	; 11
+    13f0:	4b b9       	out	0x0b, r20	; 11
+    13f2:	ab b9       	out	0x0b, r26	; 11
+    13f4:	9b b9       	out	0x0b, r25	; 11
+    13f6:	9b b9       	out	0x0b, r25	; 11
+    13f8:	fb b9       	out	0x0b, r31	; 11
+    13fa:	eb b9       	out	0x0b, r30	; 11
+    13fc:	6b b9       	out	0x0b, r22	; 11
+    13fe:	8b b9       	out	0x0b, r24	; 11
+    1400:	8b b9       	out	0x0b, r24	; 11
+    1402:	5b b9       	out	0x0b, r21	; 11
+    1404:	4b b9       	out	0x0b, r20	; 11
+    1406:	ab b9       	out	0x0b, r26	; 11
+    1408:	9b b9       	out	0x0b, r25	; 11
+    140a:	9b b9       	out	0x0b, r25	; 11
+    140c:	fb b9       	out	0x0b, r31	; 11
+    140e:	eb b9       	out	0x0b, r30	; 11
+    1410:	6b b9       	out	0x0b, r22	; 11
+    1412:	8b b9       	out	0x0b, r24	; 11
+    1414:	8b b9       	out	0x0b, r24	; 11
+    1416:	5b b9       	out	0x0b, r21	; 11
+    1418:	4b b9       	out	0x0b, r20	; 11
+    141a:	ab b9       	out	0x0b, r26	; 11
+    141c:	9b b9       	out	0x0b, r25	; 11
+    141e:	9b b9       	out	0x0b, r25	; 11
+    1420:	fb b9       	out	0x0b, r31	; 11
+    1422:	eb b9       	out	0x0b, r30	; 11
+    1424:	6b b9       	out	0x0b, r22	; 11
+    1426:	8b b9       	out	0x0b, r24	; 11
+    1428:	8b b9       	out	0x0b, r24	; 11
+    142a:	5b b9       	out	0x0b, r21	; 11
+    142c:	4b b9       	out	0x0b, r20	; 11
+    142e:	ab b9       	out	0x0b, r26	; 11
+    1430:	9b b9       	out	0x0b, r25	; 11
+    1432:	9b b9       	out	0x0b, r25	; 11
+    1434:	fb b9       	out	0x0b, r31	; 11
+    1436:	eb b9       	out	0x0b, r30	; 11
+    1438:	6b b9       	out	0x0b, r22	; 11
+    143a:	8b b9       	out	0x0b, r24	; 11
+    143c:	8b b9       	out	0x0b, r24	; 11
+    143e:	5b b9       	out	0x0b, r21	; 11
+    1440:	4b b9       	out	0x0b, r20	; 11
+    1442:	ab b9       	out	0x0b, r26	; 11
+    1444:	9b b9       	out	0x0b, r25	; 11
+    1446:	9b b9       	out	0x0b, r25	; 11
+    1448:	fb b9       	out	0x0b, r31	; 11
+    144a:	eb b9       	out	0x0b, r30	; 11
+    144c:	6b b9       	out	0x0b, r22	; 11
+    144e:	8b b9       	out	0x0b, r24	; 11
+    1450:	8b b9       	out	0x0b, r24	; 11
+    1452:	5b b9       	out	0x0b, r21	; 11
+    1454:	4b b9       	out	0x0b, r20	; 11
+    1456:	ab b9       	out	0x0b, r26	; 11
+    1458:	9b b9       	out	0x0b, r25	; 11
+    145a:	9b b9       	out	0x0b, r25	; 11
+    145c:	fb b9       	out	0x0b, r31	; 11
+    145e:	eb b9       	out	0x0b, r30	; 11
+    1460:	6b b9       	out	0x0b, r22	; 11
+    1462:	8b b9       	out	0x0b, r24	; 11
+    1464:	8b b9       	out	0x0b, r24	; 11
+    1466:	5b b9       	out	0x0b, r21	; 11
+    1468:	4b b9       	out	0x0b, r20	; 11
+    146a:	ab b9       	out	0x0b, r26	; 11
+    146c:	9b b9       	out	0x0b, r25	; 11
+    146e:	9b b9       	out	0x0b, r25	; 11
+    1470:	fb b9       	out	0x0b, r31	; 11
+    1472:	eb b9       	out	0x0b, r30	; 11
+    1474:	6b b9       	out	0x0b, r22	; 11
+    1476:	8b b9       	out	0x0b, r24	; 11
+    1478:	8b b9       	out	0x0b, r24	; 11
+    147a:	5b b9       	out	0x0b, r21	; 11
+    147c:	4b b9       	out	0x0b, r20	; 11
+    147e:	ab b9       	out	0x0b, r26	; 11
+    1480:	9b b9       	out	0x0b, r25	; 11
+    1482:	9b b9       	out	0x0b, r25	; 11
+    1484:	fb b9       	out	0x0b, r31	; 11
+    1486:	eb b9       	out	0x0b, r30	; 11
+    1488:	6b b9       	out	0x0b, r22	; 11
+    148a:	8b b9       	out	0x0b, r24	; 11
+    148c:	8b b9       	out	0x0b, r24	; 11
+    148e:	5b b9       	out	0x0b, r21	; 11
+    1490:	4b b9       	out	0x0b, r20	; 11
+    1492:	ab b9       	out	0x0b, r26	; 11
+    1494:	9b b9       	out	0x0b, r25	; 11
+    1496:	9b b9       	out	0x0b, r25	; 11
+    1498:	fb b9       	out	0x0b, r31	; 11
+    149a:	eb b9       	out	0x0b, r30	; 11
+    149c:	6b b9       	out	0x0b, r22	; 11
+    149e:	8b b9       	out	0x0b, r24	; 11
+    14a0:	8b b9       	out	0x0b, r24	; 11
+    14a2:	5b b9       	out	0x0b, r21	; 11
+    14a4:	4b b9       	out	0x0b, r20	; 11
+    14a6:	87 eb       	ldi	r24, 0xB7	; 183
+    14a8:	8b b9       	out	0x0b, r24	; 11
+    14aa:	82 eb       	ldi	r24, 0xB2	; 178
+    14ac:	8b b9       	out	0x0b, r24	; 11
+    14ae:	8b b9       	out	0x0b, r24	; 11
+    14b0:	a2 e6       	ldi	r26, 0x62	; 98
+    14b2:	ab b9       	out	0x0b, r26	; 11
+    14b4:	f3 e7       	ldi	r31, 0x73	; 115
+    14b6:	fb b9       	out	0x0b, r31	; 11
+    14b8:	e9 e7       	ldi	r30, 0x79	; 121
+    14ba:	eb b9       	out	0x0b, r30	; 11
+    14bc:	90 e7       	ldi	r25, 0x70	; 112
+    14be:	9b b9       	out	0x0b, r25	; 11
+    14c0:	9b b9       	out	0x0b, r25	; 11
+    14c2:	60 eb       	ldi	r22, 0xB0	; 176
+    14c4:	6b b9       	out	0x0b, r22	; 11
+    14c6:	55 eb       	ldi	r21, 0xB5	; 181
+    14c8:	5b b9       	out	0x0b, r21	; 11
+    14ca:	47 eb       	ldi	r20, 0xB7	; 183
+    14cc:	4b b9       	out	0x0b, r20	; 11
+    14ce:	8b b9       	out	0x0b, r24	; 11
+    14d0:	8b b9       	out	0x0b, r24	; 11
+    14d2:	ab b9       	out	0x0b, r26	; 11
+    14d4:	fb b9       	out	0x0b, r31	; 11
+    14d6:	eb b9       	out	0x0b, r30	; 11
+    14d8:	9b b9       	out	0x0b, r25	; 11
+    14da:	9b b9       	out	0x0b, r25	; 11
+    14dc:	6b b9       	out	0x0b, r22	; 11
+    14de:	5b b9       	out	0x0b, r21	; 11
+    14e0:	4b b9       	out	0x0b, r20	; 11
+    14e2:	8b b9       	out	0x0b, r24	; 11
+    14e4:	8b b9       	out	0x0b, r24	; 11
+    14e6:	ab b9       	out	0x0b, r26	; 11
+    14e8:	fb b9       	out	0x0b, r31	; 11
+    14ea:	eb b9       	out	0x0b, r30	; 11
+    14ec:	9b b9       	out	0x0b, r25	; 11
+    14ee:	9b b9       	out	0x0b, r25	; 11
+    14f0:	6b b9       	out	0x0b, r22	; 11
+    14f2:	5b b9       	out	0x0b, r21	; 11
+    14f4:	4b b9       	out	0x0b, r20	; 11
+    14f6:	8b b9       	out	0x0b, r24	; 11
+    14f8:	8b b9       	out	0x0b, r24	; 11
+    14fa:	ab b9       	out	0x0b, r26	; 11
+    14fc:	fb b9       	out	0x0b, r31	; 11
+    14fe:	eb b9       	out	0x0b, r30	; 11
+    1500:	9b b9       	out	0x0b, r25	; 11
+    1502:	9b b9       	out	0x0b, r25	; 11
+    1504:	6b b9       	out	0x0b, r22	; 11
+    1506:	5b b9       	out	0x0b, r21	; 11
+    1508:	4b b9       	out	0x0b, r20	; 11
+    150a:	8b b9       	out	0x0b, r24	; 11
+    150c:	8b b9       	out	0x0b, r24	; 11
+    150e:	ab b9       	out	0x0b, r26	; 11
+    1510:	fb b9       	out	0x0b, r31	; 11
+    1512:	eb b9       	out	0x0b, r30	; 11
+    1514:	9b b9       	out	0x0b, r25	; 11
+    1516:	9b b9       	out	0x0b, r25	; 11
+    1518:	6b b9       	out	0x0b, r22	; 11
+    151a:	5b b9       	out	0x0b, r21	; 11
+    151c:	4b b9       	out	0x0b, r20	; 11
+    151e:	8b b9       	out	0x0b, r24	; 11
+    1520:	8b b9       	out	0x0b, r24	; 11
+    1522:	ab b9       	out	0x0b, r26	; 11
+    1524:	fb b9       	out	0x0b, r31	; 11
+    1526:	eb b9       	out	0x0b, r30	; 11
+    1528:	9b b9       	out	0x0b, r25	; 11
+    152a:	9b b9       	out	0x0b, r25	; 11
+    152c:	6b b9       	out	0x0b, r22	; 11
+    152e:	5b b9       	out	0x0b, r21	; 11
+    1530:	4b b9       	out	0x0b, r20	; 11
+    1532:	8b b9       	out	0x0b, r24	; 11
+    1534:	8b b9       	out	0x0b, r24	; 11
+    1536:	ab b9       	out	0x0b, r26	; 11
+    1538:	fb b9       	out	0x0b, r31	; 11
+    153a:	eb b9       	out	0x0b, r30	; 11
+    153c:	9b b9       	out	0x0b, r25	; 11
+    153e:	9b b9       	out	0x0b, r25	; 11
+    1540:	6b b9       	out	0x0b, r22	; 11
+    1542:	5b b9       	out	0x0b, r21	; 11
+    1544:	4b b9       	out	0x0b, r20	; 11
+    1546:	8b b9       	out	0x0b, r24	; 11
+    1548:	8b b9       	out	0x0b, r24	; 11
+    154a:	ab b9       	out	0x0b, r26	; 11
+    154c:	fb b9       	out	0x0b, r31	; 11
+    154e:	eb b9       	out	0x0b, r30	; 11
+    1550:	9b b9       	out	0x0b, r25	; 11
+    1552:	9b b9       	out	0x0b, r25	; 11
+    1554:	6b b9       	out	0x0b, r22	; 11
+    1556:	5b b9       	out	0x0b, r21	; 11
+    1558:	4b b9       	out	0x0b, r20	; 11
+    155a:	8b b9       	out	0x0b, r24	; 11
+    155c:	8b b9       	out	0x0b, r24	; 11
+    155e:	ab b9       	out	0x0b, r26	; 11
+    1560:	fb b9       	out	0x0b, r31	; 11
+    1562:	eb b9       	out	0x0b, r30	; 11
+    1564:	9b b9       	out	0x0b, r25	; 11
+    1566:	9b b9       	out	0x0b, r25	; 11
+    1568:	6b b9       	out	0x0b, r22	; 11
+    156a:	5b b9       	out	0x0b, r21	; 11
+    156c:	4b b9       	out	0x0b, r20	; 11
+    156e:	8b b9       	out	0x0b, r24	; 11
+    1570:	8b b9       	out	0x0b, r24	; 11
+    1572:	ab b9       	out	0x0b, r26	; 11
+    1574:	fb b9       	out	0x0b, r31	; 11
+    1576:	eb b9       	out	0x0b, r30	; 11
+    1578:	9b b9       	out	0x0b, r25	; 11
+    157a:	9b b9       	out	0x0b, r25	; 11
+    157c:	6b b9       	out	0x0b, r22	; 11
+    157e:	5b b9       	out	0x0b, r21	; 11
+    1580:	4b b9       	out	0x0b, r20	; 11
+    1582:	8b b9       	out	0x0b, r24	; 11
+    1584:	8b b9       	out	0x0b, r24	; 11
+    1586:	ab b9       	out	0x0b, r26	; 11
+    1588:	fb b9       	out	0x0b, r31	; 11
+    158a:	eb b9       	out	0x0b, r30	; 11
+    158c:	9b b9       	out	0x0b, r25	; 11
+    158e:	9b b9       	out	0x0b, r25	; 11
+    1590:	6b b9       	out	0x0b, r22	; 11
+    1592:	5b b9       	out	0x0b, r21	; 11
+    1594:	4b b9       	out	0x0b, r20	; 11
+    1596:	8b b9       	out	0x0b, r24	; 11
+    1598:	8b b9       	out	0x0b, r24	; 11
+    159a:	ab b9       	out	0x0b, r26	; 11
+    159c:	fb b9       	out	0x0b, r31	; 11
+    159e:	eb b9       	out	0x0b, r30	; 11
+    15a0:	9b b9       	out	0x0b, r25	; 11
+    15a2:	9b b9       	out	0x0b, r25	; 11
+    15a4:	6b b9       	out	0x0b, r22	; 11
+    15a6:	5b b9       	out	0x0b, r21	; 11
+    15a8:	4b b9       	out	0x0b, r20	; 11
+    15aa:	8b b9       	out	0x0b, r24	; 11
+    15ac:	8b b9       	out	0x0b, r24	; 11
+    15ae:	ab b9       	out	0x0b, r26	; 11
+    15b0:	fb b9       	out	0x0b, r31	; 11
+    15b2:	eb b9       	out	0x0b, r30	; 11
+    15b4:	9b b9       	out	0x0b, r25	; 11
+    15b6:	9b b9       	out	0x0b, r25	; 11
+    15b8:	6b b9       	out	0x0b, r22	; 11
+    15ba:	5b b9       	out	0x0b, r21	; 11
+    15bc:	4b b9       	out	0x0b, r20	; 11
+    15be:	8b b9       	out	0x0b, r24	; 11
+    15c0:	8b b9       	out	0x0b, r24	; 11
+    15c2:	ab b9       	out	0x0b, r26	; 11
+    15c4:	fb b9       	out	0x0b, r31	; 11
+    15c6:	eb b9       	out	0x0b, r30	; 11
+    15c8:	9b b9       	out	0x0b, r25	; 11
+    15ca:	9b b9       	out	0x0b, r25	; 11
+    15cc:	6b b9       	out	0x0b, r22	; 11
+    15ce:	5b b9       	out	0x0b, r21	; 11
+    15d0:	4b b9       	out	0x0b, r20	; 11
+    15d2:	8b b9       	out	0x0b, r24	; 11
+    15d4:	8b b9       	out	0x0b, r24	; 11
+    15d6:	ab b9       	out	0x0b, r26	; 11
+    15d8:	fb b9       	out	0x0b, r31	; 11
+    15da:	eb b9       	out	0x0b, r30	; 11
+    15dc:	9b b9       	out	0x0b, r25	; 11
+    15de:	9b b9       	out	0x0b, r25	; 11
+    15e0:	6b b9       	out	0x0b, r22	; 11
+    15e2:	5b b9       	out	0x0b, r21	; 11
+    15e4:	4b b9       	out	0x0b, r20	; 11
+    15e6:	8b b9       	out	0x0b, r24	; 11
+    15e8:	8b b9       	out	0x0b, r24	; 11
+    15ea:	ab b9       	out	0x0b, r26	; 11
+    15ec:	fb b9       	out	0x0b, r31	; 11
+    15ee:	eb b9       	out	0x0b, r30	; 11
+    15f0:	9b b9       	out	0x0b, r25	; 11
+    15f2:	9b b9       	out	0x0b, r25	; 11
+    15f4:	6b b9       	out	0x0b, r22	; 11
+    15f6:	5b b9       	out	0x0b, r21	; 11
+    15f8:	4b b9       	out	0x0b, r20	; 11
+    15fa:	8b b9       	out	0x0b, r24	; 11
+    15fc:	8b b9       	out	0x0b, r24	; 11
+    15fe:	ab b9       	out	0x0b, r26	; 11
+    1600:	fb b9       	out	0x0b, r31	; 11
+    1602:	eb b9       	out	0x0b, r30	; 11
+    1604:	9b b9       	out	0x0b, r25	; 11
+    1606:	9b b9       	out	0x0b, r25	; 11
+    1608:	6b b9       	out	0x0b, r22	; 11
+    160a:	5b b9       	out	0x0b, r21	; 11
+    160c:	4b b9       	out	0x0b, r20	; 11
+    160e:	8b b9       	out	0x0b, r24	; 11
+    1610:	8b b9       	out	0x0b, r24	; 11
+    1612:	ab b9       	out	0x0b, r26	; 11
+    1614:	fb b9       	out	0x0b, r31	; 11
+    1616:	eb b9       	out	0x0b, r30	; 11
+    1618:	9b b9       	out	0x0b, r25	; 11
+    161a:	9b b9       	out	0x0b, r25	; 11
+    161c:	6b b9       	out	0x0b, r22	; 11
+    161e:	5b b9       	out	0x0b, r21	; 11
+    1620:	4b b9       	out	0x0b, r20	; 11
+    1622:	8b b9       	out	0x0b, r24	; 11
+    1624:	8b b9       	out	0x0b, r24	; 11
+    1626:	ab b9       	out	0x0b, r26	; 11
+    1628:	fb b9       	out	0x0b, r31	; 11
+    162a:	eb b9       	out	0x0b, r30	; 11
+    162c:	9b b9       	out	0x0b, r25	; 11
+    162e:	9b b9       	out	0x0b, r25	; 11
+    1630:	6b b9       	out	0x0b, r22	; 11
+    1632:	5b b9       	out	0x0b, r21	; 11
+    1634:	4b b9       	out	0x0b, r20	; 11
+    1636:	8b b9       	out	0x0b, r24	; 11
+    1638:	8b b9       	out	0x0b, r24	; 11
+    163a:	ab b9       	out	0x0b, r26	; 11
+    163c:	fb b9       	out	0x0b, r31	; 11
+    163e:	eb b9       	out	0x0b, r30	; 11
+    1640:	9b b9       	out	0x0b, r25	; 11
+    1642:	9b b9       	out	0x0b, r25	; 11
+    1644:	6b b9       	out	0x0b, r22	; 11
+    1646:	5b b9       	out	0x0b, r21	; 11
+    1648:	4b b9       	out	0x0b, r20	; 11
+    164a:	8b b9       	out	0x0b, r24	; 11
+    164c:	8b b9       	out	0x0b, r24	; 11
+    164e:	ab b9       	out	0x0b, r26	; 11
+    1650:	fb b9       	out	0x0b, r31	; 11
+    1652:	eb b9       	out	0x0b, r30	; 11
+    1654:	9b b9       	out	0x0b, r25	; 11
+    1656:	9b b9       	out	0x0b, r25	; 11
+    1658:	6b b9       	out	0x0b, r22	; 11
+    165a:	5b b9       	out	0x0b, r21	; 11
+    165c:	4b b9       	out	0x0b, r20	; 11
+    165e:	8b b9       	out	0x0b, r24	; 11
+    1660:	8b b9       	out	0x0b, r24	; 11
+    1662:	ab b9       	out	0x0b, r26	; 11
+    1664:	fb b9       	out	0x0b, r31	; 11
+    1666:	eb b9       	out	0x0b, r30	; 11
+    1668:	9b b9       	out	0x0b, r25	; 11
+    166a:	9b b9       	out	0x0b, r25	; 11
+    166c:	6b b9       	out	0x0b, r22	; 11
+    166e:	5b b9       	out	0x0b, r21	; 11
+    1670:	4b b9       	out	0x0b, r20	; 11
+    1672:	8b b9       	out	0x0b, r24	; 11
+    1674:	8b b9       	out	0x0b, r24	; 11
+			PORTD = IDLE;
+    1676:	82 e7       	ldi	r24, 0x72	; 114
+    1678:	8b b9       	out	0x0b, r24	; 11
+	
+	_delay_us(4);
+
+	for (uint16_t row = 0; row < 2720; row++) {
+		// TODO row
+		for (uint8_t i = 0; i < 16; i++) {
+    167a:	7f 5f       	subi	r23, 0xFF	; 255
+    167c:	01 c0       	rjmp	.+2      	; 0x1680 <__stack+0xd81>
+    167e:	70 e0       	ldi	r23, 0x00	; 0
+    1680:	70 31       	cpi	r23, 0x10	; 16
+    1682:	10 f4       	brcc	.+4      	; 0x1688 <__stack+0xd89>
+    1684:	0c 94 f9 00 	jmp	0x1f2	; 0x1f2 <readout+0x94>
+		/*for (uint16_t i = 0; i < 256; i++) {
+			PORTD = 0b01100011;
+			PORTD = 0b01100010;
+		}*/
+		
+		PORTD = IDLE;//STATE0;
+    1688:	82 e7       	ldi	r24, 0x72	; 114
+    168a:	8b b9       	out	0x0b, r24	; 11
+    168c:	86 e0       	ldi	r24, 0x06	; 6
+    168e:	8a 95       	dec	r24
+    1690:	f1 f7       	brne	.-4      	; 0x168e <__stack+0xd8f>
+    1692:	00 c0       	rjmp	.+0      	; 0x1694 <__stack+0xd95>
+    1694:	8c 2f       	mov	r24, r28
+    1696:	8e 7f       	andi	r24, 0xFE	; 254
+		//PIXEL2048;
+		
+		_delay_us(1);
+		
+		temp |= CLK_V2;
+		temp &= ~CLK_V1;
+    1698:	82 60       	ori	r24, 0x02	; 2
+		PORTC = temp;
+    169a:	88 b9       	out	0x08, r24	; 8
+    169c:	94 e6       	ldi	r25, 0x64	; 100
+    169e:	9a 95       	dec	r25
+    16a0:	f1 f7       	brne	.-4      	; 0x169e <__stack+0xd9f>
+    16a2:	cc 7f       	andi	r28, 0xFC	; 252
+		
+		_delay_us(15);
+		
+		temp |= CLK_V1;
+		temp &= ~CLK_V2;
+    16a4:	c1 60       	ori	r28, 0x01	; 1
+		PORTC = temp;
+    16a6:	c8 b9       	out	0x08, r28	; 8
+    16a8:	80 e5       	ldi	r24, 0x50	; 80
+    16aa:	8a 95       	dec	r24
+    16ac:	f1 f7       	brne	.-4      	; 0x16aa <__stack+0xdab>
+	
+	adc_write(REG_CFG, 0b011011000);
+	
+	_delay_us(4);
+
+	for (uint16_t row = 0; row < 2720; row++) {
+    16ae:	2f 5f       	subi	r18, 0xFF	; 255
+    16b0:	3f 4f       	sbci	r19, 0xFF	; 255
+    16b2:	20 3a       	cpi	r18, 0xA0	; 160
+    16b4:	9a e0       	ldi	r25, 0x0A	; 10
+    16b6:	39 07       	cpc	r19, r25
+    16b8:	10 f3       	brcs	.-60     	; 0x167e <__stack+0xd7f>
+		PORTC = temp;
+		
+		_delay_us(12);
+	}
+	
+	PORTD = LDLE;
+    16ba:	82 e7       	ldi	r24, 0x72	; 114
+    16bc:	8b b9       	out	0x0b, r24	; 11
+	
+	adc_write(REG_CFG, 0b011011100);
+    16be:	6c ed       	ldi	r22, 0xDC	; 220
+    16c0:	70 e0       	ldi	r23, 0x00	; 0
+    16c2:	80 e0       	ldi	r24, 0x00	; 0
+    16c4:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+	
+	PORTC &= ~CLK_FD;
+    16c8:	88 b1       	in	r24, 0x08	; 8
+    16ca:	87 7f       	andi	r24, 0xF7	; 247
+    16cc:	88 b9       	out	0x08, r24	; 8
+}
+    16ce:	cf 91       	pop	r28
+    16d0:	08 95       	ret
+
+000016d2 <main>:
+int16_t millis = 0;
+
+int main() {
+	int temp = 0;
+
+	cli();
+    16d2:	f8 94       	cli
+	
+	SPCR = 0b01000000;
+    16d4:	80 e4       	ldi	r24, 0x40	; 64
+    16d6:	8c bd       	out	0x2c, r24	; 44
+	SPSR |= 1;
+    16d8:	8d b5       	in	r24, 0x2d	; 45
+    16da:	81 60       	ori	r24, 0x01	; 1
+    16dc:	8d bd       	out	0x2d, r24	; 45
+	
+	DDRD |= 0b11111111;
+    16de:	8a b1       	in	r24, 0x0a	; 10
+    16e0:	8f ef       	ldi	r24, 0xFF	; 255
+    16e2:	8a b9       	out	0x0a, r24	; 10
+	PORTD = LDLE;//0b01100011;//STATE0;
+    16e4:	82 e7       	ldi	r24, 0x72	; 114
+    16e6:	8b b9       	out	0x0b, r24	; 11
+
+	DDRB |= 0b00010010;
+    16e8:	84 b1       	in	r24, 0x04	; 4
+    16ea:	82 61       	ori	r24, 0x12	; 18
+    16ec:	84 b9       	out	0x04, r24	; 4
+	//PORTB |= 0b0;
+	PORTB &= ~ADC_SCLK;
+    16ee:	85 b1       	in	r24, 0x05	; 5
+    16f0:	8d 7f       	andi	r24, 0xFD	; 253
+    16f2:	85 b9       	out	0x05, r24	; 5
+
+	DDRC |= 0b00111111;
+    16f4:	87 b1       	in	r24, 0x07	; 7
+    16f6:	8f 63       	ori	r24, 0x3F	; 63
+    16f8:	87 b9       	out	0x07, r24	; 7
+	PORTC &= ~(CLK_V2 | CLK_V2H | CLK_SHUTTER | CLK_FD);
+    16fa:	88 b1       	in	r24, 0x08	; 8
+    16fc:	81 7e       	andi	r24, 0xE1	; 225
+    16fe:	88 b9       	out	0x08, r24	; 8
+	PORTC |= CLK_V1;// | CLK_FD;
+    1700:	88 b1       	in	r24, 0x08	; 8
+    1702:	81 60       	ori	r24, 0x01	; 1
+    1704:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1706:	8f e4       	ldi	r24, 0x4F	; 79
+    1708:	93 ec       	ldi	r25, 0xC3	; 195
+    170a:	01 97       	sbiw	r24, 0x01	; 1
+    170c:	f1 f7       	brne	.-4      	; 0x170a <main+0x38>
+    170e:	00 c0       	rjmp	.+0      	; 0x1710 <main+0x3e>
+    1710:	00 00       	nop
+	
+	_delay_ms(10);
+	
+	// 4v range, vref en, single ch, cds mode, 4v clamp bias, enabled, 0, 16 bits
+	//adc_write(REG_CFG, 0b011011000);
+	adc_write(REG_CFG, 0b011011100);
+    1712:	6c ed       	ldi	r22, 0xDC	; 220
+    1714:	70 e0       	ldi	r23, 0x00	; 0
+    1716:	80 e0       	ldi	r24, 0x00	; 0
+    1718:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    171c:	92 e4       	ldi	r25, 0x42	; 66
+    171e:	9a 95       	dec	r25
+    1720:	f1 f7       	brne	.-4      	; 0x171e <main+0x4c>
+    1722:	00 c0       	rjmp	.+0      	; 0x1724 <main+0x52>
+	_delay_us(10);
+	
+	// en red ch
+	adc_write(REG_MUX, 0b011000000);
+    1724:	60 ec       	ldi	r22, 0xC0	; 192
+    1726:	70 e0       	ldi	r23, 0x00	; 0
+    1728:	81 e0       	ldi	r24, 0x01	; 1
+    172a:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+    172e:	e2 e4       	ldi	r30, 0x42	; 66
+    1730:	ea 95       	dec	r30
+    1732:	f1 f7       	brne	.-4      	; 0x1730 <main+0x5e>
+    1734:	00 c0       	rjmp	.+0      	; 0x1736 <main+0x64>
+	_delay_us(10);
+
+	//adc_write(REG_PGA_R, 59);
+	adc_write(REG_PGA_R, 59);
+    1736:	6b e3       	ldi	r22, 0x3B	; 59
+    1738:	70 e0       	ldi	r23, 0x00	; 0
+    173a:	82 e0       	ldi	r24, 0x02	; 2
+    173c:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+    1740:	f2 e4       	ldi	r31, 0x42	; 66
+    1742:	fa 95       	dec	r31
+    1744:	f1 f7       	brne	.-4      	; 0x1742 <main+0x70>
+    1746:	00 c0       	rjmp	.+0      	; 0x1748 <main+0x76>
+	_delay_us(10);
+
+	adc_write(REG_OFF_R, 10);
+    1748:	6a e0       	ldi	r22, 0x0A	; 10
+    174a:	70 e0       	ldi	r23, 0x00	; 0
+    174c:	85 e0       	ldi	r24, 0x05	; 5
+    174e:	0e 94 48 00 	call	0x90	; 0x90 <adc_write>
+    1752:	22 e4       	ldi	r18, 0x42	; 66
+    1754:	2a 95       	dec	r18
+    1756:	f1 f7       	brne	.-4      	; 0x1754 <main+0x82>
+    1758:	00 c0       	rjmp	.+0      	; 0x175a <main+0x88>
+	_delay_us(10);
+	
+	uint8_t ptmp = PORTC;//0;
+    175a:	c8 b1       	in	r28, 0x08	; 8
+		for (uint16_t row = 0; row < 2720 * 4; row++) {
+    175c:	80 e0       	ldi	r24, 0x00	; 0
+    175e:	90 e0       	ldi	r25, 0x00	; 0
+    1760:	0e c0       	rjmp	.+28     	; 0x177e <main+0xac>
+    1762:	2c 2f       	mov	r18, r28
+    1764:	2e 7f       	andi	r18, 0xFE	; 254
+			ptmp |= CLK_V2;
+			ptmp &= ~CLK_V1;
+    1766:	22 60       	ori	r18, 0x02	; 2
+			PORTC = ptmp;
+    1768:	28 b9       	out	0x08, r18	; 8
+    176a:	34 e6       	ldi	r19, 0x64	; 100
+    176c:	3a 95       	dec	r19
+    176e:	f1 f7       	brne	.-4      	; 0x176c <main+0x9a>
+    1770:	cc 7f       	andi	r28, 0xFC	; 252
+			
+			_delay_us(15);
+			
+			ptmp |= CLK_V1;
+			ptmp &= ~CLK_V2;
+    1772:	c1 60       	ori	r28, 0x01	; 1
+			PORTC = ptmp;
+    1774:	c8 b9       	out	0x08, r28	; 8
+    1776:	44 e6       	ldi	r20, 0x64	; 100
+    1778:	4a 95       	dec	r20
+    177a:	f1 f7       	brne	.-4      	; 0x1778 <main+0xa6>
+
+	adc_write(REG_OFF_R, 10);
+	_delay_us(10);
+	
+	uint8_t ptmp = PORTC;//0;
+		for (uint16_t row = 0; row < 2720 * 4; row++) {
+    177c:	01 96       	adiw	r24, 0x01	; 1
+    177e:	80 38       	cpi	r24, 0x80	; 128
+    1780:	ea e2       	ldi	r30, 0x2A	; 42
+    1782:	9e 07       	cpc	r25, r30
+    1784:	70 f3       	brcs	.-36     	; 0x1762 <main+0x90>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1786:	87 e8       	ldi	r24, 0x87	; 135
+    1788:	93 e1       	ldi	r25, 0x13	; 19
+    178a:	01 97       	sbiw	r24, 0x01	; 1
+    178c:	f1 f7       	brne	.-4      	; 0x178a <main+0xb8>
+    178e:	00 c0       	rjmp	.+0      	; 0x1790 <main+0xbe>
+    1790:	00 00       	nop
+	
+	//uint8_t ptmp = PORTC;//0;
+
+    while (1) 
+    {
+		cli();
+    1792:	f8 94       	cli
+    1794:	10 c0       	rjmp	.+32     	; 0x17b6 <main+0xe4>
+    1796:	8c 2f       	mov	r24, r28
+    1798:	8e 7f       	andi	r24, 0xFE	; 254
+		
+		//while (SPSR & 0b10000000 == 0);
+		while (1 == 1) {
+			while(!(SPSR & (1<<SPIF))) {
+				ptmp |= CLK_V2;
+				ptmp &= ~CLK_V1;
+    179a:	82 60       	ori	r24, 0x02	; 2
+				PORTC = ptmp;
+    179c:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    179e:	94 e6       	ldi	r25, 0x64	; 100
+    17a0:	9a 95       	dec	r25
+    17a2:	f1 f7       	brne	.-4      	; 0x17a0 <main+0xce>
+    17a4:	cc 7f       	andi	r28, 0xFC	; 252
+					
+				_delay_us(15);
+					
+				ptmp |= CLK_V1;
+				ptmp &= ~CLK_V2;
+    17a6:	c1 60       	ori	r28, 0x01	; 1
+				PORTC = ptmp;
+    17a8:	c8 b9       	out	0x08, r28	; 8
+    17aa:	ef e0       	ldi	r30, 0x0F	; 15
+    17ac:	f7 e2       	ldi	r31, 0x27	; 39
+    17ae:	31 97       	sbiw	r30, 0x01	; 1
+    17b0:	f1 f7       	brne	.-4      	; 0x17ae <main+0xdc>
+    17b2:	00 c0       	rjmp	.+0      	; 0x17b4 <main+0xe2>
+    17b4:	00 00       	nop
+    {
+		cli();
+		
+		//while (SPSR & 0b10000000 == 0);
+		while (1 == 1) {
+			while(!(SPSR & (1<<SPIF))) {
+    17b6:	0d b4       	in	r0, 0x2d	; 45
+    17b8:	07 fe       	sbrs	r0, 7
+    17ba:	ed cf       	rjmp	.-38     	; 0x1796 <main+0xc4>
+				//_delay_us(985);
+				_delay_us(2000);
+				//_delay_us(5000); // TODO
+			}
+		
+			temp = SPDR;
+    17bc:	9e b5       	in	r25, 0x2e	; 46
+    17be:	29 2f       	mov	r18, r25
+    17c0:	30 e0       	ldi	r19, 0x00	; 0
+			
+			if (toread > 0) {
+    17c2:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <toread>
+    17c6:	18 16       	cp	r1, r24
+    17c8:	0c f0       	brlt	.+2      	; 0x17cc <main+0xfa>
+    17ca:	46 c0       	rjmp	.+140    	; 0x1858 <main+0x186>
+				if (toread == 4) {
+    17cc:	84 30       	cpi	r24, 0x04	; 4
+    17ce:	41 f4       	brne	.+16     	; 0x17e0 <main+0x10e>
+					seconds = temp;
+					seconds <<= 8;
+    17d0:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <seconds>
+    17d4:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <seconds+0x1>
+					toread--;
+    17d8:	81 50       	subi	r24, 0x01	; 1
+    17da:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <toread>
+    17de:	42 c0       	rjmp	.+132    	; 0x1864 <main+0x192>
+				} else if (toread == 3) {
+    17e0:	83 30       	cpi	r24, 0x03	; 3
+    17e2:	71 f4       	brne	.+28     	; 0x1800 <main+0x12e>
+					seconds |= temp;
+    17e4:	40 91 02 01 	lds	r20, 0x0102	; 0x800102 <seconds>
+    17e8:	50 91 03 01 	lds	r21, 0x0103	; 0x800103 <seconds+0x1>
+    17ec:	24 2b       	or	r18, r20
+    17ee:	35 2b       	or	r19, r21
+    17f0:	30 93 03 01 	sts	0x0103, r19	; 0x800103 <seconds+0x1>
+    17f4:	20 93 02 01 	sts	0x0102, r18	; 0x800102 <seconds>
+					toread--;
+    17f8:	81 50       	subi	r24, 0x01	; 1
+    17fa:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <toread>
+    17fe:	32 c0       	rjmp	.+100    	; 0x1864 <main+0x192>
+				} else if (toread == 2) {
+    1800:	82 30       	cpi	r24, 0x02	; 2
+    1802:	41 f4       	brne	.+16     	; 0x1814 <main+0x142>
+					millis = temp;
+					millis <<= 8;
+    1804:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+    1808:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+					toread--;
+    180c:	81 50       	subi	r24, 0x01	; 1
+    180e:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <toread>
+    1812:	28 c0       	rjmp	.+80     	; 0x1864 <main+0x192>
+				} else if (toread == 1) {
+    1814:	81 30       	cpi	r24, 0x01	; 1
+    1816:	31 f5       	brne	.+76     	; 0x1864 <main+0x192>
+					millis |= temp;
+    1818:	40 91 00 01 	lds	r20, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+    181c:	50 91 01 01 	lds	r21, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    1820:	24 2b       	or	r18, r20
+    1822:	35 2b       	or	r19, r21
+    1824:	30 93 01 01 	sts	0x0101, r19	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    1828:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <__DATA_REGION_ORIGIN__>
+					toread--;
+    182c:	81 50       	subi	r24, 0x01	; 1
+    182e:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <toread>
+			}
+			
+			temp = SPSR;
+		}
+		
+		PORTC &= ~CLK_V1;
+    1832:	88 b1       	in	r24, 0x08	; 8
+    1834:	8e 7f       	andi	r24, 0xFE	; 254
+    1836:	88 b9       	out	0x08, r24	; 8
+    1838:	f4 e6       	ldi	r31, 0x64	; 100
+    183a:	fa 95       	dec	r31
+    183c:	f1 f7       	brne	.-4      	; 0x183a <main+0x168>
+		_delay_us(15);
+		
+		PORTC |= CLK_SHUTTER;
+    183e:	88 b1       	in	r24, 0x08	; 8
+    1840:	80 61       	ori	r24, 0x10	; 16
+    1842:	88 b9       	out	0x08, r24	; 8
+    1844:	21 e2       	ldi	r18, 0x21	; 33
+    1846:	2a 95       	dec	r18
+    1848:	f1 f7       	brne	.-4      	; 0x1846 <main+0x174>
+    184a:	00 00       	nop
+		_delay_us(5);
+		PORTC &= ~CLK_SHUTTER;
+    184c:	88 b1       	in	r24, 0x08	; 8
+    184e:	8f 7e       	andi	r24, 0xEF	; 239
+    1850:	88 b9       	out	0x08, r24	; 8
+		
+		for (uint16_t k = 0; k < seconds; k++) {
+    1852:	80 e0       	ldi	r24, 0x00	; 0
+    1854:	90 e0       	ldi	r25, 0x00	; 0
+    1856:	12 c0       	rjmp	.+36     	; 0x187c <main+0x1aa>
+				} else if (toread == 1) {
+					millis |= temp;
+					toread--;
+					break;
+				}
+			} else if (temp == 0xaa) {
+    1858:	2a 3a       	cpi	r18, 0xAA	; 170
+    185a:	31 05       	cpc	r19, r1
+    185c:	19 f4       	brne	.+6      	; 0x1864 <main+0x192>
+				toread = 4;
+    185e:	84 e0       	ldi	r24, 0x04	; 4
+    1860:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <toread>
+			}
+			
+			temp = SPSR;
+    1864:	8d b5       	in	r24, 0x2d	; 45
+		}
+    1866:	a7 cf       	rjmp	.-178    	; 0x17b6 <main+0xe4>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1868:	3f ef       	ldi	r19, 0xFF	; 255
+    186a:	48 e0       	ldi	r20, 0x08	; 8
+    186c:	ed e3       	ldi	r30, 0x3D	; 61
+    186e:	31 50       	subi	r19, 0x01	; 1
+    1870:	40 40       	sbci	r20, 0x00	; 0
+    1872:	e0 40       	sbci	r30, 0x00	; 0
+    1874:	e1 f7       	brne	.-8      	; 0x186e <main+0x19c>
+    1876:	00 c0       	rjmp	.+0      	; 0x1878 <main+0x1a6>
+    1878:	00 00       	nop
+		
+		PORTC |= CLK_SHUTTER;
+		_delay_us(5);
+		PORTC &= ~CLK_SHUTTER;
+		
+		for (uint16_t k = 0; k < seconds; k++) {
+    187a:	01 96       	adiw	r24, 0x01	; 1
+    187c:	20 91 02 01 	lds	r18, 0x0102	; 0x800102 <seconds>
+    1880:	30 91 03 01 	lds	r19, 0x0103	; 0x800103 <seconds+0x1>
+    1884:	82 17       	cp	r24, r18
+    1886:	93 07       	cpc	r25, r19
+    1888:	78 f3       	brcs	.-34     	; 0x1868 <main+0x196>
+			_delay_ms(1000);
+		}
+		
+		if (millis > 999) millis = 999;
+    188a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+    188e:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    1892:	88 3e       	cpi	r24, 0xE8	; 232
+    1894:	93 40       	sbci	r25, 0x03	; 3
+    1896:	34 f0       	brlt	.+12     	; 0x18a4 <main+0x1d2>
+    1898:	87 ee       	ldi	r24, 0xE7	; 231
+    189a:	93 e0       	ldi	r25, 0x03	; 3
+    189c:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    18a0:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+		
+		PORTC |= CLK_SHUTTER;
+		_delay_us(5);
+		PORTC &= ~CLK_SHUTTER;
+		
+		for (uint16_t k = 0; k < seconds; k++) {
+    18a4:	80 e0       	ldi	r24, 0x00	; 0
+    18a6:	90 e0       	ldi	r25, 0x00	; 0
+    18a8:	07 c0       	rjmp	.+14     	; 0x18b8 <main+0x1e6>
+    18aa:	e7 e8       	ldi	r30, 0x87	; 135
+    18ac:	f3 e1       	ldi	r31, 0x13	; 19
+    18ae:	31 97       	sbiw	r30, 0x01	; 1
+    18b0:	f1 f7       	brne	.-4      	; 0x18ae <main+0x1dc>
+    18b2:	00 c0       	rjmp	.+0      	; 0x18b4 <main+0x1e2>
+    18b4:	00 00       	nop
+			_delay_ms(1000);
+		}
+		
+		if (millis > 999) millis = 999;
+		
+		for (uint16_t k = 0; k < millis; k++) {
+    18b6:	01 96       	adiw	r24, 0x01	; 1
+    18b8:	20 91 00 01 	lds	r18, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+    18bc:	30 91 01 01 	lds	r19, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    18c0:	82 17       	cp	r24, r18
+    18c2:	93 07       	cpc	r25, r19
+    18c4:	90 f3       	brcs	.-28     	; 0x18aa <main+0x1d8>
+		}
+		/*for (uint16_t k = 0; k < 10; k++) {
+			_delay_ms(1000);
+		}*/
+		
+		readout();
+    18c6:	0e 94 af 00 	call	0x15e	; 0x15e <readout>
+    18ca:	87 e8       	ldi	r24, 0x87	; 135
+    18cc:	93 e1       	ldi	r25, 0x13	; 19
+    18ce:	01 97       	sbiw	r24, 0x01	; 1
+    18d0:	f1 f7       	brne	.-4      	; 0x18ce <main+0x1fc>
+    18d2:	00 c0       	rjmp	.+0      	; 0x18d4 <main+0x202>
+    18d4:	00 00       	nop
+    18d6:	5d cf       	rjmp	.-326    	; 0x1792 <main+0xc0>
+
+000018d8 <_exit>:
+    18d8:	f8 94       	cli
+
+000018da <__stop_program>:
+    18da:	ff cf       	rjmp	.-2      	; 0x18da <__stop_program>
